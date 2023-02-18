@@ -1,0 +1,77 @@
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row; 
+     align-items: center; 
+  }
+  .leftcontainer {
+    min-height: 100vh;
+    width: 50%;
+    background-image: url("./Images/admin11.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+    background-position: center;
+  }
+  
+  
+  .login {
+    width: 500px;
+    padding: 20px;
+    height: min-content;
+    /* height: min-content;
+      border-radius: 5px;
+      color: white;
+      background-color:rgb(215, 216, 218);
+      justify-content: center;
+      align-items: center;*/
+  
+    /* background: #000000;
+    opacity: 0.7; */
+    border-radius: 54px;
+    color: black;
+  }
+  .wrapper .leftcontainer h1,
+  .leftcontainer .start h3,
+  .leftcontainer h2,
+  .leftcontainer .middle h3{
+    color: #fff;
+    font-family: 'Francois One';
+    font-style: normal;
+  
+  }
+  
+  
+  .wrapper .leftcontainer h1{
+    font-weight: 700;
+    font-size: 128px;
+    /* line-height: 182px; */
+    /* identical to box height */
+    letter-spacing: 0.02em;
+  }
+  
+  .leftcontainer .start h3{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 34px;
+  }
+  
+  .leftcontainer h2{
+    font-weight: bolder;
+    letter-spacing: 0.02em;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 68px;
+    
+  }
+  .leftcontainer .middle h3{
+    letter-spacing: 0.02em;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 45px;
+  }
+  
+  .login h1,h3,h4{
+    color: #212938;
+  }
+  
