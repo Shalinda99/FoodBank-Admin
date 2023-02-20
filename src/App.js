@@ -4,6 +4,9 @@ import { Route,Routes, BrowserRouter} from 'react-router-dom';
 import AdminLogin from './Login';
 import PackingHome from './PackingSection/PackingHome';
 import DeliveryHome from './DeliverySection/DeliveryHome';
+import PNavBar from './PackingSection/PackingSideNavigation';
+import AddPackages from './PackingSection/AddPackages';
+import PackageIsues from './PackingSection/PackageIsuues';
 
 function App() {
   return (
@@ -12,9 +15,17 @@ function App() {
       
       <Routes>
       <Route path='/' element={<AdminLogin/>}/>
-      <Route path='/packingSection' element={<PackingHome/>}/>
-      <Route path='/deliverySection' element={<DeliveryHome/>}/>
       </Routes>
+
+      <PNavBar/>
+      <Routes>
+      <Route path='/packingSection' element={<PackingHome/>}/>
+      <Route path='/addPackages' element={<AddPackages/>} />
+      <Route path='/issuePackages' element={<PackageIsues/>} />
+      </Routes>
+
+      {/* <Route path='/deliverySection' element={<DeliveryHome/>}/> */}
+      
         
        
       </BrowserRouter>
