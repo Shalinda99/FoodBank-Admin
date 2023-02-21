@@ -9,10 +9,15 @@ import {
     // FaCartPlus
 }from "react-icons/fa";
 import { NavLink, useLocation } from 'react-router-dom';
-import './PackingNavBar.css'
+import './PackingNavBar.css';
+import AddPackages from './AddPackages';
+import PackageIsues from './PackageIsuues';
+import PackingHome from './PackingHome';
 
 const PNavBar = ({children}) => {
 
+    const location1 = useLocation();
+    const currentRoute = location1.pathname; 
 
     const[isOpen ,setIsOpen] = useState(false); //for the toggle in nav bar
     const toggle = () => setIsOpen (!isOpen);
@@ -48,9 +53,10 @@ const PNavBar = ({children}) => {
 
     return ( 
         <React.Fragment>
+            <div className='d-flex'>
     
             <div className="container1 g-0 ">
-           <div style={{width: isOpen ? "250px" : "50px"}} className="sidebar position-fixed">
+           <div style={{width: isOpen ? "250px" : "50px"}} className="sidebar">
                <div className="top_section">
                    <h1 style={{display: isOpen ? "block" : "none"}} className="logo">Logo</h1>
                    <div style={{ marginLeft: isOpen ? "100px" : "0px"}} className="bars">
@@ -68,10 +74,23 @@ const PNavBar = ({children}) => {
            </div>
         
         </div>
-           
+        <div className='d-flex'>
+        <div className='main-content d-flex flex-column w-100 me-4 '>
+            <div className='nametag w-100 p-3 m-2 shadow bg-light '>
+                <h1>Food Bank - Packing Section</h1>
+            </div>
+        
+            <div className='w-100 p-3 m-2'>
+            {/* conditional render */}
+                {currentRoute === '/packingSection' && <PackingHome/>} 
+                {currentRoute === '/addPackages' && <AddPackages/>} 
+                {currentRoute === '/issuePackages' && <PackageIsues/>} 
+             </div>
+             </div>
+             </div>
         
             
-    
+        </div>
 
         </React.Fragment>
      );
