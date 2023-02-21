@@ -3,23 +3,29 @@
     padding:0;
     text-decoration: none;
 }
-.container{
+.container1{
     display:flex;
     flex-direction: row;
     margin: 0;
-    
+
 }
 main{
     width: 100%;
     padding: 20px;
+    
 }
 .sidebar{
     background: #212938;
     color: #fff;
     height: 100vh;
     width: 250px;
-    transition: all 0.5s;
+    transition: all 0.5s; 
+    
 }
+/* .main-content{
+    padding-left: 250px;
+} */
+
 .top_section{
     display: flex;
     align-items:center;
@@ -36,6 +42,7 @@ main{
 .link{
     display: flex;
     color: #fff;
+    text-decoration: none;
     padding: 10px 15px;
     gap: 15px;
     transition: all 0.5s;
@@ -51,4 +58,10 @@ main{
 }
 .icon, .link_text{
     font-size: 20px;
+
+}
+
+.nametag{
+    height: fit-content;
+    
 }

@@ -8,12 +8,13 @@ import {
     // FaPalfed,
     // FaCartPlus
 }from "react-icons/fa";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import './PackingNavBar.css'
 
 const PNavBar = ({children}) => {
 
-    const[isOpen ,setIsOpen] = useState(false);
+
+    const[isOpen ,setIsOpen] = useState(false); //for the toggle in nav bar
     const toggle = () => setIsOpen (!isOpen);
     const menuItem=[
         {
@@ -31,12 +32,12 @@ const PNavBar = ({children}) => {
             name:"Issue Packages",
             icon:<FaUserFriends/>
         }
-        // ,
-        // {
-        //     path:"/packing_details",
-        //     name:"Packing_Details",
-        //     icon:<FaPalfed/>
-        // },
+    //      ,
+    //      {
+    //         path:"/packing_details",
+    //         name:"Packing_Details",
+    //         icon:<FaPalfed/>
+    //  },
         // {
         //     path:"/delivery_details",
         //     name:"Delivery_Details",
@@ -47,8 +48,9 @@ const PNavBar = ({children}) => {
 
     return ( 
         <React.Fragment>
-            <div className="container g-0">
-           <div style={{width: isOpen ? "250px" : "50px"}} className="sidebar">
+    
+            <div className="container1 g-0 ">
+           <div style={{width: isOpen ? "250px" : "50px"}} className="sidebar position-fixed">
                <div className="top_section">
                    <h1 style={{display: isOpen ? "block" : "none"}} className="logo">Logo</h1>
                    <div style={{ marginLeft: isOpen ? "100px" : "0px"}} className="bars">
@@ -64,8 +66,12 @@ const PNavBar = ({children}) => {
                    ))
                }
            </div>
-           <main>{children}</main>
+        
         </div>
+           
+        
+            
+    
 
         </React.Fragment>
      );

@@ -4,10 +4,8 @@ const PackingHome = () => {
     return ( 
         <React.Fragment>
 
-         
-            <div className='d-flex'>
-                <h1>Packing Section</h1>
-            </div>
+         <h1>Packing Section</h1>
+            
 
            
             
