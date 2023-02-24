@@ -1,11 +1,11 @@
 import React from 'react';
 
-const AddPackages = () => {
+const DeliveryHome = () => {
     return ( 
         <React.Fragment>
-            <h1>add packages</h1>
+            <h1>Delivery Section</h1>
         </React.Fragment>
      );
 }
  
-export default AddPackages;
+export default DeliveryHome;

@@ -1,0 +1,20 @@
+import React from 'react';
+
+const PackageIsues = () => {
+    return ( 
+        <React.Fragment>
+            <h1>Isuue packages</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut enim auctor, tristique libero eu, ornare arcu. Aliquam erat volutpat. Duis vel ipsum quis leo pellentesque efficitur a at arcu. Aliquam scelerisque euismod consequat. Maecenas ultricies hendrerit diam, eu blandit neque. Praesent tristique mauris id sem feugiat laoreet. Nam blandit volutpat enim, in lobortis ipsum maximus et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse bibendum euismod nisi, id faucibus velit fringilla a. Nam euismod feugiat ex, eget vehicula nunc. Quisque at varius lacus. Donec ultricies, justo eu commodo laoreet, sapien ex auctor libero, non consectetur eros orci vitae dolor. Donec euismod ante felis, quis bibendum ipsum hendrerit quis. Nam malesuada hendrerit nibh, eu suscipit urna. Sed vel tellus nec tellus luctus pretium sit amet sed nisl.
+
+Phasellus malesuada mi nec elit bibendum tristique. Nulla vitae risus ut mi auctor suscipit. Sed eget varius elit. Aenean finibus, ex a auctor euismod, nisl urna faucibus risus, nec gravida nulla libero vel enim. Donec vel libero sit amet risus consequat bibendum. Integer a turpis odio. Sed sit amet neque bibendum, dictum nisi a, pellentesque ex. In blandit iaculis lorem, vel ultricies est aliquam id</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut enim auctor, tristique libero eu, ornare arcu. Aliquam erat volutpat. Duis vel ipsum quis leo pellentesque efficitur a at arcu. Aliquam scelerisque euismod consequat. Maecenas ultricies hendrerit diam, eu blandit neque. Praesent tristique mauris id sem feugiat laoreet. Nam blandit volutpat enim, in lobortis ipsum maximus et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse bibendum euismod nisi, id faucibus velit fringilla a. Nam euismod feugiat ex, eget vehicula nunc. Quisque at varius lacus. Donec ultricies, justo eu commodo laoreet, sapien ex auctor libero, non consectetur eros orci vitae dolor. Donec euismod ante felis, quis bibendum ipsum hendrerit quis. Nam malesuada hendrerit nibh, eu suscipit urna. Sed vel tellus nec tellus luctus pretium sit amet sed nisl.
+
+Phasellus malesuada mi nec elit bibendum tristique. Nulla vitae risus ut mi auctor suscipit. Sed eget varius elit. Aenean finibus, ex a auctor euismod, nisl urna faucibus risus, nec gravida nulla libero vel enim. Donec vel libero sit amet risus consequat bibendum. Integer a turpis odio. Sed sit amet neque bibendum, dictum nisi a, pellentesque ex. In blandit iaculis lorem, vel ultricies est aliquam id</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut enim auctor, tristique libero eu, ornare arcu. Aliquam erat volutpat. Duis vel ipsum quis leo pellentesque efficitur a at arcu. Aliquam scelerisque euismod consequat. Maecenas ultricies hendrerit diam, eu blandit neque. Praesent tristique mauris id sem feugiat laoreet. Nam blandit volutpat enim, in lobortis ipsum maximus et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse bibendum euismod nisi, id faucibus velit fringilla a. Nam euismod feugiat ex, eget vehicula nunc. Quisque at varius lacus. Donec ultricies, justo eu commodo laoreet, sapien ex auctor libero, non consectetur eros orci vitae dolor. Donec euismod ante felis, quis bibendum ipsum hendrerit quis. Nam malesuada hendrerit nibh, eu suscipit urna. Sed vel tellus nec tellus luctus pretium sit amet sed nisl.
+
+Phasellus malesuada mi nec elit bibendum tristique. Nulla vitae risus ut mi auctor suscipit. Sed eget varius elit. Aenean finibus, ex a auctor euismod, nisl urna faucibus risus, nec gravida nulla libero vel enim. Donec vel libero sit amet risus consequat bibendum. Integer a turpis odio. Sed sit amet neque bibendum, dictum nisi a, pellentesque ex. In blandit iaculis lorem, vel ultricies est aliquam id</p>
+        </React.Fragment>
+     );
+}
+ 
+export default PackageIsues;
