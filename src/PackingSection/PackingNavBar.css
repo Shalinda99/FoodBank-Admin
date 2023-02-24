@@ -22,9 +22,9 @@ main{
     transition: all 0.5s; 
     
 }
-/* .main-content{
-    padding-left: 250px;
-} */
+ .main-content{
+    transition: padding 0.5s ease;
+}  
 
 .top_section{
     display: flex;

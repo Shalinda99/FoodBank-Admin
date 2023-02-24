@@ -56,7 +56,7 @@ const PNavBar = ({children}) => {
             <div className='d-flex'>
     
             <div className="container1 g-0 ">
-           <div style={{width: isOpen ? "250px" : "50px"}} className="sidebar">
+           <div style={{width: isOpen ? "250px" : "50px"}} className="sidebar position-fixed">
                <div className="top_section">
                    <h1 style={{display: isOpen ? "block" : "none"}} className="logo">Logo</h1>
                    <div style={{ marginLeft: isOpen ? "100px" : "0px"}} className="bars">
@@ -75,7 +75,8 @@ const PNavBar = ({children}) => {
         
         </div>
         <div className='d-flex'>
-        <div className='main-content d-flex flex-column w-100 me-4 '>
+        {/* <div className={`main-content ${isOpen ? 'expanded' : 'collapsed'}`}> */}
+        <div style={{paddingLeft: isOpen ? "250px" : "50px"}} className='main-content d-flex flex-column w-100 me-4 '>
             <div className='nametag w-100 p-3 m-2 shadow bg-light '>
                 <h1>Food Bank - Packing Section</h1>
             </div>
