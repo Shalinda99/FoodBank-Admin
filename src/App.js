@@ -6,6 +6,7 @@ import AdminLogin from './Login';
 import PRoutes from './PackingSection/PRoutes';
 import VictimInfo1 from './DeliverySection/VictimInfo1';
 import DRoutes from './DeliverySection/DRoutes';
+import Dash from './Warehouse/admin';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       
       <Routes>
       <Route path='/' element={<AdminLogin/>}/>
+      <Dash/>
       
       
       </Routes>
