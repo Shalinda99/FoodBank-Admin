@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { DatePicker } from "antd";
 import Box from './Box';
-import Button1 from './Button1';
-import Table from 'react-bootstrap/Table';
+import Button1 from './Button';
+
 
 
 
@@ -29,26 +29,29 @@ const UpcomingDelivery1 = () => {
       </div>
 
        <Box>
-       <Table striped>
-        <thead>
-        <tr>
-          <th>NIC</th>
-          <th>Name</th>
-          <th>Contact</th>
-          <th>Address</th>
-        </tr>
-        </thead>
+
+      <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">NIC</th>
+        <th scope="col">Name</th>
+        <th scope="col">Contact</th>
+        <th scope="col">Address</th>
+      </tr>
+      </thead>
 
       <tbody>
-        <tr>
-          <td>199556500987</td>
-          <td>Kamal Perera</td>
-          <td>072367542</td>
-          <td>79, School Lane, Galle</td>
-        </tr>
-      </tbody>
 
-      </Table>
+      <tr>
+        <td> 199556500987</td>
+        <td>Kamal Perera</td>
+        <td>072367542</td>
+        <td>79, School Lane, Galle</td>
+      </tr>
+    
+     </tbody>
+     </table>
+
       </Box>
       
       

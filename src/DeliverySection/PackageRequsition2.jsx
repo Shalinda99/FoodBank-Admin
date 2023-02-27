@@ -1,6 +1,6 @@
 import React from 'react';
 import Box2 from './Box2';
-import Button1 from './Button1';
+import Button from './Button';
 
 
 const PackageRequsition2 = () => {
@@ -28,7 +28,7 @@ const PackageRequsition2 = () => {
 
       <div class="d-flex justify-content-end align-items-end mb-3">
          <div class="align-self-end ml-10 "> 
-         <Button1 style="margin-top: 20px;" variant="secondary" bg="grey" text="Submit" textColor="dark" />
+         <Button style="margin-top: 20px;" variant="secondary" bg="grey" text="Submit" textColor="dark" />
          </div>
       </div>
 

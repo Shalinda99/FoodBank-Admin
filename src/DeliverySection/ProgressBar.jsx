@@ -8,7 +8,8 @@ const ProgressBar = ({ progress }) => {
       <div
         className="progress-bar"
         style={{ width: `${progress}%` }}
-      >{`${progress}%`}</div>
+      > {`${progress}%`}
+      </div>
       
     </div>
   );

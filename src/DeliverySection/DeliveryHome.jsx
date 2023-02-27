@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 
 const DeliveryHome = () => {
     return ( 
@@ -8,4 +8,4 @@ const DeliveryHome = () => {
      );
 }
  
-export default DeliveryHome;
+export default DeliveryHome; */

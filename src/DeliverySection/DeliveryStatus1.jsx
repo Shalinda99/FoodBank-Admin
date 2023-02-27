@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Box from './Box';
-import Table from 'react-bootstrap/Table';
 import ToggleSwitch from "./ToggleButton";
-import Button1 from "./Button1";
+import Button from "./Button";
 
 
 
@@ -12,7 +11,7 @@ const DeliveryStatus1 = () => {
   const handleSwitchChange1 = () => {
     setIsSwitchOn1(!isSwitchOn1);
   };
-  const handleSwitchChange2 = () => {
+  /*const handleSwitchChange2 = () => {
     setIsSwitchOn1(!isSwitchOn1);
   };
   const handleSwitchChange3 = () => {
@@ -28,7 +27,7 @@ const DeliveryStatus1 = () => {
   const handleSwitchChange6 = () => {
     setIsSwitchOn1(!isSwitchOn1);
   };
-
+  */
 
 
 
@@ -40,36 +39,35 @@ const DeliveryStatus1 = () => {
       </div>
 
       <Box>
-       <Table striped>
+       <table class="table table-striped">
       <thead>
-        <tr>
-          
-          <th>NIC</th>
-          <th>Name</th>
-          <th>Contact</th>
-          <th>Address</th>
-          <th>Delivery Status</th>
-        </tr>
+      <tr>
+        <th scope="col">NIC</th>
+        <th scope="col">Name</th>
+        <th scope="col">Contact</th>
+        <th scope="col">Address</th>
+        <th scope="col">Select For Delivery</th>
+      </tr>
       </thead>
+
       <tbody>
-      
-        <tr>
-          <td>199556500987</td>
-          <td>Kamal Perera</td>
-          <td>072367542</td>
-          <td>79, School Lane, Galle</td>
-          <td ><ToggleSwitch onChange={handleSwitchChange1} /></td>
-        </tr>
-       
-        
-      </tbody>
-       </Table>
+
+      <tr>
+        <td> 199556500987</td>
+        <td>Kamal Perera</td>
+        <td>072367542</td>
+        <td>79, School Lane, Galle</td>
+        <td ><ToggleSwitch onChange={handleSwitchChange1} /></td>
+      </tr>
+    
+     </tbody>
+     </table>
       </Box>
       
     
 <div class="d-flex justify-content-end align-items-end ">
   <div class="align-self-end ml-10 "> 
-    <Button1 variant="secondary" bg="grey" text="Next" textColor="dark" page="/DeliveryStatus2" />
+    <Button variant="secondary" bg="grey" text="Next" textColor="dark" page="/DeliveryStatus2" />
   </div>
 </div>
 

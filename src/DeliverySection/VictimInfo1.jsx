@@ -1,8 +1,6 @@
 import React from 'react'
 import Box from './Box';
-import Button from './Button1';
-import Table from 'react-bootstrap/Table';
-
+import Button from './Button';
 
 const VictimInfo1 = () => {
   return (
@@ -13,25 +11,29 @@ const VictimInfo1 = () => {
     </div>
     
       <Box>
-      <Table striped>
+    
+
+  <table class="table table-striped">
       <thead>
-         <tr>
-          <th>NIC</th>
-          <th>Name</th>
-          <th>Contact</th>
-          <th>Address</th>
-         </tr>
+      <tr>
+        <th scope="col">NIC</th>
+        <th scope="col">Name</th>
+        <th scope="col">Contact</th>
+        <th scope="col">Address</th>
+      </tr>
       </thead>
 
       <tbody>
-        <tr>
-          <td>199556500987</td>
-          <td>Kamal Perera</td>
-          <td>072367542</td>
-          <td>79, School Lane, Galle</td>
-        </tr>
-      </tbody>
-      </Table>
+
+      <tr>
+        <td> 199556500987</td>
+        <td>Kamal Perera</td>
+        <td>072367542</td>
+        <td>79, School Lane, Galle</td>
+      </tr>
+    
+     </tbody>
+     </table>
         
       </Box>
      
