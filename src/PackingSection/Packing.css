@@ -1,0 +1,15 @@
+@media(max-width:1040px){
+    .mmcontain{
+        flex-direction:column;
+        align-items: center;
+    }
+
+    .sidecontent{
+        width:75%  !important;
+    }
+
+}
+
+.sidecontent{
+    width:25%;
+}

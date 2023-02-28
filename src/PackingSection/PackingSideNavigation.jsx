@@ -3,11 +3,11 @@ import React,{useState} from 'react';
 import {
     FaTh,
     FaBars,
-    FaUserAlt,
     FaUserFriends,
     // FaPalfed,
     // FaCartPlus
 }from "react-icons/fa";
+import {AiOutlineAppstoreAdd}from "react-icons/ai";
 import { NavLink, useLocation } from 'react-router-dom';
 import './PackingNavBar.css';
 import AddPackages from './AddPackages';
@@ -30,7 +30,7 @@ const PNavBar = ({children}) => {
         {
             path:'/addPackages',
             name:"Add Packages",
-            icon:<FaUserAlt/>
+            icon:<AiOutlineAppstoreAdd/>
         },
         {
             path:'/issuePackages',
@@ -74,7 +74,7 @@ const PNavBar = ({children}) => {
            </div>
         
         </div>
-        <div className='d-flex'>
+        <div className='d-flex w-100'>
         {/* <div className={`main-content ${isOpen ? 'expanded' : 'collapsed'}`}> */}
         <div style={{paddingLeft: isOpen ? "250px" : "50px"}} className='main-content d-flex flex-column w-100 me-4 '>
             <div className='nametag w-100 p-3 m-2 shadow bg-light '>

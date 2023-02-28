@@ -65,3 +65,23 @@ main{
     height: fit-content;
     
 }
+/* responsiveness added */
+
+@media screen and (max-width: 991px) {
+    .sidebar {
+        width: 50px !important;
+      }
+      .logo {
+        display: none !important;
+      }
+      .link_text {
+        display: none !important;
+      }
+      .bars {
+        margin-left: 0 !important;
+      }
+      .main-content{
+        padding-left: 50px !important;
+      }
+  }
+  

@@ -3,16 +3,101 @@ import React from 'react';
 const PackageIsues = () => {
     return ( 
         <React.Fragment>
-            <h1>Isuue packages</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut enim auctor, tristique libero eu, ornare arcu. Aliquam erat volutpat. Duis vel ipsum quis leo pellentesque efficitur a at arcu. Aliquam scelerisque euismod consequat. Maecenas ultricies hendrerit diam, eu blandit neque. Praesent tristique mauris id sem feugiat laoreet. Nam blandit volutpat enim, in lobortis ipsum maximus et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse bibendum euismod nisi, id faucibus velit fringilla a. Nam euismod feugiat ex, eget vehicula nunc. Quisque at varius lacus. Donec ultricies, justo eu commodo laoreet, sapien ex auctor libero, non consectetur eros orci vitae dolor. Donec euismod ante felis, quis bibendum ipsum hendrerit quis. Nam malesuada hendrerit nibh, eu suscipit urna. Sed vel tellus nec tellus luctus pretium sit amet sed nisl.
+        <h2>Issue packages</h2>
+        <p>Enter details about issued packages</p>
+        
+        <div className='d-flex mb-4 w-100'>
+        <div className='sidecontent w-25 bg-warning d-flex flex-column d-flex justify-content-center align-items-center mb-5'>
+                <h3>Requsition</h3>
+                <div className="badge bg-secondary w-75 p-4 m-2 fs-5">Type 1<span className='badge bg-light text-dark ps-3 pe-3 ms-1'>34</span></div>
+                <div className="badge bg-secondary w-75 p-4 m-2 fs-5">Type 2 <span className='badge bg-light text-dark ps-3 pe-3 ms-1'>9</span></div>
+                <div className="badge bg-secondary w-75 p-4 m-2 fs-5">Type 3  <span className='badge bg-light text-dark ps-3 pe-3 ms-1'>25</span></div>
 
-Phasellus malesuada mi nec elit bibendum tristique. Nulla vitae risus ut mi auctor suscipit. Sed eget varius elit. Aenean finibus, ex a auctor euismod, nisl urna faucibus risus, nec gravida nulla libero vel enim. Donec vel libero sit amet risus consequat bibendum. Integer a turpis odio. Sed sit amet neque bibendum, dictum nisi a, pellentesque ex. In blandit iaculis lorem, vel ultricies est aliquam id</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut enim auctor, tristique libero eu, ornare arcu. Aliquam erat volutpat. Duis vel ipsum quis leo pellentesque efficitur a at arcu. Aliquam scelerisque euismod consequat. Maecenas ultricies hendrerit diam, eu blandit neque. Praesent tristique mauris id sem feugiat laoreet. Nam blandit volutpat enim, in lobortis ipsum maximus et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse bibendum euismod nisi, id faucibus velit fringilla a. Nam euismod feugiat ex, eget vehicula nunc. Quisque at varius lacus. Donec ultricies, justo eu commodo laoreet, sapien ex auctor libero, non consectetur eros orci vitae dolor. Donec euismod ante felis, quis bibendum ipsum hendrerit quis. Nam malesuada hendrerit nibh, eu suscipit urna. Sed vel tellus nec tellus luctus pretium sit amet sed nisl.
+            </div>
+        <div className='mcontain w-75 mb-5'>
+        <div class="container bg-light m-2 rounded ">
+            <div className='bg-secondary text-center p-1 mb-2 rounded '><h3 className='text-white'>Add package Details</h3></div>
+            <div className='content d-flex'>
+            <form class="row g-4 m-2">
+                
+                <div class="col-md-4">
+                    <label for="inputType1" class="form-label">Package Type 1</label>
+                    <input type="number" class="form-control" id="inputType1" />
+                </div>
+                <div class="col-md-4">
+                    <label for="inputType2" class="form-label">Package Type 2</label>
+                    <input type="number" class="form-control" id="inputType2" />
+                </div>
+                <div class="col-md-4">
+                    <label for="inputType2" class="form-label">Package Type 2</label>
+                    <input type="number" class="form-control" id="inputType2" />
+                </div>
+                
+                <div class="col-md-4">
+                    <label for="inputDate" class="form-label">Issuing Date</label>
+                    <input type="date" class="form-control" id="inputDate"  />
+                </div>
 
-Phasellus malesuada mi nec elit bibendum tristique. Nulla vitae risus ut mi auctor suscipit. Sed eget varius elit. Aenean finibus, ex a auctor euismod, nisl urna faucibus risus, nec gravida nulla libero vel enim. Donec vel libero sit amet risus consequat bibendum. Integer a turpis odio. Sed sit amet neque bibendum, dictum nisi a, pellentesque ex. In blandit iaculis lorem, vel ultricies est aliquam id</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut enim auctor, tristique libero eu, ornare arcu. Aliquam erat volutpat. Duis vel ipsum quis leo pellentesque efficitur a at arcu. Aliquam scelerisque euismod consequat. Maecenas ultricies hendrerit diam, eu blandit neque. Praesent tristique mauris id sem feugiat laoreet. Nam blandit volutpat enim, in lobortis ipsum maximus et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse bibendum euismod nisi, id faucibus velit fringilla a. Nam euismod feugiat ex, eget vehicula nunc. Quisque at varius lacus. Donec ultricies, justo eu commodo laoreet, sapien ex auctor libero, non consectetur eros orci vitae dolor. Donec euismod ante felis, quis bibendum ipsum hendrerit quis. Nam malesuada hendrerit nibh, eu suscipit urna. Sed vel tellus nec tellus luctus pretium sit amet sed nisl.
+                <div className='d-flex justify-content-end'>
+                <button type="button" class="btn btn-primary me-2">Issue Packages</button>
+                <button type="button" class="btn btn-warning">Reset</button>
 
-Phasellus malesuada mi nec elit bibendum tristique. Nulla vitae risus ut mi auctor suscipit. Sed eget varius elit. Aenean finibus, ex a auctor euismod, nisl urna faucibus risus, nec gravida nulla libero vel enim. Donec vel libero sit amet risus consequat bibendum. Integer a turpis odio. Sed sit amet neque bibendum, dictum nisi a, pellentesque ex. In blandit iaculis lorem, vel ultricies est aliquam id</p>
+                </div>
+
+
+
+            </form>
+            </div>
+        </div>
+        </div>
+        </div>
+
+<h2>Package Issues Summary</h2>
+        <p>Most recent issues to delivery collection can be viewd here</p>
+
+        <div className='tablecontainer  d-flex justify-content-center'>
+        <table class="table table-striped table-secondary table-hover m-2 ">
+            <thead className=''>
+                <tr>
+                <th scope="col"></th>
+                <th scope="col">Package Type</th>
+                <th scope="col">Isuued Quantity</th>
+                <th scope="col">Date issued</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row" className="align-middle;" rowSpan={3}>1</th>
+                <td>Type A</td>
+                <td>12</td>
+                <td rowSpan={3} className="align-middle;">2023-03-12</td>
+                </tr>
+                <tr>
+                <td>Type B</td>
+                <td>13</td>
+                </tr>
+                <tr>
+                <td>Type C</td>
+                <td>32</td>
+                </tr>
+
+                <tr>
+                <th scope="row" className="align-middle;" rowSpan={3}>2</th>
+                <td>Type A</td>
+                <td>12</td>
+                <td rowSpan={3} className="align-middle;">2023-03-14</td>
+                </tr>
+                <tr>
+                <td>Type B</td>
+                <td>20</td>
+                </tr>
+                <tr>
+                <td>Type C</td>
+                <td>23</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
         </React.Fragment>
      );
 }
