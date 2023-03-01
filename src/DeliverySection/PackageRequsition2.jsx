@@ -19,7 +19,7 @@ const PackageRequsition2 = () => {
 
        <div>
           
-    <div class="d-flex justify-content-end align-items-end mb-3">
+      <div class="d-flex justify-content-end align-items-end mb-3">
          <Button style="margin-top: 20px;" variant="secondary" bg="grey" text="Submit" textColor="dark" />
       </div>
       </div> 

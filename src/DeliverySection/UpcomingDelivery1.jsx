@@ -59,7 +59,7 @@ const UpcomingDelivery1 = () => {
           
     <div class="d-flex justify-content-end align-items-end mb-3">
             <Button1 style="margin-bottom: 100px;" variant="secondary" bg="grey" text="Select Delivery Person" textColor="dark" page="/UpcomingDelivery2" />
-          </div>      
+    </div>      
       
 
 </React.Fragment>

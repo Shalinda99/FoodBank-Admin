@@ -28,7 +28,7 @@ const DeliveryStatus2 = () => {
 
     <div>
        <div class="progress-wrap">
-           <div class="progress-text" >Successful</div>
+          <div class="progress-text" >Successful</div>
               <div>
               {data.map(item => (
                <ProgressBar key={1} progress={60} />

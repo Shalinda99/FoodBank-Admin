@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-//import Box from './Box';
 import ToggleSwitch from "./ToggleButton";
 import Button from "./Button";
 
@@ -63,13 +62,9 @@ const DeliveryStatus1 = () => {
      </tbody>
      </table>
       
-      
-    
-<div class="d-flex justify-content-end align-items-end ">
- 
-    <Button variant="secondary" bg="grey" text="Next" textColor="dark" page="/DeliveryStatus2" />
-
-</div>
+       <div class="d-flex justify-content-end align-items-end ">
+         <Button variant="secondary" bg="grey" text="Next" textColor="dark" page="/DeliveryStatus2" />
+       </div>
 
 </React.Fragment>
     

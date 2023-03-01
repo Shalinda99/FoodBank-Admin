@@ -1,6 +1,4 @@
-import React from 'react'
-//import Box from './Box';
-//import Button from 'react-bootstrap/Button';
+import React from 'react' ;
 import Button from './Button';
 
 const buttonCellStyle = {

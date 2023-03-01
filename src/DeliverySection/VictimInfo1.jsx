@@ -1,5 +1,4 @@
 import React from 'react'
-//import Box from './Box';
 import Button from './Button';
 
 const VictimInfo1 = () => {

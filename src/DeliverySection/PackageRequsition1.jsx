@@ -1,5 +1,4 @@
 import React from "react";
-//import Box from './Box';
 import Button from './Button';
 
 
@@ -40,8 +39,7 @@ import Button from './Button';
      
     <div class="d-flex justify-content-end align-items-end mb-3">
            <Button style="margin-top: 20px;" variant="secondary" bg="grey" text="Request Package" textColor="dark" page="/PackageRequsition2" />
-       
-      </div>
+    </div>
 
         
       </React.Fragment>
