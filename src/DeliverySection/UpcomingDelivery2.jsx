@@ -1,21 +1,18 @@
-
 import React, { useState } from "react";
 import { DatePicker } from "antd";
 import Box from './Box';
-import Button1 from './Button1'
-import Form from 'react-bootstrap/Form';
-import Table from 'react-bootstrap/Table';
+import Button1 from './Button'
 
 
-const SelectMenu = () => (
-    <Form.Select size="sm" style={{ width: "120px" }}>
-      <option>Select</option>
-      <option value="1">Person A</option>
-      <option value="2">Person B</option>
-      <option value="3">Person C</option>
-    </Form.Select>
+
+  const SelectMenu = () => (
+    <select class="custom-select custom-select-lg mb-3">
+    <option selected>Select </option>
+    <option value="1">Person 1</option>
+    <option value="2">Person 2</option>
+    <option value="3">Person 3</option>
+  </select>
   );
-
 
 const UpcomingDelivery2 = () => {
   const [date, setDate] = useState(null);
@@ -40,28 +37,31 @@ const UpcomingDelivery2 = () => {
     </div>
 
     <Box>
-     <Table striped>
+
+    <table class="table table-striped">
       <thead>
-        <tr>
-          <th>NIC</th>
-          <th>Name</th>
-          <th>Contact</th>
-          <th>Address</th>
-          <th>Delivery Person</th>
-        </tr>
+      <tr>
+        <th scope="col">NIC</th>
+        <th scope="col">Name</th>
+        <th scope="col">Contact</th>
+        <th scope="col">Address</th>
+        <th scope="col">Delivery Person</th>
+      </tr>
       </thead>
 
       <tbody>
-        <tr>
-          <td>199556500987</td>
-          <td>Kamal Perera</td>
-          <td>072367542</td>
-          <td>79, School Lane, Galle</td>
-          <td><SelectMenu/></td>
-        </tr>  
-      </tbody>
 
-    </Table>
+      <tr>
+        <td> 199556500987</td>
+        <td>Kamal Perera</td>
+        <td>072367542</td>
+        <td>79, School Lane, Galle</td>
+        <td><SelectMenu/></td>
+      </tr>
+    
+     </tbody>
+     </table>
+
    </Box>
     
     
