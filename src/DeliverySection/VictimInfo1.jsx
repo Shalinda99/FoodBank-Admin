@@ -1,5 +1,5 @@
 import React from 'react'
-import Box from './Box';
+//import Box from './Box';
 import Button from './Button';
 
 const VictimInfo1 = () => {
@@ -10,10 +10,10 @@ const VictimInfo1 = () => {
       <div style={{ fontSize: '30px', fontWeight: 'bold' }}>Victim Details</div>
     </div>
     
-      <Box>
+      
     
 
-  <table class="table table-striped">
+  <table class="table table-striped mt-3 " >
       <thead>
       <tr>
         <th scope="col">NIC</th>
@@ -31,17 +31,24 @@ const VictimInfo1 = () => {
         <td>072367542</td>
         <td>79, School Lane, Galle</td>
       </tr>
+
+     
     
      </tbody>
      </table>
+
+
+     
         
-      </Box>
+      
+
+    
      
     
      <div class="d-flex justify-content-end align-items-end mb-3">
-        <div class="align-self-end ml-10 "> 
-         <Button style="margin-top: 20px;" variant="secondary" bg="grey" text="Select For Delivery" textColor="dark" page="/VictimInfo2" />
-        </div>
+        
+         <Button style="margin-bottom: 20px;" variant="secondary" bg="grey" text="Select For Delivery" textColor="dark" page="/VictimInfo2" />
+      
      </div>
 
      

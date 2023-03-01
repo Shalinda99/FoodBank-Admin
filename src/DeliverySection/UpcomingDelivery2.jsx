@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { DatePicker } from "antd";
-import Box from './Box';
+//import Box from './Box';
 import Button1 from './Button'
 
 
@@ -36,9 +36,9 @@ const UpcomingDelivery2 = () => {
       </div>
     </div>
 
-    <Box>
+  
 
-    <table class="table table-striped">
+    <table class="table table-striped mt-3">
       <thead>
       <tr>
         <th scope="col">NIC</th>
@@ -62,15 +62,16 @@ const UpcomingDelivery2 = () => {
      </tbody>
      </table>
 
-   </Box>
+   
     
     
 
-<div class="d-flex justify-content-end align-items-end mb-10">
-  <div class="align-self-end ml-10 "> 
+
+  
+     <div class="d-flex justify-content-end align-items-end mb-3">
     <Button1 style="margin-bottom: 100px;" variant="secondary" bg="grey" text="Select For Delivery" textColor="dark" page="/PackageRequsition1" />
   </div>
-</div>
+
 
 </React.Fragment>
     

@@ -1,5 +1,5 @@
 import React from 'react'
-import Box from './Box';
+//import Box from './Box';
 //import Button from 'react-bootstrap/Button';
 import Button from './Button';
 
@@ -24,9 +24,9 @@ const VictimInfo2 = () => {
         <div style={{ fontSize: '30px', fontWeight: 'bold' }}>Select For Delivery </div>
       </div>
       
-  <Box>
+  
 
-      <table class="table table-striped">
+      <table class="table table-striped mt-3">
       <thead>
       <tr>
         <th scope="col">NIC</th>
@@ -50,12 +50,12 @@ const VictimInfo2 = () => {
      </tbody>
      </table>
 
-  </Box>
+  
 
     <div class="d-flex justify-content-end align-items-end mb-3">
-      <div class="align-self-end ml-10 "> 
-        <Button style="margin-top: 20px;" variant="secondary" bg="grey" text="Select Delivery Person" textColor="dark" page="/UpcomingDelivery1" />
-      </div>
+      
+        <Button style="margin-bottom: 20px;" variant="secondary" bg="grey" text="Select Delivery Person" textColor="dark" page="/UpcomingDelivery1" />
+      
     </div>
 
 </React.Fragment>

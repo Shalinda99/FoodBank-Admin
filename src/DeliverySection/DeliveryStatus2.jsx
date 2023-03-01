@@ -16,13 +16,13 @@ const DeliveryStatus2 = () => {
        <div style={{ fontSize: '30px', fontWeight: 'bold' }}>Delivery Status </div>
     </div>
     
-    <div class="row">
-      <div class="col-sm-6">
-      <Box2 text=" Delivered 60" />
-      </div>
-      <div class="col-sm-6">
-      <Box2 text=" On Route 40" />
-      </div>
+    <div class="d-flex justify-content-around">
+  <div>   <Box2 text=" Delivered : 60 Packages" /> </div>
+  <div> <Box2 text=" On Route : 40 Packages" /></div>
+    
+      
+      
+      
     </div>
 
 
