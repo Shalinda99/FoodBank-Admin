@@ -14,6 +14,8 @@ import DataSupplierDetails from './DataSupplierDetails';
 import VictimDetails from './VictimDetails';
 import AcceptedVictimsDetails from './AcceptedVictimsDetails';
 import RejectedVictimsDetails from './RejectedVictimsDetails';
+import DataSupplierProfile from './DataSupplierProfile';
+
 
 
 const ANavBar = ({children}) => {
@@ -80,7 +82,8 @@ const ANavBar = ({children}) => {
                 {currentRoute === '/DataSupplierDetails' && <DataSupplierDetails/>} 
                 {currentRoute === '/VictimDetails' && <VictimDetails/>} 
                 {currentRoute === '/AcceptedVictimsDetails' && <AcceptedVictimsDetails/>} 
-                {currentRoute === '/RejectedVictimsDetails' && <RejectedVictimsDetails/>} 
+                {currentRoute === '/RejectedVictimsDetails' && <RejectedVictimsDetails/>}  
+                {currentRoute === '/DataSupplierProfile' && <DataSupplierProfile/>}  
                 
              </div>
              </div>

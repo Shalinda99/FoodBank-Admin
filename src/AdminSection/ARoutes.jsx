@@ -8,7 +8,7 @@ const ARoutes = () => {
 
 
     const location = useLocation();
-    const includePaths = ['/AdminHome','/DataSupplierDetails','/VictimDetails','/AcceptedVictimsDetails','/RejectedVictimsDetails']; // include only these paths to render navbar
+    const includePaths = ['/AdminHome','/DataSupplierDetails','/VictimDetails','/AcceptedVictimsDetails','/RejectedVictimsDetails','/DataSupplierProfile']; // include only these paths to render navbar
     return ( 
         <React.Fragment>
         

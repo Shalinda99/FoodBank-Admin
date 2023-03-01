@@ -1,5 +1,6 @@
 import React from 'react';
 import './DataSupplierDetails.css';
+import Button1 from './Button1';
 
 const DataSupplierDetails = () => {
     return ( 
@@ -18,7 +19,7 @@ const DataSupplierDetails = () => {
                     </div>
                     </div>
 
-                    <div className='card2 mb-4 rounded  text-center card bg-dark '>
+                    <div className='card2 mb-4 rounded  text-center card bg-secondary '>
                     <div className='m-2'>
                     <p>Below minimum point level</p>
                     <h2>12</h2>
@@ -50,6 +51,7 @@ const DataSupplierDetails = () => {
                             <tr>
                             <th scope="col">Data_Supplier_ID</th>
                             <th scope="col">Name</th>
+                            <th scope="col"></th>
                             </tr>
                         </thead>
 
@@ -57,26 +59,31 @@ const DataSupplierDetails = () => {
                         <tr>
                             <td>204059X</td>
                             <td>Tharushni Gamage</td>
+                            <td><Button1 text="See Profile" textColor="dark" page="/DataSupplierProfile" /></td>
                             </tr>
 
                             <tr>
                             <td>204215A</td>
                             <td>Milanka Tharangana</td>
+                            <td><Button1 text="See Profile" textColor="dark" page="/DataSupplierProfile" /></td>
                             </tr>
 
                             <tr>
                             <td>204200A</td>
                             <td>Amal Shalinda</td>
+                            <td><Button1 text="See Profile" textColor="dark" page="/DataSupplierProfile" /></td>
                             </tr>
 
                             <tr>
                             <td>204145H</td>
                             <td>Fathima Nuska</td>
+                            <td><Button1 text="See Profile" textColor="dark" page="/DataSupplierProfile" /></td>
                             </tr>
 
                             <tr>
                             <td>204216X</td>
                             <td>Thareejan</td>
+                            <td><Button1 text="See Profile" textColor="dark" page="/DataSupplierProfile" /></td>
                             </tr>
 
                         </tbody>

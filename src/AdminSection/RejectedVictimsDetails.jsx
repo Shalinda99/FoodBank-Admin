@@ -1,7 +1,7 @@
 import React from 'react';
 import Button1 from './Button1';
 
-const DataSupplierDetails = () => {
+const RejectedVictimsDetails = () => {
     return ( 
         <React.Fragment>
            <div>
@@ -15,8 +15,12 @@ const DataSupplierDetails = () => {
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
             </div>
-            <h2>Rejected Victims Details</h2>
-            <br/>
+
+                <div class="d-flex justify-content-start  mb-3 ">
+                <Button1 text="View Accepted List" textColor="dark" page="/AcceptedVictimsDetails" />
+                </div>
+                <h2>Rejected Victims Details</h2>
+                <br/>
 
             <div>
                     <table class="table table-striped">
@@ -71,9 +75,7 @@ const DataSupplierDetails = () => {
                     </table>
                     </div>
 
-                    <div class="d-flex justify-content-end  mb-3 ">
-                <Button1 style="margin-top: 20px;" variant="secondary" bg="grey" text="View Accepted List" textColor="dark" page="/AcceptedVictimsDetails" />
-                </div>
+               
                     
 
            </div>
@@ -81,4 +83,4 @@ const DataSupplierDetails = () => {
      );
 }
  
-export default DataSupplierDetails;
+export default RejectedVictimsDetails;

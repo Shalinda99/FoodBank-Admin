@@ -19,6 +19,16 @@ const VictimDetails = () => {
                 </ul>
                 </div>
             </div>
+
+            <div class="d-flex justify-content-start  mb-3 mt-3">
+                <div><Button1   text="View Accepted List" textColor="dark" page="/AcceptedVictimsDetails" /></div>
+                <div className='ms-2'> <Button1  text="View Rejected List" textColor="dark" page="/RejectedVictimsDetails" /></div>
+                
+               
+            </div>
+
+
+
             <br/>
 
             <div>
@@ -36,7 +46,7 @@ const VictimDetails = () => {
 
                     
                     <div class="btn d-flex justify-content-end">
-                    <button type="button" class="btn btn-warning ">
+                    <button type="button" class="btn btn-warning  ">
                     <FaPlusCircle className='icon' />
                         Accept
                     </button>
@@ -66,7 +76,7 @@ const VictimDetails = () => {
 
                     
                     <div class="btn d-flex justify-content-end">
-                    <button type="button" class="btn btn-warning ">
+                    <button type="button" class="btn btn-warning">
                     <FaPlusCircle className='icon' />
                         Accept
                     </button>
@@ -80,12 +90,7 @@ const VictimDetails = () => {
                 </div>
                 </div>
 
-                <div class="d-flex justify-content-end  mb-3 mt-3">
-                    <div><Button1   text="View Accepted List" textColor="dark" page="/AcceptedVictimsDetails" /></div>
-                    <div className='ms-2'> <Button1  text="View Rejected List" textColor="dark" page="/RejectedVictimsDetails" /></div>
                 
-               
-                </div>
                 
 
                 
