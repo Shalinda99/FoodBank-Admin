@@ -6,6 +6,7 @@ import AdminLogin from './Login';
 import PRoutes from './PackingSection/PRoutes';
 import VictimInfo1 from './DeliverySection/VictimInfo1';
 import DRoutes from './DeliverySection/DRoutes';
+import ARoutes from './AdminSection/ARoutes';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       </Routes>
       <PRoutes/>
       <DRoutes/>
+      <ARoutes/>
 
 
 
