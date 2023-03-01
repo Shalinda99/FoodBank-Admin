@@ -9,13 +9,22 @@ import {
   // FaCartPlus
 } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
-import "./PackingNavBar.css";
-import AddPackages from "./AddPackages";
-import PackageIsues from "./PackageIsuues";
-import PackingHome from "./PackingHome";
-import Dash from "../Warehouse/WarehouseSideNavigation";
+import {
+    BsBagPlusFill
+  } from "react-icons/bs";
+  import {
+    RiFileList3Fill
+  } from "react-icons/ri";
+  import {
+    BsBoxArrowRight
+  } from "react-icons/bs";
+//import "./WarehouseNavBar.css";
+import AddItems from "./AddItems";
+import ItemDetails from "./ItemDetails";
+import IssueItems from "./Issueitems";
 
-const PNavBar = ({ children }) => {
+
+const WNavBar = ({ children }) => {
   const location1 = useLocation();
   const currentRoute = location1.pathname;
 
@@ -23,19 +32,19 @@ const PNavBar = ({ children }) => {
   const toggle = () => setIsOpen(!isOpen);
   const menuItem = [
     {
-      path: "/packingSection",
-      name: "Packing Section Home",
-      icon: <FaTh />,
+      path: "/AddItems",
+      name: "AddItems Home",
+      icon: <BsBagPlusFill />,
     },
     {
-      path: "/addPackages",
-      name: "Add Packages",
-      icon: <FaUserAlt />,
+      path: "/ItemDetails",
+      name: "ItemDetails",
+      icon: <RiFileList3Fill/>,
     },
     {
-      path: "/issuePackages",
-      name: "Issue Packages",
-      icon: <FaUserFriends />,
+      path: "/IssueItems",
+      name: "IssueItems",
+      icon: <BsBoxArrowRight />,
     },
     //      ,
     //      {
@@ -90,21 +99,21 @@ const PNavBar = ({ children }) => {
             ))}
           </div>
         </div>
-        <div className="d-flex">
+        <div className="d-flex w-100">
           {/* <div className={`main-content ${isOpen ? 'expanded' : 'collapsed'}`}> */}
           <div
             style={{ paddingLeft: isOpen ? "250px" : "50px" }}
             className="main-content d-flex flex-column w-100 me-4 "
           >
             <div className="nametag w-100 p-3 m-2 shadow bg-light ">
-              <h1>Food Bank - Packing Section</h1>
+              <h1>Food Bank - Warehouse Section</h1>
             </div>
 
             <div className="w-100 p-3 m-2">
               {/* conditional render */}
-              {currentRoute === "/packingSection" && <PackingHome />}
-              {currentRoute === "/addPackages" && <AddPackages />}
-              {currentRoute === "/issuePackages" && <PackageIsues />}
+              {currentRoute === "/AddItems" && <AddItems />}
+              {currentRoute === "/ItemDetails" && <ItemDetails />}
+              {currentRoute === "/IssueItems" && <IssueItems/>}
             </div>
           </div>
         </div>
@@ -113,4 +122,4 @@ const PNavBar = ({ children }) => {
   );
 };
 
-export default PNavBar;
+export default WNavBar;

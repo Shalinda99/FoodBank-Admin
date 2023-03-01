@@ -65,7 +65,7 @@ const AdminLogin = () => {
                     <select name="adminroles" id="admin-role" onChange={(e) => setpath(e.target.value)}> 
                     {/* route accordingly */}
                     <option value='/admin'>Admin</option>
-                    <option value='/warehouse' >Warehouse</option>
+                    <option value='/AddItems' >Warehouse</option>
                     <option value='/packingSection'>Packing section</option>
                     <option value='/deliverySection'>Delivery Section</option>
                     
