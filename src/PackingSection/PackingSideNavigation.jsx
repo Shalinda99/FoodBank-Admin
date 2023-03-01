@@ -3,11 +3,12 @@ import React,{useState} from 'react';
 import {
     FaTh,
     FaBars,
-    FaUserFriends,
+    // FaUserFriends,
     // FaPalfed,
     // FaCartPlus
 }from "react-icons/fa";
 import {AiOutlineAppstoreAdd}from "react-icons/ai";
+import {CgExtensionRemove}from "react-icons/cg";
 import { NavLink, useLocation } from 'react-router-dom';
 import './PackingNavBar.css';
 import AddPackages from './AddPackages';
@@ -35,7 +36,7 @@ const PNavBar = ({children}) => {
         {
             path:'/issuePackages',
             name:"Issue Packages",
-            icon:<FaUserFriends/>
+            icon:<CgExtensionRemove/>
         }
     //      ,
     //      {

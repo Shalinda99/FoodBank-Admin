@@ -7,6 +7,13 @@
     .sidecontent{
         width:75%  !important;
     }
+    .types{
+        flex-direction: column;
+
+    }
+    .types div{
+        width: 75% !important;
+    }
 
 }
 

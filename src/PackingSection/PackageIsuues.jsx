@@ -1,4 +1,5 @@
 import React from 'react';
+import './Packing.css';
 
 const PackageIsues = () => {
     return ( 
@@ -6,8 +7,8 @@ const PackageIsues = () => {
         <h2>Issue packages</h2>
         <p>Enter details about issued packages</p>
         
-        <div className='d-flex mb-4 w-100'>
-        <div className='sidecontent w-25 bg-warning d-flex flex-column d-flex justify-content-center align-items-center mb-5'>
+        <div className='mmcontain d-flex mb-4 w-100'>
+        <div className='sidecontent w-25  d-flex flex-column d-flex justify-content-center align-items-center mb-5'>
                 <h3>Requsition</h3>
                 <div className="badge bg-secondary w-75 p-4 m-2 fs-5">Type 1<span className='badge bg-light text-dark ps-3 pe-3 ms-1'>34</span></div>
                 <div className="badge bg-secondary w-75 p-4 m-2 fs-5">Type 2 <span className='badge bg-light text-dark ps-3 pe-3 ms-1'>9</span></div>
