@@ -20,3 +20,7 @@
 .sidecontent{
     width:25%;
 }
+
+.error{
+    color: #f00;
+}
