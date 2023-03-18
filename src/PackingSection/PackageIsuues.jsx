@@ -1,5 +1,6 @@
 import React,{useState}from 'react';
 import './Packing.css';
+import axios from 'axios';
 
 const PackageIsues = () => {
     // const [type1Quantity,setType1quantity]=useState(34);
@@ -17,12 +18,22 @@ const PackageIsues = () => {
 
      const [error, setError] = useState({});
   
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
       event.preventDefault();
       const errors=validateInputs();
     
       if (Object.keys(errors).length === 0) {
         // submit form
+        const issuingData = [
+          { packageType: 'type1', quantity: type1IssueQuantity},
+          { packageType: 'type2', quantity: type2IssueQuantity },
+          { packageType: 'type3', quantity: type3IssueQuantity }
+        ];
+        
+        const data = {
+          date: issueDate,
+          packingData: issuingData
+        };
         //  event.target.reset();
               // Update state of total quantity
     //   setType1quantity(type1Quantity + parseInt(type1AddQuantity));
@@ -45,8 +56,14 @@ const PackageIsues = () => {
       setError("");
         console.log('Form submitted successfully!');
 
-        
-      } else {
+        try{
+          const response=await axios.post('http://192.168.8.102:3000',data);
+          console.log(response.data);
+        }catch(error){
+          console.error(error);
+        }
+      } 
+      else {
         setError(errors);
       }
 

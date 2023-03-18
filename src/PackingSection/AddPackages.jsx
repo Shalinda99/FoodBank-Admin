@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import './Packing.css';
+import axios from 'axios';
 
 const AddPackages = () => {
 
@@ -14,12 +15,24 @@ const AddPackages = () => {
   
     const [error, setError] = useState({});
   
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
       event.preventDefault();
       const errors=validateInputs();
     
       if (Object.keys(errors).length === 0) {
         // submit form
+        const packingData = [
+          { packageType: 'type1', quantity: type1AddQuantity },
+          { packageType: 'type2', quantity: type2AddQuantity },
+          { packageType: 'type3', quantity: type3AddQuantity }
+        ];
+        
+        const data = {
+          date: addingDate,
+          packingData: packingData
+        };
+
+
         //  event.target.reset();
               // Update state
       setType1quantity(type1Quantity + parseInt(type1AddQuantity));
@@ -34,8 +47,14 @@ const AddPackages = () => {
   
       setError("");
         console.log('Form submitted successfully!');
+      
+        try{
+          const response=await axios.post('http://192.168.8.102:3000',data);
+          console.log(response.data);
+        }catch(error){
+          console.error(error);
+        }
 
-        
       } else {
         setError(errors);
       }

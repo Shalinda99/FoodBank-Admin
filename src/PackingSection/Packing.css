@@ -9,11 +9,20 @@
     }
     .types{
         flex-direction: column;
+        align-items: center;
+        justify-content: cenetr;
 
     }
     .types div{
         width: 75% !important;
     }
+    .tablecontainer{
+        width:100% !important;
+        align-items: center;
+        justify-content: center;
+        
+    }
+
 
 }
 
