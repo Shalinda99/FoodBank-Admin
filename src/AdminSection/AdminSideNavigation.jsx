@@ -19,6 +19,8 @@ import RejectedVictimsDetails from './RejectedVictimsDetails';
 const ANavBar = ({children}) => {
 
     const location1 = useLocation();
+    console.log("location===",location1);
+
     const currentRoute = location1.pathname; 
 
     const[isOpen ,setIsOpen] = useState(false); //for the toggle in nav bar
@@ -58,7 +60,7 @@ const ANavBar = ({children}) => {
                </div>
                {
                    menuItem.map((item, index)=>(
-                       <NavLink to={item.path} key={index} className="link" activeclassName="active">
+                       <NavLink to={item.path} key={index} className="link">
                            <div className="icon">{item.icon}</div>
                            <div style={{display: isOpen ? "block" : "none"}} className="link_text">{item.name}</div>
                        </NavLink>
