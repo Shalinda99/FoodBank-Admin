@@ -31,7 +31,12 @@ const AddPackages = () => {
           date: addingDate,
           packingData: packingData
         };
-
+        try{
+          const response=await axios.post('http://192.168.8.102:3000',data);
+          console.log(response.data);
+        }catch(error){
+          console.error(error);
+        }
 
         //  event.target.reset();
               // Update state
@@ -48,12 +53,7 @@ const AddPackages = () => {
       setError("");
         console.log('Form submitted successfully!');
       
-        try{
-          const response=await axios.post('http://192.168.8.102:3000',data);
-          console.log(response.data);
-        }catch(error){
-          console.error(error);
-        }
+
 
       } else {
         setError(errors);

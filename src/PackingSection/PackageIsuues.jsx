@@ -34,6 +34,14 @@ const PackageIsues = () => {
           date: issueDate,
           packingData: issuingData
         };
+
+        try{
+          const response=await axios.post(' http://192.168.8.108:3000',data);
+          console.log(response.data);
+        }catch(error){
+          console.error(error);
+        }
+        
         //  event.target.reset();
               // Update state of total quantity
     //   setType1quantity(type1Quantity + parseInt(type1AddQuantity));
@@ -55,13 +63,6 @@ const PackageIsues = () => {
       
       setError("");
         console.log('Form submitted successfully!');
-
-        try{
-          const response=await axios.post('http://192.168.8.102:3000',data);
-          console.log(response.data);
-        }catch(error){
-          console.error(error);
-        }
       } 
       else {
         setError(errors);
