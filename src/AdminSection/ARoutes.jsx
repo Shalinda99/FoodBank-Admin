@@ -11,6 +11,7 @@ const ARoutes = () => {
     "/AcceptedVictimsDetails",
     "/RejectedVictimsDetails",
     "/DataSupplierProfile",
+    "/DeliverypersonDetails",
   ]; // include only these paths to render navbar
   return (
     <React.Fragment>

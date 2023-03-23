@@ -2,7 +2,19 @@ import React from "react";
 import Button1 from "./Button1";
 import { Dropdown } from "react-bootstrap";
 
-const AcceptedVictimsDetails = () => {
+
+
+import { useState, useEffect } from 'react';
+
+const AcceptedVictimsDetails = () =>{
+  const [isVerified, setIsVerified] = useState(false);
+
+  useEffect(() => {
+    fetch('/api/verification')
+      .then(response => response.json())
+      .then(data => setIsVerified(data));
+  }, []);
+
   return (
     <React.Fragment>
       <div>
@@ -129,10 +141,12 @@ const AcceptedVictimsDetails = () => {
         </div>
       </div>
     </React.Fragment>
+    
   );
-};
+}
 
 export default AcceptedVictimsDetails;
+
 
 // import React from "react";
 

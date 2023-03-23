@@ -2,7 +2,7 @@
 import Button1 from "./Button1";
 import Button2 from "./Button2";
 import Button3 from "./Button3";
-import axios from 'axios';
+// import axios from 'axios';
 
 
 import React, { useState, useEffect } from "react";
@@ -12,8 +12,8 @@ import  {useNavigate} from "react-router-dom";
 
 const VictimDetails = () => {
   const [victims, setVictims] = useState([]);
-  const [acceptedVictims, setAcceptedVictims] = useState([]);
-  const history = useNavigate();
+  // const [acceptedVictims, setAcceptedVictims] = useState([]);
+  // const history = useNavigate();
 
 
   useEffect(() => {
@@ -94,15 +94,14 @@ const VictimDetails = () => {
 
               <div class="btn d-flex justify-content-end">
                 <div className="ms-2">
-                  {" "}
-                  {/* <Button2
+                  <Button2
                     text="Accept"
                     textColor="dark"
                     page="/AcceptedVictimsDetails"
-                  /> */}
+                  />
                 </div>
 
-                <Button2
+                {/* <Button2
                   text="Accept"
                   textColor="dark"
                   onClick={() => {
@@ -118,7 +117,7 @@ const VictimDetails = () => {
                     history.push("/AcceptedVictimsDetails");
                   }}
                   
-                /> 
+                />  */}
 
                 <div className="ms-2">
                   {" "}
