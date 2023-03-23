@@ -32,7 +32,7 @@ const PNavBar = ({children}) => {
             icon:<FaUserAlt/>
         },
         {
-            path:"/UpcomingDelivery1",
+            path:"/UpcomingDelivery2",
             name:"Upcoming Delivery",
             icon:<MdOutlineDeliveryDining/>
         },
@@ -84,7 +84,7 @@ const PNavBar = ({children}) => {
                 {currentRoute === '/deliverySection' && <VictimInfo1/>} 
                 {currentRoute === '/VictimInfo1' && <VictimInfo1/>} 
                 {currentRoute === '/VictimInfo2' && <VictimInfo2/>} 
-                {currentRoute === '/UpcomingDelivery1' && <UpcomingDelivery1/>} 
+                {/* {currentRoute === '/UpcomingDelivery1' && <UpcomingDelivery1/>}  */}
                 {currentRoute === '/UpcomingDelivery2' && <UpcomingDelivery2/>} 
                 {currentRoute === '/PackageRequsition1' && <PackageRequsition1/>} 
                 {currentRoute === '/PackageRequsition2' && <PackageRequsition2/>} 

@@ -1,5 +1,6 @@
 import React from 'react'
 import Box2 from './Box2';
+import './Box2.css';
 import "./ProgressBar.css";
 import ProgressBar from "./ProgressBar";
 
@@ -16,7 +17,7 @@ const DeliveryStatus2 = () => {
        <div style={{ fontSize: '30px', fontWeight: 'bold' }}>Delivery Status </div>
     </div>
     
-    <div class="d-flex justify-content-around">
+    <div class=" maincontainer d-flex justify-content-around">
   <div>   <Box2 text=" Delivered : 60 Packages" /> </div>
   <div> <Box2 text=" On Route : 40 Packages" /></div>
     
