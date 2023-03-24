@@ -1,25 +1,44 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { DatePicker } from "antd";
 import Box from './Box';
 import Button1 from './Button'
+import { defaultConfig } from "antd/es/theme/internal";
 
 
 
-  const SelectMenu = () => (
-    <select class="custom-select custom-select-lg mb-3">
-    <option selected>Select </option>
-    <option value="1">Person 1</option>
-    <option value="2">Person 2</option>
-    <option value="3">Person 3</option>
-  </select>
-  );
+
+
+  
 
 const UpcomingDelivery2 = () => {
   const [date, setDate] = useState(null);
+  const[data,setData]=useState([]);
+  useEffect(() => {
+    fetch("http://localhost:8080/DeliveryPerson/viewDeliveryPerson")
+      .then((response) => response.json())
+      .then((jsondata) => setData(jsondata));
+  }, []);
+  const SelectMenu = () => (
+
+
+
+    <select class="custom-select custom-select-lg mb-3">
+    <option selected>Select </option>
+    {data.map((item, index) => (
+          <option key={index} value={item.deliveryPersonName}>{item.deliveryPersonName}</option>
+        ))}
+  </select>
+  );
+  
+
+
+
+
 
   const handleChange = (selectedDate) => {
     setDate(selectedDate);
   };
+
 
  
   return (
