@@ -6,11 +6,6 @@ import { useState,useEffect } from 'react';
 
 const VictimInfo1 = () => {
   const [data, setData] = useState([]);
-
-
-
-
-
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch('http://localhost:8080/Victim/viewAllVerifiedVictims'); // replace this with the actual API endpoint
@@ -20,6 +15,28 @@ const VictimInfo1 = () => {
 
     fetchData();
   }, []);
+  //putmapping
+  const handleSelect = async (id) => {
+    const response = await fetch(`http://localhost:8080/Victim/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        isDelivered: true
+      })
+    });
+  
+    if (response.ok) {
+      // handle success response
+      console.log('Victim updated successfully');
+    } else {
+      // handle error response
+      console.error('Error updating victim');
+    }
+  };
+  
+
   return (
     <React.Fragment>
     
@@ -45,14 +62,9 @@ const VictimInfo1 = () => {
         <td>{details.firstName} {details.lastName}</td>
         <td>{details.phoneNumber}</td>
         <td>{details.no} {details.street} {details.city}</td>
-        <td><button type="button" class="btn btn-warning">Select</button>
+        <td><button type="button" class="btn btn-warning" onClick={() => handleSelect(details.id)}>Select</button>
       </td>
-      </tr>
-
-          )
-        )
-
-        )}
+      </tr> )    )  )}
 {/* 
       <tr>
         <td> {nic}</td>

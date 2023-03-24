@@ -10,6 +10,16 @@ import { defaultConfig } from "antd/es/theme/internal";
   
 
 const UpcomingDelivery2 = () => {
+  const [vdata, setVData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('http://localhost:8080/Victim/viewToDelivery'); // replace this with the actual API endpoint
+      const jsonData = await response.json();
+      setVData(jsonData);
+    };
+
+    fetchData();
+  }, []);
   const [date, setDate] = useState(null);
   const[data,setData]=useState([]);
   useEffect(() => {
@@ -18,9 +28,6 @@ const UpcomingDelivery2 = () => {
       .then((jsondata) => setData(jsondata));
   }, []);
   const SelectMenu = () => (
-
-
-
     <select class="custom-select custom-select-lg mb-3">
     <option selected>Select </option>
     {data.map((item, index) => (
@@ -70,15 +77,16 @@ const UpcomingDelivery2 = () => {
       </thead>
 
       <tbody>
-
-      <tr>
-        <td> 199556500987</td>
-        <td>Kamal Perera</td>
-        <td>072367542</td>
-        <td>79, School Lane, Galle</td>
+      {vdata.map((details)=>(
+          (
+      <tr key={details.id}>
+        <td> {details.nic}</td>
+        <td>{details.firstName} {details.lastName}</td>
+        <td>{details.phoneNumber}</td>
+        <td>{details.no} {details.street} {details.city}</td>
         <td><SelectMenu/></td>
         <td> <DatePicker onChange={handleChange} /></td>
-      </tr>
+      </tr> )    )  )}
     
      </tbody>
      </table>
@@ -89,9 +97,9 @@ const UpcomingDelivery2 = () => {
 
 
   
-     <div class="d-flex justify-content-end align-items-end mb-3">
+     {/* <div class="d-flex justify-content-end align-items-end mb-3">
     <Button1 style="margin-bottom: 100px;" variant="secondary" bg="grey" text="Select For Delivery" textColor="dark" page="/PackageRequsition1" />
-  </div>
+  </div> */}
 
 
 </React.Fragment>
