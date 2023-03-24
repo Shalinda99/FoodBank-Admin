@@ -17,7 +17,7 @@ import VictimDetails from "./VictimDetails";
 import AcceptedVictimsDetails from "./AcceptedVictimsDetails";
 import RejectedVictimsDetails from "./RejectedVictimsDetails";
 import DataSupplierProfile from "./DataSupplierProfile";
-import DeliverypersonDetails from "./DeliverypersonDetails"
+import DeliveryPerson from "./DeliverypersonDetails";
 
 const ANavBar = ({ children }) => {
   const location1 = useLocation();
@@ -57,7 +57,7 @@ const ANavBar = ({ children }) => {
 
     {
       path: "/DeliverypersonDetails",
-      name: "Delivery_Person_Details",
+      name: "Delivery_Person",
       icon: <FaUserTimes />,
     },
   ];
@@ -129,7 +129,7 @@ const ANavBar = ({ children }) => {
                 <DataSupplierProfile />
               )}
                {currentRoute === "/DeliverypersonDetails" && (
-                <DeliverypersonDetails />
+                <DeliveryPerson />
               )}
             </div>
           </div>
