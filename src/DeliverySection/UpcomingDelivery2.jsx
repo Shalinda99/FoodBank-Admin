@@ -1,6 +1,5 @@
 import React, { useState,useEffect } from "react";
 import { DatePicker } from "antd";
-import Box from './Box';
 import Button1 from './Button'
 import { defaultConfig } from "antd/es/theme/internal";
 
@@ -49,15 +48,15 @@ const UpcomingDelivery2 = () => {
          <h3 style={{ fontSize: '30px', fontWeight: 'bold' }}>Select Delivery Person</h3>
          </div>
 
-         <div className="p-1">
+         {/* <div className="p-1">
          <DatePicker onChange={handleChange} />
-         </div>
+         </div> */}
       </div>
     </div>
 
-    <Box>
+  
 
-    <table class="table table-striped">
+    <table class="table table-striped mt-3">
       <thead>
       <tr>
         <th scope="col">NIC</th>
@@ -65,6 +64,8 @@ const UpcomingDelivery2 = () => {
         <th scope="col">Contact</th>
         <th scope="col">Address</th>
         <th scope="col">Delivery Person</th>
+        <th scope="col">Delivery Date</th>
+        
       </tr>
       </thead>
 
@@ -76,20 +77,22 @@ const UpcomingDelivery2 = () => {
         <td>072367542</td>
         <td>79, School Lane, Galle</td>
         <td><SelectMenu/></td>
+        <td> <DatePicker onChange={handleChange} /></td>
       </tr>
     
      </tbody>
      </table>
 
-   </Box>
+   
     
     
 
-<div class="d-flex justify-content-end align-items-end mb-10">
-  <div class="align-self-end ml-10 "> 
+
+  
+     <div class="d-flex justify-content-end align-items-end mb-3">
     <Button1 style="margin-bottom: 100px;" variant="secondary" bg="grey" text="Select For Delivery" textColor="dark" page="/PackageRequsition1" />
   </div>
-</div>
+
 
 </React.Fragment>
     

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Box2 from './Box2';
+import './Box2.css';
 import Button from './Button';
 
 
@@ -16,6 +17,7 @@ const PackageRequsition2 = () => {
       <div classNameName="d-flex align-items-center justify-content-center" >
          <div style={{ fontSize: '30px', fontWeight: 'bold' }}>Package Needed</div>
       </div>
+
       {Object.entries(data).map(([key, value])=>(
           <div className="col-sm-6 d-flex justify-content-center" key={key}>
               <Box2 text={`Type ${key} :${value}`} />

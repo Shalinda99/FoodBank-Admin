@@ -1,5 +1,6 @@
 import React from 'react'
 import Box2 from './Box2';
+import './Box2.css';
 import "./ProgressBar.css";
 import ProgressBar from "./ProgressBar";
 
@@ -16,19 +17,19 @@ const DeliveryStatus2 = () => {
        <div style={{ fontSize: '30px', fontWeight: 'bold' }}>Delivery Status </div>
     </div>
     
-    <div class="row">
-      <div class="col-sm-6">
-      <Box2 text=" Delivered 60" />
-      </div>
-      <div class="col-sm-6">
-      <Box2 text=" On Route 40" />
-      </div>
+    <div class=" maincontainer d-flex justify-content-around">
+  <div>   <Box2 text=" Delivered : 60 Packages" /> </div>
+  <div> <Box2 text=" On Route : 40 Packages" /></div>
+    
+      
+      
+      
     </div>
 
 
     <div>
        <div class="progress-wrap">
-           <div class="progress-text" >Successful</div>
+          <div class="progress-text" >Successful</div>
               <div>
               {data.map(item => (
                <ProgressBar key={1} progress={60} />
