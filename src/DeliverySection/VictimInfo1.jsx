@@ -39,7 +39,6 @@ const VictimInfo1 = () => {
 
   return (
     <React.Fragment>
-    
     <div className="d-flex align-items-center justify-content-center">
       <div style={{ fontSize: '30px', fontWeight: 'bold' }}>Victim Details</div>
     </div>
@@ -53,7 +52,6 @@ const VictimInfo1 = () => {
         <th scope="col">Select For Delivery</th>
       </tr>
       </thead>
-
       <tbody>
         {data.map((details)=>(
           (
@@ -65,29 +63,8 @@ const VictimInfo1 = () => {
         <td><button type="button" class="btn btn-warning" onClick={() => handleSelect(details.id)}>Select</button>
       </td>
       </tr> )    )  )}
-{/* 
-      <tr>
-        <td> {nic}</td>
-        <td>{firstName}" "{lastName}</td>
-        <td>{phoneNumber}</td>
-        <td>79, School Lane, Galle</td>
-      </tr> */}
-
-     
-    
      </tbody>
      </table>
-
-    
-     
-    
-     {/* <div class="d-flex justify-content-end align-items-end mb-3">
-        
-         <Button style="margin-bottom: 20px;" variant="secondary" bg="grey" text="Select For Delivery" textColor="dark" page="/VictimInfo2" />
-      
-     </div> */}
-
-     
     </React.Fragment>
   );
 };
