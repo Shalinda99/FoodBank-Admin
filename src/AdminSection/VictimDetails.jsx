@@ -22,6 +22,11 @@ const VictimDetails = () => {
       .then((jsondata) => setVictims(jsondata));
   }, []);
 
+const handleAccept = (nic) => {
+    setVictims(victims.filter((v) => v.nic !== nic));
+  };
+
+
   return (
     <React.Fragment>
       <div>
@@ -89,35 +94,25 @@ const VictimDetails = () => {
                 Contact: {victim.phoneNumber}
                 <br />
                 Address:{victim.no} {victim.street} {victim.city}{" "}
-                {victims.Description}
+                <br/>
+                Description:{victim.Description}
               </p>
 
               <div class="btn d-flex justify-content-end">
                 <div className="ms-2">
-                  <Button2
+                  {/* <Button2
                     text="Accept"
                     textColor="dark"
                     page="/AcceptedVictimsDetails"
                   />
-                </div>
+                </div> */}
 
-                {/* <Button2
-                  text="Accept"
-                  textColor="dark"
-                  onClick={() => {
-                    setAcceptedVictims(acceptedVictims.concat(victims));
-                    setVictims(victims.filter((v) => v.nic !== victims.nic));
-                    axios.put('/Victim' + victims, {isverified: true})
-                      .then(response => {
-                        // handle the response from the server
-                      })
-                      .catch(error => {
-                        // handle any errors that occur
-                      });
-                    history.push("/AcceptedVictimsDetails");
-                  }}
-                  
-                />  */}
+                  <Button2
+                    text="Accept"
+                    textColor="dark"
+                    onClick={() => handleAccept(victim.nic)}
+                  />
+                  </div>
 
                 <div className="ms-2">
                   {" "}
