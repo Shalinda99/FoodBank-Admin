@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Box from './Box';
 import ToggleSwitch from "./ToggleButton";
 import Button from "./Button";
 
@@ -38,7 +37,7 @@ const DeliveryStatus1 = () => {
       <div style={{ fontSize: '30px', fontWeight: 'bold' }}>Delivery Status</div>
       </div>
 
-      <Box>
+      
        <table class="table table-striped">
       <thead>
       <tr>
@@ -46,7 +45,7 @@ const DeliveryStatus1 = () => {
         <th scope="col">Name</th>
         <th scope="col">Contact</th>
         <th scope="col">Address</th>
-        <th scope="col">Select For Delivery</th>
+        <th scope="col">Delivery Status</th>
       </tr>
       </thead>
 
@@ -57,19 +56,15 @@ const DeliveryStatus1 = () => {
         <td>Kamal Perera</td>
         <td>072367542</td>
         <td>79, School Lane, Galle</td>
-        <td ><ToggleSwitch onChange={handleSwitchChange1} /></td>
+        <td > <div className="d-flex justify-content-center"><ToggleSwitch onChange={handleSwitchChange1} /></div> </td>
       </tr>
     
      </tbody>
      </table>
-      </Box>
       
-    
-<div class="d-flex justify-content-end align-items-end ">
-  <div class="align-self-end ml-10 "> 
-    <Button variant="secondary" bg="grey" text="Next" textColor="dark" page="/DeliveryStatus2" />
-  </div>
-</div>
+       <div class="d-flex justify-content-end align-items-end ">
+         <Button variant="secondary" bg="grey" text="Next" textColor="dark" page="/DeliveryStatus2" />
+       </div>
 
 </React.Fragment>
     

@@ -1,5 +1,4 @@
 import React from "react";
-import Box from './Box';
 import Button from './Button';
 
 
@@ -10,9 +9,9 @@ import Button from './Button';
           <div style={{ fontSize: '30px', fontWeight: 'bold' }}>Package Requisition</div>
         </div>
         
-        <Box>
+      
      
-    <table class="table table-striped">
+    <table class="table table-striped mt-3">
     <thead>
     <tr>
       <th scope="col">NIC</th>
@@ -34,14 +33,13 @@ import Button from './Button';
     
   </tbody>
   </table>
-      </Box>
+      
   
        
-      <div class="d-flex justify-content-end align-items-end mb-3">
-        <div class="align-self-end ml-10 "> 
+     
+    <div class="d-flex justify-content-end align-items-end mb-3">
            <Button style="margin-top: 20px;" variant="secondary" bg="grey" text="Request Package" textColor="dark" page="/PackageRequsition2" />
-        </div>
-      </div>
+    </div>
 
         
       </React.Fragment>
