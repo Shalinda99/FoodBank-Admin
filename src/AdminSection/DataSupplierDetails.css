@@ -1,0 +1,15 @@
+.card1,.card2,.card3{
+    width: 275px;
+    min-height: 120px;
+    /* background-color: rgb(247, 109, 35); */
+    
+}
+
+@media screen and (max-width: 991px) {
+
+    .cardcontainer{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+  }

@@ -1,28 +1,50 @@
-
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { DatePicker } from "antd";
-import Box from './Box';
-import Button1 from './Button1'
-import Form from 'react-bootstrap/Form';
-import Table from 'react-bootstrap/Table';
+import Button1 from './Button'
+import { defaultConfig } from "antd/es/theme/internal";
 
 
-const SelectMenu = () => (
-    <Form.Select size="sm" style={{ width: "120px" }}>
-      <option>Select</option>
-      <option value="1">Person A</option>
-      <option value="2">Person B</option>
-      <option value="3">Person C</option>
-    </Form.Select>
-  );
 
+
+
+  
 
 const UpcomingDelivery2 = () => {
+  const [vdata, setVData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('http://localhost:8080/Victim/viewToDelivery'); // replace this with the actual API endpoint
+      const jsonData = await response.json();
+      setVData(jsonData);
+    };
+
+    fetchData();
+  }, []);
   const [date, setDate] = useState(null);
+  const[data,setData]=useState([]);
+  useEffect(() => {
+    fetch("http://localhost:8080/DeliveryPerson/viewDeliveryPerson")
+      .then((response) => response.json())
+      .then((jsondata) => setData(jsondata));
+  }, []);
+  const SelectMenu = () => (
+    <select class="custom-select custom-select-lg mb-3">
+    <option selected>Select </option>
+    {data.map((item, index) => (
+          <option key={index} value={item.deliveryPersonName}>{item.deliveryPersonName}</option>
+        ))}
+  </select>
+  );
+  
+
+
+
+
 
   const handleChange = (selectedDate) => {
     setDate(selectedDate);
   };
+
 
  
   return (
@@ -33,44 +55,52 @@ const UpcomingDelivery2 = () => {
          <h3 style={{ fontSize: '30px', fontWeight: 'bold' }}>Select Delivery Person</h3>
          </div>
 
-         <div className="p-1">
+         {/* <div className="p-1">
          <DatePicker onChange={handleChange} />
-         </div>
+         </div> */}
       </div>
     </div>
 
-    <Box>
-     <Table striped>
+  
+
+    <table class="table table-striped mt-3">
       <thead>
-        <tr>
-          <th>NIC</th>
-          <th>Name</th>
-          <th>Contact</th>
-          <th>Address</th>
-          <th>Delivery Person</th>
-        </tr>
+      <tr>
+        <th scope="col">NIC</th>
+        <th scope="col">Name</th>
+        <th scope="col">Contact</th>
+        <th scope="col">Address</th>
+        <th scope="col">Delivery Person</th>
+        <th scope="col">Delivery Date</th>
+        
+      </tr>
       </thead>
 
       <tbody>
-        <tr>
-          <td>199556500987</td>
-          <td>Kamal Perera</td>
-          <td>072367542</td>
-          <td>79, School Lane, Galle</td>
-          <td><SelectMenu/></td>
-        </tr>  
-      </tbody>
+      {vdata.map((details)=>(
+          (
+      <tr key={details.id}>
+        <td> {details.nic}</td>
+        <td>{details.firstName} {details.lastName}</td>
+        <td>{details.phoneNumber}</td>
+        <td>{details.no} {details.street} {details.city}</td>
+        <td><SelectMenu/></td>
+        <td> <DatePicker onChange={handleChange} /></td>
+      </tr> )    )  )}
+    
+     </tbody>
+     </table>
 
-    </Table>
-   </Box>
+   
     
     
 
-<div class="d-flex justify-content-end align-items-end mb-10">
-  <div class="align-self-end ml-10 "> 
+
+  
+     {/* <div class="d-flex justify-content-end align-items-end mb-3">
     <Button1 style="margin-bottom: 100px;" variant="secondary" bg="grey" text="Select For Delivery" textColor="dark" page="/PackageRequsition1" />
-  </div>
-</div>
+  </div> */}
+
 
 </React.Fragment>
     

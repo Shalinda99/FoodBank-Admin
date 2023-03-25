@@ -66,6 +66,9 @@ const AdminLogin = () => {
                     {/* route accordingly */}
                     <option value='/admin'>Admin</option>
                     <option value='/AddItems' >Warehouse</option>
+                    <option >Your role</option>
+                    <option value='/AdminHome'>Admin</option>
+                    <option value='/warehouse' >Warehouse</option>
                     <option value='/packingSection'>Packing section</option>
                     <option value='/deliverySection'>Delivery Section</option>
                     

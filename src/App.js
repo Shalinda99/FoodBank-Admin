@@ -8,6 +8,7 @@ import VictimInfo1 from "./DeliverySection/VictimInfo1";
 import DRoutes from "./DeliverySection/DRoutes";
 import Dash from "./Warehouse/WarehouseSideNavigation";
 import WRoutes from "./Warehouse/PRoutes";
+import ARoutes from './AdminSection/ARoutes';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         </Routes>
         <PRoutes />
         <WRoutes/>
+      <ARoutes/>
         <DRoutes />
 
         {/* <Route path='/deliverySection' element={<DeliveryHome/>}/> */}

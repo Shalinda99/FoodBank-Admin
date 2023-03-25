@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import './Button1.css' ;
-import { Button } from 'react-bootstrap';
+import "./Button.css";
+// import { Button } from 'react-bootstrap';
 const Button1 = (props) => {
   const navigate = useNavigate();
   const gotoNext = () => {
@@ -10,14 +10,21 @@ const Button1 = (props) => {
 
   return (
     <div>
-      <Button
+      {/* <Button
         variant="secondary"
         className="my-2"
         onClick={() => gotoNext()}
-        style={{ width: "200px", height: "30px" }}
+        style={{ width: "200px", height: "35px" }}
       >
         {props.text}
-      </Button>
+      </Button> */}
+      <button
+        type="button"
+        class="btn btn-secondary"
+        onClick={() => gotoNext()}
+      >
+        {props.text}
+      </button>
     </div>
   );
 };
