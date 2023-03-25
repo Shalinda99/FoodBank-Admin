@@ -7,10 +7,10 @@ import { Dropdown } from "react-bootstrap";
 import { useState, useEffect } from 'react';
 
 const AcceptedVictimsDetails = () =>{
-  const [isVerified, setIsVerified] = useState(false);
+  const [isVerified, setIsVerified] = useState([]);
 
   useEffect(() => {
-    fetch('/api/verification')
+    fetch('http://localhost:8080/Victim/viewVerifiedVictims')
       .then(response => response.json())
       .then(data => setIsVerified(data));
   }, []);
@@ -54,7 +54,22 @@ const AcceptedVictimsDetails = () =>{
             </thead>
 
             <tbody>
-              <tr>
+            {isVerified.map((details)=>(
+          (
+      <tr key={details.id}>
+        <td> {details.nic}</td>
+        <td>{details.firstName} {details.lastName}</td>
+        <td>{details.phoneNumber}</td>
+        <td>{details.no} {details.street} {details.city}</td>
+        <td> <select name="Package Type">
+                    <option>Choose a Type</option>
+                    <option>Type A</option>
+                    <option>Type B</option>
+                    <option>Type C</option>
+                  </select></td>
+      </tr> )    )  )}
+
+              {/* <tr>
                 <td>204059X</td>
                 <td>Kamal Perera</td>
                 <td>0769442613</td>
@@ -66,76 +81,15 @@ const AcceptedVictimsDetails = () =>{
                     <option>Type B</option>
                     <option>Type C</option>
                   </select>
-                  {/* <Dropdown>
-                                <Dropdown.Toggle variant="secondary" id="dropdown-basic">Package Type</Dropdown.Toggle>
-                                <Dropdown.Menu>
-                                    <Dropdown.Item href="#action/1">Type A</Dropdown.Item>
-                                    <Dropdown.Item href="#action/2">Type B</Dropdown.Item>
-                                    <Dropdown.Item href="#action/3">Type C</Dropdown.Item>
-                                </Dropdown.Menu>
-                                </Dropdown> */}
                 </td>
-              </tr>
+              </tr> */}
 
-              <tr>
-                <td>204215A</td>
-                <td>Kamal Perera</td>
-                <td>0769442613</td>
-                <td>Galle</td>
-                <td>
-                  <select name="Package Type">
-                    <option>Choose a Type</option>
-                    <option>Type A</option>
-                    <option>Type B</option>
-                    <option>Type C</option>
-                  </select>
-                </td>
-              </tr>
+              
 
-              <tr>
-                <td>204200A</td>
-                <td>Kamal Perera</td>
-                <td>0769442613</td>
-                <td>Galle</td>
-                <td>
-                  <select name="Package Type">
-                    <option>Choose a Type</option>
-                    <option>Type A</option>
-                    <option>Type B</option>
-                    <option>Type C</option>
-                  </select>
-                </td>
-              </tr>
+              
+              
 
-              <tr>
-                <td>204145H</td>
-                <td>Kamal Perera</td>
-                <td>0769442613</td>
-                <td>Galle</td>
-                <td>
-                  <select name="Package Type">
-                    <option>Choose a Type</option>
-                    <option>Type A</option>
-                    <option>Type B</option>
-                    <option>Type C</option>
-                  </select>
-                </td>
-              </tr>
-
-              <tr>
-                <td>204216X</td>
-                <td>Kamal Perera</td>
-                <td>0769442613</td>
-                <td>Galle</td>
-                <td>
-                  <select name="Package Type">
-                    <option>Choose a Type</option>
-                    <option>Type A</option>
-                    <option>Type B</option>
-                    <option>Type C</option>
-                  </select>
-                </td>
-              </tr>
+             
             </tbody>
           </table>
         </div>

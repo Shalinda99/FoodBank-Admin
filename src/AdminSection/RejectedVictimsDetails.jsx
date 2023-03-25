@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button1 from "./Button1";
 
 const RejectedVictimsDetails = () => {
+  const [rejectedData,setRejectedData]=useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('http://localhost:8080/Victim/viewRejectedVictims'); 
+      const jsonData = await response.json();
+      setRejectedData(jsonData);
+    };
+
+    fetchData();
+  }, []);
   return (
     <React.Fragment>
       <div>
@@ -55,40 +65,20 @@ const RejectedVictimsDetails = () => {
             </thead>
 
             <tbody>
-              <tr>
+            {rejectedData.map((details)=>(
+          (
+      <tr key={details.id}>
+        <td> {details.nic}</td>
+        <td>{details.firstName} {details.lastName}</td>
+        <td>{details.phoneNumber}</td>
+        <td>{details.no} {details.street} {details.city}</td>
+      </tr> )    )  )}
+              {/* <tr>
                 <td>204059X</td>
                 <td>Kamal Perera</td>
                 <td>0769442613</td>
                 <td>Galle</td>
-              </tr>
-
-              <tr>
-                <td>204215A</td>
-                <td>Kamal Perera</td>
-                <td>0769442613</td>
-                <td>Galle</td>
-              </tr>
-
-              <tr>
-                <td>204200A</td>
-                <td>Kamal Perera</td>
-                <td>0769442613</td>
-                <td>Galle</td>
-              </tr>
-
-              <tr>
-                <td>204145H</td>
-                <td>Kamal Perera</td>
-                <td>0769442613</td>
-                <td>Galle</td>
-              </tr>
-
-              <tr>
-                <td>204216X</td>
-                <td>Kamal Perera</td>
-                <td>0769442613</td>
-                <td>Galle</td>
-              </tr>
+              </tr> */}
             </tbody>
           </table>
         </div>

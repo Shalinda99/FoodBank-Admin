@@ -8,7 +8,7 @@ const VictimInfo1 = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://localhost:8080/Victim/viewAllVerifiedVictims'); // replace this with the actual API endpoint
+      const response = await fetch('http://localhost:8080/Victim/viewAllVerifiedVictims'); 
       const jsonData = await response.json();
       setData(jsonData);
     };
@@ -91,5 +91,6 @@ const VictimInfo1 = () => {
     </React.Fragment>
   );
 };
+
 
 export default VictimInfo1;

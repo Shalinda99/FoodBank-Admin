@@ -17,13 +17,30 @@ const VictimDetails = () => {
 
 
   useEffect(() => {
-    fetch("http://localhost:8080/Victim/viewVictimDetails")
+    fetch("http://localhost:8080/Victim/viewUnverifiedVictims")
       .then((response) => response.json())
       .then((jsondata) => setVictims(jsondata));
   }, []);
 
-const handleAccept = (nic) => {
-    setVictims(victims.filter((v) => v.nic !== nic));
+  //putmapping
+  const handleSelect = async (id) => {
+    const response = await fetch(`http://localhost:8080/Victim/select/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        isVerified: true,
+      })
+    });
+  
+    if (response.ok) {
+      // handle success response
+      console.log('Victim updated successfully');
+    } else {
+      // handle error response
+      console.error('Error updating victim');
+    }
   };
 
 
@@ -80,7 +97,7 @@ const handleAccept = (nic) => {
 
       {victims.map((victim) => (
         console.log(victim.firstName),
-        <div key={victim.nic}>
+        <div key={victim.id}>
           <div class="card bg-light text-dark">
             <div class="card-body">
               <h4>Data Supplier: D.K Perera</h4>
@@ -100,18 +117,12 @@ const handleAccept = (nic) => {
 
               <div class="btn d-flex justify-content-end">
                 <div className="ms-2">
-                  {/* <Button2
-                    text="Accept"
-                    textColor="dark"
-                    page="/AcceptedVictimsDetails"
-                  />
-                </div> */}
+                <button type="button" class="btn btn-warning" onClick={() => handleSelect(victim.id)}>Select</button>
 
-                  <Button2
-                    text="Accept"
+                  {/* <Button2
+                    text="Acceptsss"
                     textColor="dark"
-                    onClick={() => handleAccept(victim.nic)}
-                  />
+                  /> */}
                   </div>
 
                 <div className="ms-2">
