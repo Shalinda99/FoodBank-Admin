@@ -15,7 +15,9 @@ main{
     
 }
 .sidebar{
-    background: #212938;
+    /* background: #212938; */
+    background: rgb(15,22,56);
+    background: linear-gradient(0deg, rgba(15,22,56,1) 40%, rgba(9,31,112,1) 100%);
     color: #fff;
     height: 100vh;
     width: 250px;
