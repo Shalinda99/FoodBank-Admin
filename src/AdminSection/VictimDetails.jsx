@@ -117,7 +117,7 @@ const VictimDetails = () => {
 
               <div class="btn d-flex justify-content-end">
                 <div className="ms-2">
-                <button type="button" class="btn btn-warning" onClick={() => handleSelect(victim.id)}>Select</button>
+                <button type="button" class="btn btn-warning" onClick={() => handleSelect(victim.id)}>Accept</button>
 
                   {/* <Button2
                     text="Acceptsss"
@@ -127,11 +127,7 @@ const VictimDetails = () => {
 
                 <div className="ms-2">
                   {" "}
-                  <Button3
-                    text="Decline"
-                    textColor="dark"
-                    page="/RejectedVictimsDetails"
-                  />
+                  <button type="button" class="btn btn-warning" onClick={() => handleSelect(victim.id)}>Decline</button>
                 </div>
               </div>
             </div>

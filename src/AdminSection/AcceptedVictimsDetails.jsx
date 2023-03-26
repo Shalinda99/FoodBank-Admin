@@ -10,10 +10,28 @@ const AcceptedVictimsDetails = () =>{
   const [isVerified, setIsVerified] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8080/Victim/viewVerifiedVictims')
+    fetch('http://localhost:8080/Victim/viewAcceptedVictims')
       .then(response => response.json())
       .then(data => setIsVerified(data));
   }, []);
+
+
+  const [date, setDate] = useState(null);
+  const[data,setData]=useState([]);
+  useEffect(() => {
+    fetch("http://localhost:8080/DeliveryPerson/viewDeliveryPerson")
+      .then((response) => response.json())
+      .then((jsondata) => setData(jsondata));
+  }, []);
+  const SelectMenu = () => (
+    <select class="custom-select custom-select-lg mb-3">
+    <option selected>Select </option>
+    {data.map((details, index) => (
+          <option key={index} value={details.packageType}>{details.packageType}</option>
+        ))}
+  </select>
+  );
+  
 
   return (
     <React.Fragment>
@@ -61,12 +79,7 @@ const AcceptedVictimsDetails = () =>{
         <td>{details.firstName} {details.lastName}</td>
         <td>{details.phoneNumber}</td>
         <td>{details.no} {details.street} {details.city}</td>
-        <td> <select name="Package Type">
-                    <option>Choose a Type</option>
-                    <option>Type A</option>
-                    <option>Type B</option>
-                    <option>Type C</option>
-                  </select></td>
+        <td><SelectMenu/></td>
       </tr> )    )  )}
 
               {/* <tr>

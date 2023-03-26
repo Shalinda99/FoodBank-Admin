@@ -1,6 +1,19 @@
 import React from "react";
+import { useState, useEffect } from "react";
 
 const DeliveryPerson = () => {
+
+  const [dperson, setDperson] = useState([]);
+  // const [acceptedVictims, setAcceptedVictims] = useState([]);
+  // const history = useNavigate();
+
+
+  useEffect(() => {
+    fetch("http://localhost:8080/DeliveryPerson/viewDeliveryPerson")
+      .then((response) => response.json())
+      .then((jsondata) => setDperson(jsondata));
+  }, []);
+
   return (
     <React.Fragment>
       <div>
@@ -23,13 +36,22 @@ const DeliveryPerson = () => {
             </thead>
 
             <tbody>
+            {dperson.map((details)=>(
+          (
+      <tr key={details.id}>
+        <td> {details.deliveryPersonId}</td>
+        <td>{details.deliveryPersonName}</td>
+      </tr> )    )  )}
+       </tbody>
+
+            {/* <tbody>
               <tr>
                 <td>204059X</td>
                 <td>Kamal Perera</td>
                 
               </tr>
 
-            </tbody>
+            </tbody> */}
           </table>
         </div>
         <h2>Add Delivery Person</h2>
