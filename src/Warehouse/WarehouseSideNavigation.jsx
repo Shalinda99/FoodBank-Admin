@@ -1,13 +1,6 @@
 import React, { useState } from "react";
 
-import {
-  FaTh,
-  FaBars,
-  FaUserAlt,
-  FaUserFriends,
-  // FaPalfed,
-  // FaCartPlus
-} from "react-icons/fa";
+import { FaBars,} from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
 import {
     BsBagPlusFill
@@ -18,13 +11,10 @@ import {
   import {
     BsBoxArrowRight
   } from "react-icons/bs";
-//import "./WarehouseNavBar.css";
 import AddItems from "./AddItems";
 import ItemDetails from "./ItemDetails";
 import IssueItems from "./Issueitems";
-
-
-const WNavBar = ({ children }) => {
+const WNavBar = ({}) => {
   const location1 = useLocation();
   const currentRoute = location1.pathname;
 
@@ -46,17 +36,7 @@ const WNavBar = ({ children }) => {
       name: "IssueItems",
       icon: <BsBoxArrowRight />,
     },
-    //      ,
-    //      {
-    //         path:"/packing_details",
-    //         name:"Packing_Details",
-    //         icon:<FaPalfed/>
-    //  },
-    // {
-    //     path:"/delivery_details",
-    //     name:"Delivery_Details",
-    //     icon:<FaCartPlus/>
-    // }
+   
   ];
 
   return (
@@ -108,7 +88,6 @@ const WNavBar = ({ children }) => {
             <div className="nametag w-100 p-3 m-2 shadow bg-light ">
               <h1>Food Bank - Warehouse Section</h1>
             </div>
-
             <div className="w-100 p-3 m-2">
               {/* conditional render */}
               {currentRoute === "/AddItems" && <AddItems />}

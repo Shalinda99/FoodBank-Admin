@@ -11,10 +11,8 @@ const AddItems = () => {
       const jsonData = await response.json();
       setItemData(jsonData);
     };
-
     fetchData();
   }, []);
-
   return (
     <React.Fragment>
       <h1>Add Items</h1>
@@ -25,7 +23,7 @@ const AddItems = () => {
               <tr>
                 <th scope="col">Item Id</th>
                 <th scope="col">Item name</th>
-                <th scope="col">Amount</th>
+                <th scope="col">Add Amount</th>
               </tr>
             </thead>
             <tbody>
@@ -45,11 +43,15 @@ const AddItems = () => {
           </table>
         </div>
       </div>
+      <div className="position-fixed bottom-1 end-0 p-3"></div>
       <div
-        className="position-fixed bottom-0 end-0 p-3"
+        className="position-fixed bottom-2 end-0 p-3 mb-5 mt-5"
         style={{ zIndex: "11" }}
       >
-        <button className="btn btn-primary">Save</button>
+        <input type="date" className="me-3 p-1" />
+        <button className="btn btn-primary" style={{ width: "150px" }}>
+          Save
+        </button>
       </div>
     </React.Fragment>
   );

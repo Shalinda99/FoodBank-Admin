@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const ItemDetails = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:8080/ItemDetails")
+    fetch("http://localhost:8080/ItemDetails/viewAllItems")
       .then((response) => response.json())
       .then((jsonData) => setData(jsonData))
       .catch((error) => console.error(error));
@@ -18,20 +18,11 @@ const ItemDetails = () => {
           <table class="table table-striped m-2 table-secondary">
             <thead>
               <tr>
-                <th scope="col"></th>
                 <th scope="col">Item Id</th>
                 <th scope="col">Item name</th>
                 <th scope="col">Current Storage</th>
               </tr>
             </thead>
-            {/* <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-  </tbody> */}
             <tbody>
               {data.map(
                 (item) => (
