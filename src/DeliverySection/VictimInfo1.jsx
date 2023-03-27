@@ -22,7 +22,7 @@ const VictimInfo1 = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        isDelivered: true
+        isDeliverySelected: true
       })
     });
   
