@@ -6,32 +6,32 @@ const AddPackages = () => {
   const [type1Quantity, setType1quantity] = useState(0);
   const [type2Quantity, setType2quantity] = useState(0);
   const [type3Quantity, setType3quantity] = useState(0);
-  const [addingDate, setAddingDate] = useState("");
+  const [packedDate, setPackedDate] = useState("");
 
-  const [type1AddQuantity, setType1Addquantity] = useState("");
-  const [type2AddQuantity, setType2Addquantity] = useState("");
-  const [type3AddQuantity, setType3Addquantity] = useState("");
+  const [type1AddQuantity, setType1Addquantity] = useState(0);
+  const [type2AddQuantity, setType2Addquantity] = useState(0);
+  const [type3AddQuantity, setType3Addquantity] = useState(0);
   // when a array is used, it doesn't render because of onchange
 
   //use effect
   const [tableData, setTableData] = useState([]);
 
-  useEffect(() => {
-    fetch("backend-url")                  // for the summary table
-      .then((response) => response.json())
-      .then((data) => setTableData(data))
-      .catch((error) => console.log(error));
+  // useEffect(() => {
+  //   fetch("backend-url")                  // for the summary table
+  //     .then((response) => response.json())
+  //     .then((data) => setTableData(data))
+  //     .catch((error) => console.log(error));
 
-      fetch("https://my-backend-api.com/table-data") // for quantities
-      .then((response) => response.json())
-      .then((data) => {
-        setTableData(data);
-        setType1quantity(data.type1Quantity);
-        setType2quantity(data.type2Quantity);
-        setType3quantity(data.type3Quantity);
-      })
-      .catch((error) => console.error(error));
-  }, []);
+  //     fetch("https://my-backend-api.com/table-data") // for quantities
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setTableData(data);
+  //       setType1quantity(data.type1Quantity);
+  //       setType2quantity(data.type2Quantity);
+  //       setType3quantity(data.type3Quantity);
+  //     })
+  //     .catch((error) => console.error(error));
+  // }, []);
   
   const [error, setError] = useState({});
 
@@ -39,36 +39,87 @@ const AddPackages = () => {
     event.preventDefault();
     const errors = validateInputs();
 
-    if (Object.keys(errors).length === 0) {
-      // submit form
-      const packingData = [
-        { packageType: "type1", quantity: type1AddQuantity },
-        { packageType: "type2", quantity: type2AddQuantity },
-        { packageType: "type3", quantity: type3AddQuantity },
-      ];
+          //  event.target.reset();
+          // Update state
+          setType1quantity(type1Quantity + type1AddQuantity);
+          setType2quantity(type2Quantity + type2AddQuantity);
+          setType3quantity(type3Quantity + type3AddQuantity);
+ 
 
-      const data = {
-        date: addingDate,
-        packingData: packingData,
-      };
-      try {
-        const response = await axios.post("http://192.168.8.102:3000", data);
-        console.log(response.data);
-      } catch (error) {
-        console.error(error);
+if (Object.keys(errors).length === 0) {
+
+      
+   
+console.log("type1AddQuantity:", type1AddQuantity);
+console.log("type2AddQuantity:", type2AddQuantity);
+console.log("type3AddQuantity:", type3AddQuantity);
+console.log("type1Quantity:", type1Quantity);
+console.log("type2Quantity:", type2Quantity);
+console.log("type3Quantity:", type3Quantity);
+
+  // submit form
+  const packingData1 = 
+    { 
+      packageTypeName: "Type 1", 
+      packedQuantity: type1AddQuantity,
+      packedDate: packedDate,
+      packageType:{
+        typeID:101,
+        typeName:"Type 1",
+        quantity: type1Quantity
       }
+     };
 
-      //  event.target.reset();
-      // Update state
-      setType1quantity(type1Quantity + parseInt(type1AddQuantity));
-      setType2quantity(type2Quantity + parseInt(type2AddQuantity));
-      setType3quantity(type3Quantity + parseInt(type3AddQuantity));
+     const packingData2 = 
+     { 
+      packageTypeName: "Type 2", 
+          packedQuantity: type2AddQuantity,
+          packedDate: packedDate,
+          packageType:{
+            typeID:102,
+            typeName:"Type 2",
+            quantity: type2Quantity
+          } 
+      };
+
+      const packingData3 = 
+      { 
+            packageTypeName: "Type 3", 
+            packedQuantity: type3AddQuantity,
+            packedDate: packedDate,
+            packageType:{
+              typeID:103,
+              typeName:"Type 3",
+              quantity: type3Quantity
+            } 
+       };
+
+
+  // const data = {
+  //   packedDate: packedDate,
+  //   packingData: packingData,
+  // };
+
+  try {
+    const packingData = [packingData1, packingData2, packingData3];
+    for (const data of packingData) {
+      const response = await axios.post("http://localhost:8080/packedPackages/saveCount", data);
+      console.log(response.data);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+  
+
+
+
+
 
       // Reset input fields
-      setType1Addquantity("");
-      setType2Addquantity("");
-      setType3Addquantity("");
-      setAddingDate("");
+      setType1Addquantity(0);
+      setType2Addquantity(0);
+      setType3Addquantity(0);
+      setPackedDate("");
 
       setError("");
       console.log("Form submitted successfully!");
@@ -90,8 +141,8 @@ const AddPackages = () => {
     if (!type3AddQuantity || isNaN(type3AddQuantity) || type3AddQuantity < 0) {
       errors.type3AddQuantity = "* Invalid quantity for type 3 package";
     }
-    if (addingDate.trim() === "") {
-      errors.addingDate = "* Packed Date is required";
+    if (packedDate.trim() === "") {
+      errors.packedDate = "* Packed Date is required";
     }
     return errors;
   }
@@ -99,10 +150,10 @@ const AddPackages = () => {
   function handleReset(event) {
     event.preventDefault();
     // Reset input fields
-    setType1Addquantity("");
-    setType2Addquantity("");
-    setType3Addquantity("");
-    setAddingDate("");
+    setType1Addquantity(0);
+    setType2Addquantity(0);
+    setType3Addquantity(0);
+    setPackedDate("");
   }
 
   return (
@@ -149,7 +200,7 @@ const AddPackages = () => {
                     class="form-control"
                     id="inputType1"
                     value={type1AddQuantity}
-                    onChange={(e) => setType1Addquantity(e.target.value)}
+                    onChange={(e) => setType1Addquantity(parseInt(e.target.value))}
                   />
                   {error.type1AddQuantity && (
                     <span className="error">{error.type1AddQuantity}</span>
@@ -165,7 +216,7 @@ const AddPackages = () => {
                     class="form-control"
                     id="inputType2"
                     value={type2AddQuantity}
-                    onChange={(e) => setType2Addquantity(e.target.value)}
+                    onChange={(e) => setType2Addquantity(parseInt(e.target.value))}
                   />
                   {error.type2AddQuantity && (
                     <span className="error">{error.type2AddQuantity}</span>
@@ -181,7 +232,7 @@ const AddPackages = () => {
                     class="form-control"
                     id="inputType2"
                     value={type3AddQuantity}
-                    onChange={(e) => setType3Addquantity(e.target.value)}
+                    onChange={(e) => setType3Addquantity(parseInt(e.target.value))}
                   />
                   {error.type3AddQuantity && (
                     <span className="error">{error.type3AddQuantity}</span>
@@ -196,11 +247,11 @@ const AddPackages = () => {
                     type="date"
                     class="form-control"
                     id="inputDate"
-                    value={addingDate}
-                    onChange={(e) => setAddingDate(e.target.value)}
+                    value={packedDate}
+                    onChange={(e) => setPackedDate(e.target.value)}
                   />
-                  {error.addingDate && (
-                    <span className="error">{error.addingDate}</span>
+                  {error.packedDate && (
+                    <span className="error">{error.packedDate}</span>
                   )}
                 </div>
 
