@@ -1,8 +1,19 @@
-import React from "react";
+
+import React, { useState,useEffect } from "react";
 import Button from './Button';
 
 
   const PackageRequsition1 = () => {
+    const [vdata, setVData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('http://localhost:8080/Victim/viewToDelivery'); // replace this with the actual API endpoint
+      const jsonData = await response.json();
+      setVData(jsonData);
+    };
+
+    fetchData();
+  }, []);
     return (
       <React.Fragment>
         <div className="d-flex align-items-center justify-content-center">
@@ -23,13 +34,18 @@ import Button from './Button';
   </thead>
 
   <tbody>
-    <tr>
-      <td>199556500987</td>
-      <td>Kamal Perera</td>
-      <td>072367542</td>
-      <td>79, School Lane, Galle</td>
-      <td>Type A</td>
-    </tr>
+
+  {vdata.map((details)=>(
+          (
+      <tr key={details.id}>
+        <td> {details.nic}</td>
+        <td>{details.firstName} {details.lastName}</td>
+        <td>{details.phoneNumber}</td>
+        <td>{details.no} {details.street} {details.city}</td>
+        <td>Type A</td>
+  
+      </tr> )    )  )}
+  
     
   </tbody>
   </table>

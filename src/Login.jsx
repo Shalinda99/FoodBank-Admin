@@ -43,22 +43,22 @@ const AdminLogin = () => {
                 
                 
                 <form className='needs-validation '>
-                <div className='form-group was-validated mb-2'>
-                    {/* <label htmlFor='username' className='form-label'>User name</label> */}
+                {/* <div className='form-group was-validated mb-2'>
+                    <label htmlFor='username' className='form-label'>User name</label> 
                     <input type="text" className='form-control'  placeholder='User name' required></input>
 
                     <div className='invalid-feedback'>
                         Please enter your username
                     </div>
-                </div>
-                <div className='form-group was-validated mb-2'>
-                    {/* <label htmlFor='password'className='form-label'>Password</label> */}
+                </div> */}
+                {/* <div className='form-group was-validated mb-2'>
+                    <label htmlFor='password'className='form-label'>Password</label> 
                     <input type="text" className='form-control'  placeholder='Password' required></input>
 
                     <div className='invalid-feedback'>
                         Please enter your password
                     </div>
-                </div>
+                </div> */}
                 <label for="admin-role">Choose a Admin Role:</label>
 
                

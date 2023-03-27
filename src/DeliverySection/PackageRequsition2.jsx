@@ -14,12 +14,13 @@ const PackageRequsition2 = () => {
 
   return (
     <React.Fragment>
-      <div classNameName="d-flex align-items-center justify-content-center" >
-         <div style={{ fontSize: '30px', fontWeight: 'bold' }}>Package Needed</div>
-      </div>
+      <div className="d-flex align-items-center justify-content-center">
+          <div style={{ fontSize: '30px', fontWeight: 'bold' }}>Package Requisition</div>
+        </div>
+      
 
       {Object.entries(data).map(([key, value])=>(
-          <div className="col-sm-6 d-flex justify-content-center" key={key}>
+          <div className="d-flex align-items-center justify-content-center" key={key}>
               <Box2 text={`Type ${key} :${value}`} />
           </div>
       )

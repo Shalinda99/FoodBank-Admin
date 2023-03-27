@@ -9,8 +9,6 @@ import {
 import { NavLink, useLocation } from 'react-router-dom';
 import './DeliveryNavBar.css';
 import VictimInfo1 from './VictimInfo1';
-import VictimInfo2 from './VictimInfo2';
-import UpcomingDelivery1 from './UpcomingDelivery1';
 import UpcomingDelivery2 from './UpcomingDelivery2';
 import PackageRequsition1 from './PackageRequsition1';
 import PackageRequsition2 from './PackageRequsition2';
@@ -83,8 +81,6 @@ const PNavBar = ({children}) => {
                 {/* conditional render */}
                 {currentRoute === '/deliverySection' && <VictimInfo1/>} 
                 {currentRoute === '/VictimInfo1' && <VictimInfo1/>} 
-                {currentRoute === '/VictimInfo2' && <VictimInfo2/>} 
-                {/* {currentRoute === '/UpcomingDelivery1' && <UpcomingDelivery1/>}  */}
                 {currentRoute === '/UpcomingDelivery2' && <UpcomingDelivery2/>} 
                 {currentRoute === '/PackageRequsition1' && <PackageRequsition1/>} 
                 {currentRoute === '/PackageRequsition2' && <PackageRequsition2/>} 

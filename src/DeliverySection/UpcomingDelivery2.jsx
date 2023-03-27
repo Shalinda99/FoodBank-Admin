@@ -1,13 +1,5 @@
 import React, { useState,useEffect } from "react";
-import { DatePicker } from "antd";
-import Button1 from './Button'
-import { defaultConfig } from "antd/es/theme/internal";
 
-
-
-
-
-  
 
 const UpcomingDelivery2 = () => {
   const [vdata, setVData] = useState([]);
@@ -41,9 +33,9 @@ const UpcomingDelivery2 = () => {
 
 
 
-  const handleChange = (selectedDate) => {
-    setDate(selectedDate);
-  };
+  // const handleChange = (selectedDate) => {
+  //   setDate(selectedDate);
+  // };
 
 
  
@@ -85,17 +77,12 @@ const UpcomingDelivery2 = () => {
         <td>{details.phoneNumber}</td>
         <td>{details.no} {details.street} {details.city}</td>
         <td><SelectMenu/></td>
-        <td> <DatePicker onChange={handleChange} /></td>
+        {/* <td> <DatePicker onChange={handleChange} /></td> */}
+        <td><input type="date" className="form-control"/></td>
       </tr> )    )  )}
     
      </tbody>
      </table>
-
-   
-    
-    
-
-
   
      {/* <div class="d-flex justify-content-end align-items-end mb-3">
     <Button1 style="margin-bottom: 100px;" variant="secondary" bg="grey" text="Select For Delivery" textColor="dark" page="/PackageRequsition1" />
