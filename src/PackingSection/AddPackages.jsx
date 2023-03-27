@@ -49,12 +49,12 @@ if (Object.keys(errors).length === 0) {
 
       
    
-console.log("type1AddQuantity:", type1AddQuantity);
-console.log("type2AddQuantity:", type2AddQuantity);
-console.log("type3AddQuantity:", type3AddQuantity);
-console.log("type1Quantity:", type1Quantity);
-console.log("type2Quantity:", type2Quantity);
-console.log("type3Quantity:", type3Quantity);
+// console.log("type1AddQuantity:", type1AddQuantity);
+// console.log("type2AddQuantity:", type2AddQuantity);
+// console.log("type3AddQuantity:", type3AddQuantity);
+// console.log("type1Quantity:", type1Quantity);
+// console.log("type2Quantity:", type2Quantity);
+// console.log("type3Quantity:", type3Quantity);
 
   // submit form
   const packingData1 = 

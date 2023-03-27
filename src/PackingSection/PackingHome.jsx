@@ -39,7 +39,8 @@ const PackingHome = () => {
                 <tbody>
                   {items.map((item, index) => (
                     <tr key={index}>
-                      <td>Item {String.fromCharCode(65 + index)}</td>
+                      {/* <td>Item {String.fromCharCode(65 + index)}</td> */}
+                      <td>Item {(1 + index)}</td>
                       <td>{item} Kg</td>
                       {showColumn1 && (
                         <td>
