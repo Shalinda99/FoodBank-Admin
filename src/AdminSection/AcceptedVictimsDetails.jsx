@@ -7,13 +7,32 @@ import { Dropdown } from "react-bootstrap";
 import { useState, useEffect } from 'react';
 
 const AcceptedVictimsDetails = () =>{
-  const [isVerified, setIsVerified] = useState(false);
+  const [isVerified, setIsVerified] = useState([]);
 
   useEffect(() => {
-    fetch('/api/verification')
+    fetch('http://localhost:8080/Victim/viewAcceptedVictims')
       .then(response => response.json())
       .then(data => setIsVerified(data));
   }, []);
+
+
+  const [date, setDate] = useState(null);
+  const[data,setData]=useState([]);
+  useEffect(() => {
+    fetch("http://localhost:8080/packageTypes/viewPackageType")
+      .then((response) => response.json())
+      .then((jsondata) => setData(jsondata));
+  }, []);
+  const SelectMenu = () => (
+    <select class="custom-select custom-select-lg mb-3">
+    <option selected>Select </option>
+    {data.map((details, index) => (
+          <option key={index} value={details.typeName}>{details.typeName}</option>
+        ))}
+  </select>
+  );
+ 
+  
 
   return (
     <React.Fragment>
@@ -50,11 +69,24 @@ const AcceptedVictimsDetails = () =>{
                 <th scope="col">Contact</th>
                 <th scope="col">Location</th>
                 <th scope="col">Package Type</th>
+                <th scope="col">Save</th>
               </tr>
             </thead>
 
             <tbody>
-              <tr>
+            {isVerified.map((details)=>(
+          (
+      <tr key={details.id}>
+        <td> {details.nic}</td>
+        <td>{details.firstName} {details.lastName}</td>
+        <td>{details.phoneNumber}</td>
+        <td>{details.no} {details.street} {details.city}</td>
+        <td><SelectMenu/></td>
+        <button type="button" class="btn btn-warning">Accept</button>
+
+      </tr> )    )  )}
+
+              {/* <tr>
                 <td>204059X</td>
                 <td>Kamal Perera</td>
                 <td>0769442613</td>
@@ -66,76 +98,15 @@ const AcceptedVictimsDetails = () =>{
                     <option>Type B</option>
                     <option>Type C</option>
                   </select>
-                  {/* <Dropdown>
-                                <Dropdown.Toggle variant="secondary" id="dropdown-basic">Package Type</Dropdown.Toggle>
-                                <Dropdown.Menu>
-                                    <Dropdown.Item href="#action/1">Type A</Dropdown.Item>
-                                    <Dropdown.Item href="#action/2">Type B</Dropdown.Item>
-                                    <Dropdown.Item href="#action/3">Type C</Dropdown.Item>
-                                </Dropdown.Menu>
-                                </Dropdown> */}
                 </td>
-              </tr>
+              </tr> */}
 
-              <tr>
-                <td>204215A</td>
-                <td>Kamal Perera</td>
-                <td>0769442613</td>
-                <td>Galle</td>
-                <td>
-                  <select name="Package Type">
-                    <option>Choose a Type</option>
-                    <option>Type A</option>
-                    <option>Type B</option>
-                    <option>Type C</option>
-                  </select>
-                </td>
-              </tr>
+              
 
-              <tr>
-                <td>204200A</td>
-                <td>Kamal Perera</td>
-                <td>0769442613</td>
-                <td>Galle</td>
-                <td>
-                  <select name="Package Type">
-                    <option>Choose a Type</option>
-                    <option>Type A</option>
-                    <option>Type B</option>
-                    <option>Type C</option>
-                  </select>
-                </td>
-              </tr>
+              
+              
 
-              <tr>
-                <td>204145H</td>
-                <td>Kamal Perera</td>
-                <td>0769442613</td>
-                <td>Galle</td>
-                <td>
-                  <select name="Package Type">
-                    <option>Choose a Type</option>
-                    <option>Type A</option>
-                    <option>Type B</option>
-                    <option>Type C</option>
-                  </select>
-                </td>
-              </tr>
-
-              <tr>
-                <td>204216X</td>
-                <td>Kamal Perera</td>
-                <td>0769442613</td>
-                <td>Galle</td>
-                <td>
-                  <select name="Package Type">
-                    <option>Choose a Type</option>
-                    <option>Type A</option>
-                    <option>Type B</option>
-                    <option>Type C</option>
-                  </select>
-                </td>
-              </tr>
+             
             </tbody>
           </table>
         </div>

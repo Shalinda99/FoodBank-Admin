@@ -7,6 +7,7 @@ import {
   FaAddressCard,
   FaUserCheck,
   FaUserTimes,
+  FaUserCog,
 } from "react-icons/fa";
 
 import { NavLink, useLocation } from "react-router-dom";
@@ -58,7 +59,7 @@ const ANavBar = ({ children }) => {
     {
       path: "/DeliverypersonDetails",
       name: "Delivery_Person",
-      icon: <FaUserTimes />,
+      icon: <FaUserCog />,
     },
   ];
 

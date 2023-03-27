@@ -17,10 +17,53 @@ const VictimDetails = () => {
 
 
   useEffect(() => {
-    fetch("http://localhost:8080/Victim/viewVictimDetails")
+    fetch("http://localhost:8080/Victim/viewUnverifiedVictims")
       .then((response) => response.json())
       .then((jsondata) => setVictims(jsondata));
   }, []);
+
+  //putmapping
+  const handleAcceptSelect = async (id) => {
+    const response = await fetch(`http://localhost:8080/Victim/selectAccept/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        isVerified: true,
+        isAccepted: true,
+      })
+    });
+   
+  
+    if (response.ok) {
+      // handle success response
+      console.log('Victim updated successfully');
+    } else {
+      // handle error response
+      console.error('Error updating victim');
+    }
+  };
+  const handleRejectSelect = async (id) => {
+    const response = await fetch(`http://localhost:8080/Victim/selectReject/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        isVerified: true,
+        isAccepted:false,
+      })
+    });
+    if (response.ok) {
+      // handle success response
+      console.log('Victim updated successfully');
+    } else {
+      // handle error response
+      console.error('Error updating victim');
+    }
+  };
+
 
   return (
     <React.Fragment>
@@ -75,7 +118,7 @@ const VictimDetails = () => {
 
       {victims.map((victim) => (
         console.log(victim.firstName),
-        <div key={victim.nic}>
+        <div key={victim.id}>
           <div class="card bg-light text-dark">
             <div class="card-body">
               <h4>Data Supplier: D.K Perera</h4>
@@ -89,43 +132,23 @@ const VictimDetails = () => {
                 Contact: {victim.phoneNumber}
                 <br />
                 Address:{victim.no} {victim.street} {victim.city}{" "}
-                {victims.Description}
+                <br/>
+                Description:{victim.Description}
               </p>
 
               <div class="btn d-flex justify-content-end">
                 <div className="ms-2">
-                  <Button2
-                    text="Accept"
-                    textColor="dark"
-                    page="/AcceptedVictimsDetails"
-                  />
-                </div>
+                <button type="button" class="btn btn-warning" onClick={() => handleAcceptSelect(victim.id)}>Accept</button>
 
-                {/* <Button2
-                  text="Accept"
-                  textColor="dark"
-                  onClick={() => {
-                    setAcceptedVictims(acceptedVictims.concat(victims));
-                    setVictims(victims.filter((v) => v.nic !== victims.nic));
-                    axios.put('/Victim' + victims, {isverified: true})
-                      .then(response => {
-                        // handle the response from the server
-                      })
-                      .catch(error => {
-                        // handle any errors that occur
-                      });
-                    history.push("/AcceptedVictimsDetails");
-                  }}
-                  
-                />  */}
+                  {/* <Button2
+                    text="Acceptsss"
+                    textColor="dark"
+                  /> */}
+                  </div>
 
                 <div className="ms-2">
                   {" "}
-                  <Button3
-                    text="Decline"
-                    textColor="dark"
-                    page="/RejectedVictimsDetails"
-                  />
+                  <button type="button" class="btn btn-warning" onClick={() => handleRejectSelect(victim.id)}>Decline</button>
                 </div>
               </div>
             </div>
