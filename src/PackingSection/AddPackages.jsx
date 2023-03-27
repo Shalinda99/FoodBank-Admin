@@ -16,22 +16,21 @@ const AddPackages = () => {
   //use effect
   const [tableData, setTableData] = useState([]);
 
-  // useEffect(() => {
-  //   fetch("backend-url")                  // for the summary table
-  //     .then((response) => response.json())
-  //     .then((data) => setTableData(data))
-  //     .catch((error) => console.log(error));
+  useEffect(() => {
+    axios.get("http://localhost:8080/packedPackagesviewPackedPackages")            // for the summary table
+      .then((response) => setTableData(response.data))
+      .catch((error) => console.log(error));
 
-  //     fetch("https://my-backend-api.com/table-data") // for quantities
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setTableData(data);
-  //       setType1quantity(data.type1Quantity);
-  //       setType2quantity(data.type2Quantity);
-  //       setType3quantity(data.type3Quantity);
-  //     })
-  //     .catch((error) => console.error(error));
-  // }, []);
+      // fetch("http://localhost:8080/packedPackagesviewPackedPackages") // for quantities
+      // .then((response) => response.json())
+      // .then((data) => {
+      //   setTableData(data);
+      //   setType1quantity(data.type1Quantity);
+      //   setType2quantity(data.type2Quantity);
+      //   setType3quantity(data.type3Quantity);
+      // })
+      // .catch((error) => console.error(error));
+  }, []);
   
   const [error, setError] = useState({});
 
