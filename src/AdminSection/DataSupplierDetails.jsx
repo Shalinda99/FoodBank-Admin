@@ -1,8 +1,22 @@
 import React from "react";
 import "./DataSupplierDetails.css";
 import Button1 from "./Button1";
+import axios from 'axios';
+import { useState, useEffect } from "react";
+
 
 const DataSupplierDetails = () => {
+
+  const [dsupplier, setDsupplier] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:8080/DataSupplier/getDataSupplier')
+      .then((response) => setDsupplier(response.data))
+      .catch((error) => console.log(error));
+  }, []);
+
+
+
   return (
     <React.Fragment>
       <div>
@@ -50,7 +64,20 @@ const DataSupplierDetails = () => {
               </thead>
 
               <tbody>
-                <tr>
+              {dsupplier.map((details)=>(
+                  (
+              <tr key={details.id}>
+                <td> {details.id}</td>
+                <td>{details.name}</td>
+                <td>
+                    <Button1
+                      text="See Profile"
+                      textColor="dark"
+                      page="/DataSupplierProfile"
+                    />
+                  </td>
+              </tr> )    )  )}
+                {/* <tr>
                   <td>204059X</td>
                   <td>Kamal Perera</td>
                   <td>
@@ -60,55 +87,7 @@ const DataSupplierDetails = () => {
                       page="/DataSupplierProfile"
                     />
                   </td>
-                </tr>
-
-                <tr>
-                  <td>204215A</td>
-                  <td>Kamal Perera</td>
-                  <td>
-                    <Button1
-                      text="See Profile"
-                      textColor="dark"
-                      page="/DataSupplierProfile"
-                    />
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>204200A</td>
-                  <td>Kamal Perera</td>
-                  <td>
-                    <Button1
-                      text="See Profile"
-                      textColor="dark"
-                      page="/DataSupplierProfile"
-                    />
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>204145H</td>
-                  <td>Kamal Perera</td>
-                  <td>
-                    <Button1
-                      text="See Profile"
-                      textColor="dark"
-                      page="/DataSupplierProfile"
-                    />
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>204216X</td>
-                  <td>Kamal Perera</td>
-                  <td>
-                    <Button1
-                      text="See Profile"
-                      textColor="dark"
-                      page="/DataSupplierProfile"
-                    />
-                  </td>
-                </tr>
+                </tr> */}
               </tbody>
             </table>
           </div>

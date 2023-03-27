@@ -19,7 +19,7 @@ const AcceptedVictimsDetails = () =>{
   const [date, setDate] = useState(null);
   const[data,setData]=useState([]);
   useEffect(() => {
-    fetch("http://localhost:8080/DeliveryPerson/viewDeliveryPerson")
+    fetch("http://localhost:8080/packageTypes/viewPackageType")
       .then((response) => response.json())
       .then((jsondata) => setData(jsondata));
   }, []);
@@ -27,10 +27,11 @@ const AcceptedVictimsDetails = () =>{
     <select class="custom-select custom-select-lg mb-3">
     <option selected>Select </option>
     {data.map((details, index) => (
-          <option key={index} value={details.packageType}>{details.packageType}</option>
+          <option key={index} value={details.typeName}>{details.typeName}</option>
         ))}
   </select>
   );
+ 
   
 
   return (
@@ -68,6 +69,7 @@ const AcceptedVictimsDetails = () =>{
                 <th scope="col">Contact</th>
                 <th scope="col">Location</th>
                 <th scope="col">Package Type</th>
+                <th scope="col">Save</th>
               </tr>
             </thead>
 
@@ -80,6 +82,8 @@ const AcceptedVictimsDetails = () =>{
         <td>{details.phoneNumber}</td>
         <td>{details.no} {details.street} {details.city}</td>
         <td><SelectMenu/></td>
+        <button type="button" class="btn btn-warning">Accept</button>
+
       </tr> )    )  )}
 
               {/* <tr>

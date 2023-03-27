@@ -23,17 +23,38 @@ const VictimDetails = () => {
   }, []);
 
   //putmapping
-  const handleSelect = async (id) => {
-    const response = await fetch(`http://localhost:8080/Victim/select/${id}`, {
+  const handleAcceptSelect = async (id) => {
+    const response = await fetch(`http://localhost:8080/Victim/selectAccept/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         isVerified: true,
+        isAccepted: true,
       })
     });
+   
   
+    if (response.ok) {
+      // handle success response
+      console.log('Victim updated successfully');
+    } else {
+      // handle error response
+      console.error('Error updating victim');
+    }
+  };
+  const handleRejectSelect = async (id) => {
+    const response = await fetch(`http://localhost:8080/Victim/selectReject/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        isVerified: true,
+        isAccepted:false,
+      })
+    });
     if (response.ok) {
       // handle success response
       console.log('Victim updated successfully');
@@ -117,7 +138,7 @@ const VictimDetails = () => {
 
               <div class="btn d-flex justify-content-end">
                 <div className="ms-2">
-                <button type="button" class="btn btn-warning" onClick={() => handleSelect(victim.id)}>Accept</button>
+                <button type="button" class="btn btn-warning" onClick={() => handleAcceptSelect(victim.id)}>Accept</button>
 
                   {/* <Button2
                     text="Acceptsss"
@@ -127,7 +148,7 @@ const VictimDetails = () => {
 
                 <div className="ms-2">
                   {" "}
-                  <button type="button" class="btn btn-warning" onClick={() => handleSelect(victim.id)}>Decline</button>
+                  <button type="button" class="btn btn-warning" onClick={() => handleRejectSelect(victim.id)}>Decline</button>
                 </div>
               </div>
             </div>

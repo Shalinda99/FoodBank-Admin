@@ -1,29 +1,34 @@
 import React from "react";
 import { AiFillDelete } from "react-icons/ai";
 import Button1 from "./Button1";
+import axios from 'axios';
+import { useState, useEffect } from "react";
+
 
 const DataSupplierProfile = () => {
+
+  const [dsupplier, setDsupplier] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:8080/DataSupplier/getDataSupplier')
+      .then((response) => setDsupplier(response.data))
+      .catch((error) => console.log(error));
+  }, []);
+
+
+
   return (
     <React.Fragment>
       <div>
+      {dsupplier.map((details) => (
+        <div key={details.id}>
         <div class="card bg-light text-dark">
           <div class="card-body">
-            <h5>Name:Tharushni Gamage</h5>
-            <h5>User_ID: 06537564</h5>
-            <h5>Telephone No: 011-3554789</h5>
-            <h5>Email:tharushnigamage@gmail.com</h5>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
-            </p>
+            <h5>Name:{details.name}</h5>
+            <h5>User_ID:{details.id}</h5>
+            <h5>Telephone:{details.phoneNumber}</h5>
+            <h5>Email:{details.email}</h5>
+            <p>Decription:{details.description}</p>
             <div>
               <h5>Point Rate</h5>
 
@@ -48,6 +53,8 @@ const DataSupplierProfile = () => {
             </div>
           </div>
         </div>
+        </div>
+      ))}
       </div>
     </React.Fragment>
   );
