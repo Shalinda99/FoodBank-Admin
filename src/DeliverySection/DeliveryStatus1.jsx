@@ -45,7 +45,7 @@ const DeliveryStatus1 = () => {
         <th scope="col">Name</th>
         <th scope="col">Contact</th>
         <th scope="col">Address</th>
-        <th scope="col">Select For Delivery</th>
+        <th scope="col">Delivery Status</th>
       </tr>
       </thead>
 

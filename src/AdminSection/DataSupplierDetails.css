@@ -5,3 +5,11 @@
     
 }
 
+@media screen and (max-width: 991px) {
+
+    .cardcontainer{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+  }
