@@ -16,8 +16,8 @@ function App() {
           <Route path="/" element={<AdminLogin />} />
         </Routes>
 
-        {/* <PRoutes />
-        <DRoutes /> */}
+        <PRoutes />
+        <DRoutes />
         <ARoutes />
 
         {/* <Route path='/deliverySection' element={<DeliveryHome/>}/> */}
