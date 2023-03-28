@@ -79,7 +79,7 @@ const PackageIsues = () => {
         const issuingData = [issuingData1, issuingData2, issuingData3];
         for (const data of issuingData) {
           const response = await axios.post(
-            "http://localhost:8080/packedPackages/saveCount",
+            "http://localhost:8080/issuedPackages/saveICount",
             data
           );
           console.log(response.data);

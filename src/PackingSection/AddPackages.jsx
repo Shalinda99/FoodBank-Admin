@@ -17,19 +17,28 @@ const AddPackages = () => {
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/packedPackagesviewPackedPackages")            // for the summary table
+    axios.get("http://localhost:8080/packedPackages/viewPackedPackages")            // for the summary table
       .then((response) => setTableData(response.data))
       .catch((error) => console.log(error));
 
-      // fetch("http://localhost:8080/packedPackagesviewPackedPackages") // for quantities
+      // fetch("http://localhost:8080/packageTypes")
       // .then((response) => response.json())
       // .then((data) => {
       //   setTableData(data);
-      //   setType1quantity(data.type1Quantity);
-      //   setType2quantity(data.type2Quantity);
-      //   setType3quantity(data.type3Quantity);
+      //   setType1quantity(data.find(pt => pt.typeID === 101)?.quantity || 0);
+      //   setType2quantity(data.find(pt => pt.typeID === 102)?.quantity || 0);
+      //   setType3quantity(data.find(pt => pt.typeID === 103)?.quantity || 0);
       // })
       // .catch((error) => console.error(error));
+
+      fetch(`http://localhost:8080/packageTypes/${101}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setType1quantity(data);
+      })
+      .catch((error) => console.error(error));
+
+    
   }, []);
   
   const [error, setError] = useState({});
@@ -287,39 +296,54 @@ if (Object.keys(errors).length === 0) {
           </thead>
           <tbody>
             <tr>
-              <th scope="row" className="align-middle;" rowSpan={3}>
+              <th scope="row" className="align-middle;">
                 1
               </th>
-              <td>Type A</td>
+              <td>Type 1</td>
               <td>12</td>
-              <td rowSpan={3} className="align-middle;">
+              <td className="align-middle;">
                 2023-03-12
               </td>
             </tr>
             <tr>
-              <td>Type B</td>
+            <th scope="row" className="align-middle;">
+                2
+              </th>
+              <td>Type 2</td>
               <td>13</td>
+              <td className="align-middle;">
+                2023-03-12
+              </td>
             </tr>
             <tr>
-              <td>Type C</td>
+            <th scope="row" className="align-middle;">
+                3
+              </th>
+              <td>Type 3</td>
               <td>32</td>
+              <td className="align-middle;">
+                2023-03-12
+              </td>
             </tr>
 
             {tableData.map((rowData, index) => (
           <><tr key={index}>
-                    <th scope="row" className="align-middle" rowSpan={3}>
-                        {rowData.id}
+                    <th scope="row" className="align-middle" >
+                        {rowData.packedID}
                     </th>
-                    <td>{rowData.packageTypeA}</td>
-                    <td>{rowData.quantityA}</td>
-                    <td className="align-middle">{rowData.dateAdded}</td>
-                </tr><tr>
-                        <td>{rowData.packageTypeB}</td>
-                        <td>{rowData.quantityB}</td>
-                    </tr><tr>
-                        <td>{rowData.packageTypeC}</td>
-                        <td>{rowData.quantityC}</td>
-                    </tr></>
+                    <td>{rowData.packageTypeName}</td>
+                    <td>{rowData.packedQuantity}</td>
+                    <td className="align-middle">{rowData.packedDate}</td>
+                </tr>
+                {/* <tr>
+                        <td>{rowData.packageTypeNam}</td>
+                        <td>{rowData.packedQuantit}</td>
+                    </tr>
+                    <tr>
+                        <td>{rowData.packageTypeNam}</td>
+                        <td>{rowData.packedQuantit}</td>
+                    </tr> */}
+                    </>
         ))}
           </tbody>
         </table>
