@@ -8,16 +8,19 @@ const PackageIsues = () => {
   const [type3Quantity, setType3Quantity] = useState(25);
 
   useEffect(() => {
-    axios
-      .get("/api/data")
-      .then((response) => {
-        setType1Quantity(response.data.type1Quantity);
-        setType2Quantity(response.data.type2Quantity);
-        setType3Quantity(response.data.type3Quantity);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    // axios
+    //   .get("/api/data")
+    //   .then((response) => {
+    //     setType1Quantity(response.data.type1Quantity);
+    //     setType2Quantity(response.data.type2Quantity);
+    //     setType3Quantity(response.data.type3Quantity);
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+    axios.get("http://localhost:8080/packedPackages/viewPackedPackages")            // for the summary table
+    .then((response) => setTableData(response.data))
+    .catch((error) => console.log(error));
   }, []);
   // [] indicates  it should only run once, when the component is first mounted
 
@@ -286,42 +289,49 @@ const PackageIsues = () => {
           </thead>
           <tbody>
             <tr>
-              <th scope="row" className="align-middle;" rowSpan={3}>
+              <th scope="row" className="align-middle;">
                 1
               </th>
               <td>Type A</td>
               <td>12</td>
-              <td rowSpan={3} className="align-middle;">
+              <td className="align-middle;">
                 2023-03-12
               </td>
             </tr>
             <tr>
               <td>Type B</td>
               <td>13</td>
+              <td className="align-middle;">
+                2023-03-12
+              </td>
             </tr>
             <tr>
               <td>Type C</td>
               <td>32</td>
-            </tr>
-
-            <tr>
-              <th scope="row" className="align-middle;" rowSpan={3}>
-                2
-              </th>
-              <td>Type A</td>
-              <td>12</td>
-              <td rowSpan={3} className="align-middle;">
-                2023-03-14
+              <td className="align-middle;">
+                2023-03-12
               </td>
             </tr>
-            <tr>
-              <td>Type B</td>
-              <td>20</td>
-            </tr>
-            <tr>
-              <td>Type C</td>
-              <td>23</td>
-            </tr>
+
+            {tableData.map((rowData, index) => (
+          <><tr key={index}>
+                    <th scope="row" className="align-middle" >
+                        {rowData.issuedID}
+                    </th>
+                    <td>{rowData.packageTypeName}</td>
+                    <td>{rowData.issuedQuantity}</td>
+                    <td className="align-middle">{rowData.issuedDate}</td>
+                </tr>
+                {/* <tr>
+                        <td>{rowData.packageTypeNam}</td>
+                        <td>{rowData.packedQuantit}</td>
+                    </tr>
+                    <tr>
+                        <td>{rowData.packageTypeNam}</td>
+                        <td>{rowData.packedQuantit}</td>
+                    </tr> */}
+                    </>
+        ))}
           </tbody>
         </table>
       </div>
