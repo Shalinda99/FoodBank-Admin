@@ -19,7 +19,7 @@ const PackageIsues = () => {
     //   .catch((error) => {
     //     console.error(error);
     //   });
-    axios.get("http://localhost:8080/packedPackages/viewPackedPackages")            // for the summary table
+    axios.get("http://localhost:8080/issuedPackages/viewIssuedPackages")            // for the summary table
     .then((response) => setTableData(response.data))
     .catch((error) => console.log(error));
   }, []);
