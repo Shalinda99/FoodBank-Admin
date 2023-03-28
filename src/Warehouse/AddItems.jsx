@@ -4,6 +4,8 @@ import axios from "axios";
 const AddItems = () => {
   const [values, setValues] = useState([]);
   const [itemData, setItemData] = useState([]);
+  const [inputValues, setInputValues] = useState([]);
+
   // useEffect(() => {
   //   const fetchData = async () => {
   //     const response = await fetch(
@@ -33,62 +35,88 @@ const AddItems = () => {
       });
   }, []);
 
-  const handleInputChange = (index, event) => {
-    const newValues = [...values];
-    newValues[index] = event.target.value;
-    setValues(newValues);
+  const handleInputChange = (event, index) => {
+    const { value } = event.target;
+    const newInputValues = [...inputValues];
+    newInputValues[index] = value;
+    setInputValues(newInputValues);
+  };
+  
+  const handleSaveButtonClick = () => {
+    const itemsWithInputValues = itemData.map((item, index) => ({
+      ...item,
+      inputValue: inputValues[index]
+    }));
+    
+    console.log(itemsWithInputValues)
+    // fetch("http://localhost:8080/ItemDetails/saveIssued", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ itemsWithInputValues }),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => console.log(data))
+    //   .catch((error) => console.error(error));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Here is where you would send the values to the backend using the Fetch API
-    fetch("https://my-backend.com/my-endpoint", {
-      method: "POST",
-      body: JSON.stringify(values),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        // Handle the response from the backend here
-      })
-      .catch((error) => {
-        console.error("There was a problem with the fetch operation:", error);
-      });
-  };
+
+  
 
   return (
     <React.Fragment>
       <h1>Add Items</h1>
       <div className=" d-flex justify-content-center ">
-        <div className="w-75">
-          <table class="table table-striped m-2 table-secondary">
+        <div className="d-flex w-50" >
+          <table class="table table-striped  table-secondary">
             <thead>
               <tr>
                 <th scope="col">Item Id</th>
                 <th scope="col">Item name</th>
-                <th scope="col">Add Amount</th>
+                {/* <th scope="col">Add Amount</th> */}
               </tr>
             </thead>
             <tbody>
-              {/* <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td> */}
               {itemData.map((details) => (
                 <tr key={details.id}>
                   <td> {details.id}</td>
                   <td>{details.name}</td>
-                  <td>
+                  {/* <td>
                     <input
                       type="number"
                       value={values[details.id]}
                       onChange={(event) => handleInputChange(details.id, event)}
                     />
+                    
+                  </td> */}
+                </tr>
+                
+              ))}
+                </tbody>
+          </table>
+
+              <table class="table table-striped mt-3 table-secondary">
+                  <thead>
+                  <th scope="col " className="bg-light"> Quantity</th>
+                  </thead>
+                  <tbody>
+                  {Array.from({ length: itemData.length }, (_, index) => (
+                <tr>
+                  <td>
+                  <input
+    type="number"
+    value={inputValues[index] || ""}
+    onChange={(event) => handleInputChange(event, index)}
+  />
                   </td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+ 
+))}
+                    
+                  </tbody>
+                </table>
+              
+
+          
         </div>
       </div>
       <div className="position-fixed bottom-1 end-0 p-3"></div>
@@ -100,7 +128,7 @@ const AddItems = () => {
         <button
           className="btn btn-primary"
           style={{ width: "150px" }}
-          onClick={handleSubmit}
+          onClick={handleSaveButtonClick}
         >
           Save
         </button>

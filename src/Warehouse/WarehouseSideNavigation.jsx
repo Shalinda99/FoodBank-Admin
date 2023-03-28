@@ -1,21 +1,16 @@
 import React, { useState } from "react";
 
-import { FaBars,} from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
-import {
-    BsBagPlusFill
-  } from "react-icons/bs";
-  import {
-    RiFileList3Fill
-  } from "react-icons/ri";
-  import {
-    BsBoxArrowRight
-  } from "react-icons/bs";
+import { BsBagPlusFill } from "react-icons/bs";
+import { RiFileList3Fill } from "react-icons/ri";
+import { BsBoxArrowRight } from "react-icons/bs";
 import AddItems from "./AddItems";
 import ItemDetails from "./ItemDetails";
 import IssueItems from "./Issueitems";
+
 const WNavBar = ({}) => {
-  const location1 = useLocation();
+  const location1 = useLocation(); // conditionally render content based on the current route
   const currentRoute = location1.pathname;
 
   const [isOpen, setIsOpen] = useState(false); //for the toggle in nav bar
@@ -29,14 +24,13 @@ const WNavBar = ({}) => {
     {
       path: "/ItemDetails",
       name: "ItemDetails",
-      icon: <RiFileList3Fill/>,
+      icon: <RiFileList3Fill />,
     },
     {
       path: "/IssueItems",
       name: "IssueItems",
       icon: <BsBoxArrowRight />,
     },
-   
   ];
 
   return (
@@ -80,7 +74,6 @@ const WNavBar = ({}) => {
           </div>
         </div>
         <div className="d-flex w-100">
-          {/* <div className={`main-content ${isOpen ? 'expanded' : 'collapsed'}`}> */}
           <div
             style={{ paddingLeft: isOpen ? "250px" : "50px" }}
             className="main-content d-flex flex-column w-100 me-4 "
@@ -92,7 +85,7 @@ const WNavBar = ({}) => {
               {/* conditional render */}
               {currentRoute === "/AddItems" && <AddItems />}
               {currentRoute === "/ItemDetails" && <ItemDetails />}
-              {currentRoute === "/IssueItems" && <IssueItems/>}
+              {currentRoute === "/IssueItems" && <IssueItems />}
             </div>
           </div>
         </div>
