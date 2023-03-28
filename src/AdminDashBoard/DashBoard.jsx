@@ -19,6 +19,7 @@ import {
 } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import PieComponent from "./PieChart";
+import PieChart2 from "./pieChart2";
 
 const Dashboard = () => {
   const [currentMoney, setCurrentMoney] = useState(0);
@@ -26,7 +27,18 @@ const Dashboard = () => {
   const [pendingVictimDetails, setPendingVictimDetails] = useState(0); //Need pie Chart
   const [currentStockPackage, setCurrentStockPackage] = useState(0); //each type graph
   const [deliveryInformation, setDeliveryInformation] = useState(0); //each type graph card and pie chart
-
+  useEffect(() => {
+    fetch('http://localhost:8080/MoneyDonate/sum')
+      .then(response => response.json())
+      .then(data => setCurrentMoney(data))
+      .catch(error => console.error(error));
+  }, []);
+  useEffect(() => {
+    fetch('http://localhost:8080/Victim/verified-count')
+      .then(response => response.json())
+      .then(data => setVerifiedVictimDetails(data))
+      .catch(error => console.error(error));
+  }, []);
   return (
     <React.Fragment>
       <Space size={20} direction="vertical">
@@ -109,8 +121,15 @@ const Dashboard = () => {
           />
         </Space>
       </Space>
-      <div className="d-flex center">
+      <div className="d-flex justify-content-around w-75">
+        <div className="d-flex justify-content-center	">
         <PieComponent />
+        </div>
+        <div className="d-flex justify-content-center	">
+        <PieChart2 />
+        </div>
+      
+        
       </div>
     </React.Fragment>
   );

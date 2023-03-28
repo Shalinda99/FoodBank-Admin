@@ -2,11 +2,11 @@ import React from 'react';
 import { PieChart } from "react-minimal-pie-chart";
 
 let data = [
-    { title: "Pending", value: 1, color: "#FFC074" },
+    { title: "pending", value: 2, color: "#FFC074" },
     { title: "Verified", value: 2, color: "#A2D2FF" },
-    { title: "Rejected", value: 3, color: "#FF9292" },
+    { title: "Rejected", value: 5, color: "#FF9292" },
   ];
-const PieComponent = () => {
+const PieChart2 = () => {
     return ( 
         <React.Fragment>
             <div>
@@ -32,10 +32,10 @@ const PieComponent = () => {
           label={(data) => data.dataEntry.title}
           labelPosition={70}
         />
-        <div className='d-f'><h3>Victim Information</h3></div>
+        <div className='d-f'><h3>Delivery Information</h3></div>
       </div>
             </React.Fragment>
      );
 }
  
-export default PieComponent;
+export default PieChart2;
