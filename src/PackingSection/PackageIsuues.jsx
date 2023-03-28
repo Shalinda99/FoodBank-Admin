@@ -7,6 +7,7 @@ const PackageIsues = () => {
   const [type2Quantity, setType2Quantity] = useState(9);
   const [type3Quantity, setType3Quantity] = useState(25);
 
+  const [tableData, setTableData] = useState([]);
   useEffect(() => {
     // axios
     //   .get("/api/data")
@@ -292,21 +293,27 @@ const PackageIsues = () => {
               <th scope="row" className="align-middle;">
                 1
               </th>
-              <td>Type A</td>
+              <td>Type 1</td>
               <td>12</td>
               <td className="align-middle;">
                 2023-03-12
               </td>
             </tr>
             <tr>
-              <td>Type B</td>
+            <th scope="row" className="align-middle;">
+                2
+              </th>
+              <td>Type 2</td>
               <td>13</td>
               <td className="align-middle;">
                 2023-03-12
               </td>
             </tr>
             <tr>
-              <td>Type C</td>
+            <th scope="row" className="align-middle;">
+                3
+              </th>
+              <td>Type 3</td>
               <td>32</td>
               <td className="align-middle;">
                 2023-03-12
