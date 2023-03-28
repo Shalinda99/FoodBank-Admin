@@ -1,6 +1,6 @@
 import React from 'react';
-import Dashboard from '../AdminDashBoard/Dashboard';
-import Approutes from '../AdminDashBoard/DashBoardRoutes';
+import Dashboard from '../AdminDashBoard/DashBoard';
+// import Approutes from '../AdminDashBoard/DashBoardRoutes';
 
 const AdminHome = () => {
   return (
