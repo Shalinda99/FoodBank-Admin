@@ -39,6 +39,18 @@ const Dashboard = () => {
       .then(data => setVerifiedVictimDetails(data))
       .catch(error => console.error(error));
   }, []);
+  // useEffect(() => {
+  //   fetch('http://localhost:8080/Victim/unverified-count')
+  //     .then(response => response.json())
+  //     .then(data => setVerifiedVictimDetails(data))
+  //     .catch(error => console.error(error));
+  // }, []);
+  // useEffect(() => {
+  //   fetch('http://localhost:8080/Victim/verified-count')
+  //     .then(response => response.json())
+  //     .then(data => setPendingVictimDetails(data))
+  //     .catch(error => console.error(error));
+  // }, []);
   return (
     <React.Fragment>
       <Space size={20} direction="vertical">
