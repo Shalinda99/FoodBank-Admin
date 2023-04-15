@@ -7,6 +7,8 @@ const PackageIsues = () => {
   const [type2Quantity, setType2Quantity] = useState(9);
   const [type3Quantity, setType3Quantity] = useState(25);
 
+  const [tableData, setTableData] = useState([]);
+
   useEffect(() => {
     // axios
     //   .get("/api/data")

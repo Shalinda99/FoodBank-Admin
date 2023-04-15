@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from "react";
 import "./Packing.css";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddPackages = () => {
   const [type1Quantity, setType1quantity] = useState(0);
@@ -48,11 +50,7 @@ const AddPackages = () => {
     const errors = validateInputs();
 
           //  event.target.reset();
-          // Update state
-          setType1quantity(type1Quantity + type1AddQuantity);
-          setType2quantity(type2Quantity + type2AddQuantity);
-          setType3quantity(type3Quantity + type3AddQuantity);
- 
+
 
 if (Object.keys(errors).length === 0) {
 
@@ -113,8 +111,15 @@ if (Object.keys(errors).length === 0) {
     for (const data of packingData) {
       const response = await axios.post("http://localhost:8080/packedPackages/saveCount", data);
       console.log(response.data);
+      toast.success("Submitted successfully!");
+                // Update state
+                setType1quantity(type1Quantity + type1AddQuantity);
+                setType2quantity(type2Quantity + type2AddQuantity);
+                setType3quantity(type3Quantity + type3AddQuantity);
+       
     }
   } catch (error) {
+    toast.warning("An error occurred while submitting. Please try again later.");
     console.error(error);
   }
   
@@ -130,7 +135,7 @@ if (Object.keys(errors).length === 0) {
       setPackedDate("");
 
       setError("");
-      console.log("Form submitted successfully!");
+     // console.log("Form submitted successfully!");
     } else {
       setError(errors);
     }
@@ -166,6 +171,18 @@ if (Object.keys(errors).length === 0) {
 
   return (
     <React.Fragment>
+          <ToastContainer
+              position="bottom-right"
+              autoClose={5000}
+              hideProgressBar={true}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+/>
       <h2>Add packages</h2>
       <p>Enter details about packed items</p>
 
