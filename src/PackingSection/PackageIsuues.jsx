@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Packing.css";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const PackageIsues = () => {
   const [type1Quantity, setType1Quantity] = useState(34);
@@ -88,14 +90,17 @@ const PackageIsues = () => {
             data
           );
           console.log(response.data);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-      //set requisition
+          toast.success("Submitted successfully!");
+                //set requisition
       setType1Requantity(type1ReQuantity - parseInt(type1IssueQuantity));
       setType2Requantity(type2ReQuantity - parseInt(type2IssueQuantity));
       setType3Requantity(type3ReQuantity - parseInt(type3IssueQuantity));
+        }
+      } catch (error) {
+        toast.warning("An error occurred while submitting. Please try again later.");
+        console.error(error);
+      }
+
 
       //  event.target.reset();
       // Update state of total quantity
@@ -110,7 +115,7 @@ const PackageIsues = () => {
       setIssueDate("");
 
       setError("");
-      console.log("Form submitted successfully!");
+      //console.log("Form submitted successfully!");
     } else {
       setError(errors);
     }
@@ -158,6 +163,18 @@ const PackageIsues = () => {
 
   return (
     <React.Fragment>
+                <ToastContainer
+              position="bottom-right"
+              autoClose={5000}
+              hideProgressBar={true}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+/>
       <h2>Issue packages</h2>
       <p>Enter details about issued packages</p>
 
