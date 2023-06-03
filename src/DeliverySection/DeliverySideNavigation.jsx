@@ -16,6 +16,8 @@ import PackageRequsition1 from './PackageRequsition1';
 import PackageRequsition2 from './PackageRequsition2';
 import DeliveryStatus1 from './DeliveryStatus1';
 import DeliveryStatus2 from './DeliveryStatus2';
+import CollectDonations from './collectDonations';
+import {AiOutlineAppstoreAdd}from "react-icons/ai";
 
 const PNavBar = ({children}) => {
 
@@ -45,6 +47,11 @@ const PNavBar = ({children}) => {
             path:"/DeliveryStatus1",
             name:"Delivery Status",
             icon:<BsGraphUp/>
+        },
+        {
+            path:"/collectDonations",
+            name:"Collect Donations",
+            icon:<AiOutlineAppstoreAdd/>
         }
       
     ]
@@ -90,6 +97,7 @@ const PNavBar = ({children}) => {
                 {currentRoute === '/PackageRequsition2' && <PackageRequsition2/>} 
                 {currentRoute === '/DeliveryStatus1' && <DeliveryStatus1/>} 
                 {currentRoute === '/DeliveryStatus2' && <DeliveryStatus2/>} 
+                {currentRoute==='/collectDonations' && <CollectDonations/>}
             </div>
         </div>
         </div>    
