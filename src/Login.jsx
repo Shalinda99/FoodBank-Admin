@@ -43,7 +43,7 @@ const AdminLogin = () => {
                 
                 
                 <form className='needs-validation '>
-                {/* <div className='form-group was-validated mb-2'>
+                 <div className='form-group was-validated mb-2'>
                     <label htmlFor='username' className='form-label'>User name</label> 
                     <input type="text" className='form-control'  placeholder='User name' required></input>
 
@@ -58,7 +58,7 @@ const AdminLogin = () => {
                     <div className='invalid-feedback'>
                         Please enter your password
                     </div>
-                </div> */}
+                </div> 
                 <label for="admin-role">Choose a Role:</label>
 
                

@@ -14,6 +14,7 @@ import DataSupplierDetails from './DataSupplierDetails';
 import VictimDetails from './VictimDetails';
 import AcceptedVictimsDetails from './AcceptedVictimsDetails';
 import RejectedVictimsDetails from './RejectedVictimsDetails';
+import UserCreation from './userCreation';
 
 
 const ANavBar = ({children}) => {
@@ -40,6 +41,12 @@ const ANavBar = ({children}) => {
             name:"Victim Details",
             icon:<FaAddressCard/>
         },
+        {
+            path:'/userCreation',
+            name:"Create Users",
+            icon:<FaAddressCard/>
+        },
+   
    
       
     ]
@@ -81,6 +88,7 @@ const ANavBar = ({children}) => {
                 {currentRoute === '/VictimDetails' && <VictimDetails/>} 
                 {currentRoute === '/AcceptedVictimsDetails' && <AcceptedVictimsDetails/>} 
                 {currentRoute === '/RejectedVictimsDetails' && <RejectedVictimsDetails/>} 
+                {currentRoute === '/userCreation' && <UserCreation/>} 
                 
              </div>
              </div>
