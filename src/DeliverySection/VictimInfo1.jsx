@@ -1,30 +1,46 @@
-import React from 'react'
-//import Button from './Button';
+import React from 'react';
 import { useState,useEffect } from 'react';
 
 
 
 const VictimInfo1 = () => {
   const [data, setData] = useState([]);
-
-
-
-
-
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://localhost:8080/Victim/viewAllVerifiedVictims'); // replace this with the actual API endpoint
+      const response = await fetch('http://localhost:8080/Victim/viewAllVerifiedVictims'); 
       const jsonData = await response.json();
       setData(jsonData);
     };
 
     fetchData();
   }, []);
+  //putmapping
+  const handleSelect = async (id) => {
+    const response = await fetch(`http://localhost:8080/Victim/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        isDeliverySelected: true
+      })
+    });
+  
+    if (response.ok) {
+      // handle success response
+      console.log('Victim updated successfully');
+    } else {
+      // handle error response
+      console.error('Error updating victim');
+    }
+  };
+  
+
   return (
     <React.Fragment>
     
     <div className="d-flex align-items-center justify-content-center">
-      <div style={{ fontSize: '30px', fontWeight: 'bold' }}>Victim Details</div>
+      <div style={{ fontSize: '30px', fontWeight: 'bold' }}>Verified Victim Details</div>
     </div>
   <table className="table table-striped mt-3 " >
       <thead>
@@ -45,14 +61,9 @@ const VictimInfo1 = () => {
         <td>{details.firstName} {details.lastName}</td>
         <td>{details.phoneNumber}</td>
         <td>{details.no} {details.street} {details.city}</td>
-        <td><button type="button" class="btn btn-warning">Select</button>
+        <td><button type="button" class="btn btn-warning" onClick={() => handleSelect(details.id)}>Select</button>
       </td>
-      </tr>
-
-          )
-        )
-
-        )}
+      </tr> )    )  )}
 {/* 
       <tr>
         <td> {nic}</td>
@@ -79,5 +90,6 @@ const VictimInfo1 = () => {
     </React.Fragment>
   );
 };
+
 
 export default VictimInfo1;

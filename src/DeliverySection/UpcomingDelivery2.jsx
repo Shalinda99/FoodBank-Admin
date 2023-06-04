@@ -1,24 +1,42 @@
-import React, { useState } from "react";
-import { DatePicker } from "antd";
-import Button1 from './Button'
+import React, { useState,useEffect } from "react";
 
 
+const UpcomingDelivery2 = () => {
+  const [vdata, setVData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('http://localhost:8080/Victim/viewToDelivery'); // replace this with the actual API endpoint
+      const jsonData = await response.json();
+      setVData(jsonData);
+    };
 
+    fetchData();
+  }, []);
+  const [date, setDate] = useState(null);
+  const[data,setData]=useState([]);
+  useEffect(() => {
+    fetch("http://localhost:8080/DeliveryPerson/viewDeliveryPerson")
+      .then((response) => response.json())
+      .then((jsondata) => setData(jsondata));
+  }, []);
   const SelectMenu = () => (
     <select class="custom-select custom-select-lg mb-3">
     <option selected>Select </option>
-    <option value="1">Person 1</option>
-    <option value="2">Person 2</option>
-    <option value="3">Person 3</option>
+    {data.map((item, index) => (
+          <option key={index} value={item.deliveryPersonName}>{item.deliveryPersonName}</option>
+        ))}
   </select>
   );
+  
 
-const UpcomingDelivery2 = () => {
-  const [date, setDate] = useState(null);
 
-  const handleChange = (selectedDate) => {
-    setDate(selectedDate);
-  };
+
+
+
+  // const handleChange = (selectedDate) => {
+  //   setDate(selectedDate);
+  // };
+
 
  
   return (
@@ -51,28 +69,24 @@ const UpcomingDelivery2 = () => {
       </thead>
 
       <tbody>
-
-      <tr>
-        <td> 199556500987</td>
-        <td>Kamal Perera</td>
-        <td>072367542</td>
-        <td>79, School Lane, Galle</td>
+      {vdata.map((details)=>(
+          (
+      <tr key={details.id}>
+        <td> {details.nic}</td>
+        <td>{details.firstName} {details.lastName}</td>
+        <td>{details.phoneNumber}</td>
+        <td>{details.no} {details.street} {details.city}</td>
         <td><SelectMenu/></td>
-        <td> <DatePicker onChange={handleChange} /></td>
-      </tr>
+        {/* <td> <DatePicker onChange={handleChange} /></td> */}
+        <td><input type="date" className="form-control"/></td>
+      </tr> )    )  )}
     
      </tbody>
      </table>
-
-   
-    
-    
-
-
   
-     <div class="d-flex justify-content-end align-items-end mb-3">
+     {/* <div class="d-flex justify-content-end align-items-end mb-3">
     <Button1 style="margin-bottom: 100px;" variant="secondary" bg="grey" text="Select For Delivery" textColor="dark" page="/PackageRequsition1" />
-  </div>
+  </div> */}
 
 
 </React.Fragment>
