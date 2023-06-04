@@ -11,20 +11,20 @@ const CollectionSummary = () => {
        <table class="table table-striped mt-3">
       <thead>
       <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Location</th>
-        <th scope="col">Date</th>
+      <th scope="col">ID</th>
         <th scope="col">Address</th>
+        <th scope="col">Date</th>
+        <th scope="col">Location</th>
       </tr>
       </thead>
 
       <tbody>
 
       <tr>
-        <td> 199556500987</td>
-        <td>Kamal Perera</td>
-        <td>072367542</td>
+      <td> 199</td>
         <td>79, School Lane, Galle</td>
+        <td>2023.06.13</td>
+        <td>Galle</td>
       </tr>
     
      </tbody>
