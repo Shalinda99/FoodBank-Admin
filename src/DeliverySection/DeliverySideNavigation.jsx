@@ -14,6 +14,8 @@ import PackageRequsition1 from './PackageRequsition1';
 import PackageRequsition2 from './PackageRequsition2';
 import DeliveryStatus1 from './DeliveryStatus1';
 import DeliveryStatus2 from './DeliveryStatus2';
+import FoodDonation from './foodDonations';
+import CollectionSummary from './collectionSummary';
 
 const PNavBar = ({children}) => {
 
@@ -43,6 +45,16 @@ const PNavBar = ({children}) => {
             path:"/DeliveryStatus1",
             name:"Delivery Status",
             icon:<BsGraphUp/>
+        },
+        {
+            path:"/foodDonations",
+            name:"Food Donations",
+            icon:<FaPalfed/>
+        },
+        {
+            path:"/collectionSummary",
+            name:"Collection Summary",
+            icon:<FaPalfed/>
         }
       
     ]
@@ -86,6 +98,8 @@ const PNavBar = ({children}) => {
                 {currentRoute === '/PackageRequsition2' && <PackageRequsition2/>} 
                 {currentRoute === '/DeliveryStatus1' && <DeliveryStatus1/>} 
                 {currentRoute === '/DeliveryStatus2' && <DeliveryStatus2/>} 
+                {currentRoute === '/foodDonations' && <FoodDonation/>} 
+                {currentRoute === '/collectionSummary' && <CollectionSummary/>} 
             </div>
         </div>
         </div>    
