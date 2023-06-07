@@ -60,7 +60,7 @@ const RejectedVictimsDetails = () => {
                 <th scope="col">NIC</th>
                 <th scope="col">Name</th>
                 <th scope="col">Contact</th>
-                <th scope="col">Location</th>
+                <th scope="col">Address</th>
               </tr>
             </thead>
 

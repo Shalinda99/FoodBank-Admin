@@ -67,7 +67,7 @@ const AcceptedVictimsDetails = () =>{
                 <th scope="col">NIC</th>
                 <th scope="col">Name</th>
                 <th scope="col">Contact</th>
-                <th scope="col">Location</th>
+                <th scope="col">Address</th>
                 <th scope="col">Package Type</th>
                 <th scope="col">Save</th>
               </tr>
@@ -82,7 +82,7 @@ const AcceptedVictimsDetails = () =>{
         <td>{details.phoneNumber}</td>
         <td>{details.no} {details.street} {details.city}</td>
         <td><SelectMenu/></td>
-        <button type="button" class="btn btn-warning">Accept</button>
+        <button type="button" class="btn btn-primary">Save</button>
 
       </tr> )    )  )}
 
