@@ -24,7 +24,7 @@ const UserCreation = () => {
             password: data.password,
             userRole: data.selectRole};
             console.log(transformedData);
-            axios.post('http://localhost:8080/createUser/UserDetails', transformedData)
+            axios.post('http://localhost:8080/createUser/saveAdminUser', transformedData)
               .then(response => {
                 console.log(response.data);
                 message.success('User created successfully!');
