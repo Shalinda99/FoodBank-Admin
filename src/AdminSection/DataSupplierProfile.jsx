@@ -10,7 +10,7 @@ const DataSupplierProfile = () => {
   const [dsupplier, setDsupplier] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/DataSupplier/getDataSupplier')
+    axios.get('http://localhost:8080/RegisteredUser/getDataSupplier')
       .then((response) => setDsupplier(response.data))
       .catch((error) => console.log(error));
   }, []);
@@ -24,11 +24,10 @@ const DataSupplierProfile = () => {
         <div key={details.id}>
         <div class="card bg-light text-dark">
           <div class="card-body">
-            <h5>Name:{details.name}</h5>
+            <h5>Name:{details.firstName}&nbsp;{details.lastName}</h5>
             <h5>User_ID:{details.id}</h5>
-            <h5>Telephone:{details.phoneNumber}</h5>
+            <h5>Telephone:{details.contactNumber}</h5>
             <h5>Email:{details.email}</h5>
-            <p>Decription:{details.description}</p>
             <div>
               <h5>Point Rate</h5>
 

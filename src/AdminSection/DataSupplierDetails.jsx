@@ -10,7 +10,7 @@ const DataSupplierDetails = () => {
   const [dsupplier, setDsupplier] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/DataSupplier/getDataSupplier')
+    axios.get('http://localhost:8080/RegisteredUser/getDataSupplier')
       .then((response) => setDsupplier(response.data))
       .catch((error) => console.log(error));
   }, []);
@@ -68,7 +68,7 @@ const DataSupplierDetails = () => {
                   (
               <tr key={details.id}>
                 <td> {details.id}</td>
-                <td>{details.name}</td>
+                <td>{details.firstName} &nbsp; {details.lastName}</td>
                 <td>
                     <Button1
                       text="See Profile"
