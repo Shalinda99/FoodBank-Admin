@@ -16,3 +16,14 @@ code {
   color: #FF0000;
   font-style: italic;
 }
+.dashboard-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.chart-container {
+  display: flex;
+  justify-content: space-between;
+}
+
