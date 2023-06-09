@@ -10,14 +10,6 @@ const Button1 = (props) => {
 
   return (
     <div>
-      {/* <Button
-        variant="secondary"
-        className="my-2"
-        onClick={() => gotoNext()}
-        style={{ width: "200px", height: "35px" }}
-      >
-        {props.text}
-      </Button> */}
       <button
         type="button"
         class="btn btn-secondary"

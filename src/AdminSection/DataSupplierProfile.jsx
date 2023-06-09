@@ -60,3 +60,4 @@ const DataSupplierProfile = () => {
 };
 
 export default DataSupplierProfile;
+

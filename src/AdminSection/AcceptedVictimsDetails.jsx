@@ -1,23 +1,21 @@
 import React from "react";
 import Button1 from "./Button1";
+import "./Button.css";
 import { Dropdown } from "react-bootstrap";
 
+import { useState, useEffect } from "react";
 
-
-import { useState, useEffect } from 'react';
-
-const AcceptedVictimsDetails = () =>{
+const AcceptedVictimsDetails = () => {
   const [isVerified, setIsVerified] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8080/Victim/viewAcceptedVictims')
-      .then(response => response.json())
-      .then(data => setIsVerified(data));
+    fetch("http://localhost:8080/Victim/viewAcceptedVictims")
+      .then((response) => response.json())
+      .then((data) => setIsVerified(data));
   }, []);
 
-
   const [date, setDate] = useState(null);
-  const[data,setData]=useState([]);
+  const [data, setData] = useState([]);
   useEffect(() => {
     fetch("http://localhost:8080/packageTypes/viewPackageType")
       .then((response) => response.json())
@@ -25,14 +23,14 @@ const AcceptedVictimsDetails = () =>{
   }, []);
   const SelectMenu = () => (
     <select class="custom-select custom-select-lg mb-3">
-    <option selected>Select </option>
-    {data.map((details, index) => (
-          <option key={index} value={details.typeName}>{details.typeName}</option>
-        ))}
-  </select>
+      <option selected>Select </option>
+      {data.map((details, index) => (
+        <option key={index} value={details.typeName}>
+          {details.typeName}
+        </option>
+      ))}
+    </select>
   );
- 
-  
 
   return (
     <React.Fragment>
@@ -74,74 +72,31 @@ const AcceptedVictimsDetails = () =>{
             </thead>
 
             <tbody>
-            {isVerified.map((details)=>(
-          (
-      <tr key={details.id}>
-        <td> {details.nic}</td>
-        <td>{details.firstName} {details.lastName}</td>
-        <td>{details.phoneNumber}</td>
-        <td>{details.no} {details.street} {details.city}</td>
-        <td><SelectMenu/></td>
-        <button type="button" class="btn btn-primary">Save</button>
-
-      </tr> )    )  )}
-
-              {/* <tr>
-                <td>204059X</td>
-                <td>Kamal Perera</td>
-                <td>0769442613</td>
-                <td>Galle</td>
-                <td>
-                  <select name="Package Type">
-                    <option>Choose a Type</option>
-                    <option>Type A</option>
-                    <option>Type B</option>
-                    <option>Type C</option>
-                  </select>
-                </td>
-              </tr> */}
-
-              
-
-              
-              
-
-             
+              {isVerified.map((details) => (
+                <tr key={details.id}>
+                  <td> {details.nic}</td>
+                  <td>
+                    {details.firstName} {details.lastName}
+                  </td>
+                  <td>{details.phoneNumber}</td>
+                  <td>
+                    {details.no} {details.street} {details.city}
+                  </td>
+                  <td>
+                    <SelectMenu />
+                  </td>
+                  <button type="button" class="btn btn-info">
+                    Save
+                  </button>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
       </div>
     </React.Fragment>
-    
   );
-}
+};
 
 export default AcceptedVictimsDetails;
 
-
-// import React from "react";
-
-// const AcceptedVictimsDetails = ({ acceptedVictims }) => {
-//   return (
-//     <React.Fragment>
-//       <h1>Accepted Victims Details</h1>
-//       {acceptedVictims.map((victim) => (
-//         <div key={victim.Nic}>
-//           <h3>
-//             {victim.FirstName} {victim.LastName}
-//           </h3>
-//           <p>
-//             Victim NIC: {victim.Nic}
-//             <br />
-//             Contact: {victim.PhoneNumber}
-//             <br />
-//             Address:{victim.No} {victim.Street} {victim.City}{" "}
-//             {victim.Description}
-//           </p>
-//         </div>
-//       ))}
-//     </React.Fragment>
-//   );
-// };
-
-// export default AcceptedVictimsDetails;

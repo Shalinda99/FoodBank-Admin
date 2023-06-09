@@ -1,21 +1,18 @@
 import React from "react";
 import "./DataSupplierDetails.css";
 import Button1 from "./Button1";
-import axios from 'axios';
+import axios from "axios";
 import { useState, useEffect } from "react";
 
-
 const DataSupplierDetails = () => {
-
   const [dsupplier, setDsupplier] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/RegisteredUser/getDataSupplier')
+    axios
+      .get("http://localhost:8080/RegisteredUser/getDataSupplier")
       .then((response) => setDsupplier(response.data))
       .catch((error) => console.log(error));
   }, []);
-
-
 
   return (
     <React.Fragment>
@@ -64,30 +61,21 @@ const DataSupplierDetails = () => {
               </thead>
 
               <tbody>
-              {dsupplier.map((details)=>(
-                  (
-              <tr key={details.id}>
-                <td> {details.id}</td>
-                <td>{details.firstName} &nbsp; {details.lastName}</td>
-                <td>
-                    <Button1
-                      text="See Profile"
-                      textColor="dark"
-                      page="/DataSupplierProfile"
-                    />
-                  </td>
-              </tr> )    )  )}
-                {/* <tr>
-                  <td>204059X</td>
-                  <td>Kamal Perera</td>
-                  <td>
-                    <Button1
-                      text="See Profile"
-                      textColor="dark"
-                      page="/DataSupplierProfile"
-                    />
-                  </td>
-                </tr> */}
+                {dsupplier.map((details) => (
+                  <tr key={details.id}>
+                    <td> {details.id}</td>
+                    <td>
+                      {details.firstName} &nbsp; {details.lastName}
+                    </td>
+                    <td>
+                      <Button1
+                        text="See Profile"
+                        textColor="dark"
+                        page="/DataSupplierProfile"
+                      />
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

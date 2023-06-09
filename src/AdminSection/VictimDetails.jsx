@@ -3,7 +3,7 @@ import Button1 from "./Button1";
 import Button2 from "./Button2";
 import Button3 from "./Button3";
 // import axios from 'axios';
-
+import { Dropdown } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -68,32 +68,17 @@ const VictimDetails = () => {
   return (
     <React.Fragment>
       <div>
-        <div class="dropdown d-flex justify-content-end">
-          <button
-            class="btn btn-dark dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            All dropdown
-          </button>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="#">
-                Action
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">
-                Another action
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">
-                Something else here
-              </a>
-            </li>
-          </ul>
+      <div class="dropdown d-flex justify-content-end">
+          <Dropdown>
+            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+              Dropdown Button
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item href="#action/1">Action 1</Dropdown.Item>
+              <Dropdown.Item href="#action/2">Action 2</Dropdown.Item>
+              <Dropdown.Item href="#action/3">Action 3</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
       </div>
 
@@ -141,23 +126,18 @@ const VictimDetails = () => {
                     <div className="ms-2">
                       <button
                         type="button"
-                        class="btn btn-warning"
+                        class="btn btn-outline-warning"
                         onClick={() => handleAcceptSelect(victim.id)}
                       >
                         Accept
                       </button>
-
-                      {/* <Button2
-                    text="Acceptsss"
-                    textColor="dark"
-                  /> */}
                     </div>
 
                     <div className="ms-2">
                       {" "}
                       <button
                         type="button"
-                        class="btn btn-warning"
+                        class="btn btn-outline-warning"
                         onClick={() => handleRejectSelect(victim.id)}
                       >
                         Decline
