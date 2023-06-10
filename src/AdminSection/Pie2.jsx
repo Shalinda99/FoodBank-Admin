@@ -1,27 +1,27 @@
 import React from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
-class PieRechartComponent extends React.Component {
+class Pie2 extends React.Component {
    COLORS = ["#8884d8", "#82ca9d", "#FFBB28", "#FF8042", "#AF19FF"];
    pieData = [
       {
          name: "Apple",
-         value: 24.85
+         value: 54.85
       },
       {
          name: "Samsung",
-         value: 47.91
+         value: 37.91
       },
       {
          name: "Redmi",
-         value: 36.85
+         value: 25.85
       },
       {
          name: "One Plus",
-         value: 25.14
+         value: 16.14
       },
       {
          name: "Others",
-         value: 1.25
+         value: 11.25
       }
    ];
    pieData2 = [
@@ -89,4 +89,4 @@ render() {
       );
    }
 }
-export default PieRechartComponent;
+export default Pie2;

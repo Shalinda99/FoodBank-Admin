@@ -9,6 +9,7 @@ import {
 import { Card, Space, Statistic, Table, Typography } from "antd";
 import { useEffect, useState } from "react";
 import PieRechartComponent from "./PieChartComponent";
+import Pie2 from "./Pie2";
 
 const Dashboard = () => {
   const [currentMoney, setCurrentMoney] = useState(0);
@@ -28,6 +29,22 @@ const Dashboard = () => {
       .then(data => setVerifiedVictimDetails(data))
       .catch(error => console.error(error));
   }, []);
+  const topDatasupplierData = [
+    { name: "John", points: 100 },
+    { name: "Kamal", points: 80 },
+    { name: "Sudeep", points: 70 },
+    { name: "df", points: 60 },
+    { name: "fsvd", points: 50 },
+  ];
+  const topDonaterData = [
+    { name: "Amal", points: 98 },
+    { name: "fff", points: 78 },
+    { name: "hrt", points: 65 },
+    { name: "df", points: 60 },
+    { name: "fsvd", points: 36 },
+  ];
+
+
   // useEffect(() => {
   //   fetch('http://localhost:8080/Victim/unverified-count')
   //     .then(response => response.json())
@@ -124,12 +141,12 @@ const Dashboard = () => {
       {/* </Space> */}
       <div>
       <div className="d-flex justify-content-md-around" >
-        <Table /*dataSource={topDatasupplierData}*/>
+        <Table dataSource={topDatasupplierData}>
         <Table.Column title="Name" dataIndex="name" key="name" />
         <Table.Column title="Points" dataIndex="points" key="points" />
    
         </Table>
-        <Table /*dataSource={topDonaterData}*/>
+        <Table dataSource={topDonaterData}>
         <Table.Column title="Name" dataIndex="name" key="name" />
         <Table.Column title="Points" dataIndex="points" key="points" />
         </Table>
@@ -138,7 +155,7 @@ const Dashboard = () => {
       
       <div className="d-flex justify-content-md-around">
         <PieRechartComponent/>
-        <PieRechartComponent/>
+        <Pie2/>
       </div>
 
       </div>
