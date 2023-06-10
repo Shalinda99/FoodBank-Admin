@@ -5,26 +5,35 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const PackageIsues = () => {
-  const [type1Quantity, setType1Quantity] = useState(34);
-  const [type2Quantity, setType2Quantity] = useState(9);
-  const [type3Quantity, setType3Quantity] = useState(25);
+  const [type1Quantity, setType1Quantity] = useState(0);
+  const [type2Quantity, setType2Quantity] = useState(0);
+  const [type3Quantity, setType3Quantity] = useState(0);
 
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    // axios
-    //   .get("/api/data")
-    //   .then((response) => {
-    //     setType1Quantity(response.data.type1Quantity);
-    //     setType2Quantity(response.data.type2Quantity);
-    //     setType3Quantity(response.data.type3Quantity);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
-    axios.get("http://localhost:8080/issuedPackages/viewIssuedPackages")            // for the summary table
-    .then((response) => setTableData(response.data))
-    .catch((error) => console.log(error));
+    axios
+      .get("http://localhost:8080/issuedPackages/viewIssuedPackages")
+      .then((response) => {
+        setTableData(response.data);
+
+        // Retrieve quantities for typeIDs 1, 2, and 3
+        axios
+          .get("http://localhost:8080/packageTypes/101/quantity")
+          .then((quantityResponse) => setType1Quantity(quantityResponse.data))
+          .catch((error) => console.log(error));
+
+        axios
+          .get("http://localhost:8080/packageTypes/102/quantity")
+          .then((quantityResponse) => setType2Quantity(quantityResponse.data))
+          .catch((error) => console.log(error));
+
+        axios
+          .get("http://localhost:8080/packageTypes/103/quantity")
+          .then((quantityResponse) => setType3Quantity(quantityResponse.data))
+          .catch((error) => console.log(error));
+      })
+      .catch((error) => console.log(error));
   }, []);
   // [] indicates  it should only run once, when the component is first mounted
 
@@ -43,9 +52,6 @@ const PackageIsues = () => {
     event.preventDefault();
     const errors = validateInputs();
 
-    setType1Quantity(type1Quantity - parseInt(type1IssueQuantity));
-    setType2Quantity(type2Quantity - parseInt(type2IssueQuantity));
-    setType3Quantity(type3Quantity - parseInt(type3IssueQuantity));
 
     if (Object.keys(errors).length === 0) {
       // submit form
@@ -95,9 +101,46 @@ const PackageIsues = () => {
       setType1Requantity(type1ReQuantity - parseInt(type1IssueQuantity));
       setType2Requantity(type2ReQuantity - parseInt(type2IssueQuantity));
       setType3Requantity(type3ReQuantity - parseInt(type3IssueQuantity));
+
+      setType1Quantity(type1Quantity - parseInt(type1IssueQuantity));
+      setType2Quantity(type2Quantity - parseInt(type2IssueQuantity));
+      setType3Quantity(type3Quantity - parseInt(type3IssueQuantity));
         }
       } catch (error) {
         toast.warning("An error occurred while submitting. Please try again later.");
+        console.error(error);
+      }
+
+      try {
+        const type1ID = 101; 
+        const type1NewQuantity = type1Quantity; 
+      
+        const type2ID = 102; 
+        const type2NewQuantity = type2Quantity; 
+      
+        const type3ID = 103; 
+        const type3NewQuantity = type3Quantity; 
+      
+        // Update the first package type
+        await axios.put(`http://localhost:8080/packageTypes/${type1ID}/quantity`, {
+          newQuantity: type1NewQuantity,
+        });
+      
+        // Update the second package type
+        await axios.put(`http://localhost:8080/packageTypes/${type2ID}/quantity`, {
+          newQuantity: type2NewQuantity,
+        });
+      
+        // Update the third package type
+        await axios.put(`http://localhost:8080/packageTypes/${type3ID}/quantity`, {
+          newQuantity: type3NewQuantity,
+        });
+      
+        toast.success("Quantities updated successfully!");
+      
+    
+      } catch (error) {
+       //  toast.error("An error occurred while updating the quantities. Please try again later.");
         console.error(error);
       }
 
@@ -127,7 +170,8 @@ const PackageIsues = () => {
     if (
       !type1IssueQuantity ||
       isNaN(type1IssueQuantity) ||
-      type1IssueQuantity < 0
+      type1IssueQuantity < 0 ||
+      type1IssueQuantity > type1Quantity
     ) {
       // is not a number isNaN
       errors.type1IssueQuantity = "* Invalid quantity for type 1 package";
@@ -135,14 +179,16 @@ const PackageIsues = () => {
     if (
       !type2IssueQuantity ||
       isNaN(type2IssueQuantity) ||
-      type2IssueQuantity < 0
+      type2IssueQuantity < 0||
+      type2IssueQuantity > type2Quantity
     ) {
       errors.type2IssueQuantity = "* Invalid quantity for type 2 package";
     }
     if (
       !type3IssueQuantity ||
       isNaN(type3IssueQuantity) ||
-      type3IssueQuantity < 0
+      type3IssueQuantity < 0||
+      type3IssueQuantity > type3Quantity
     ) {
       errors.type3IssueQuantity = "* Invalid quantity for type 3 package";
     }
@@ -179,31 +225,31 @@ const PackageIsues = () => {
       <p>Enter details about issued packages</p>
 
       <div className="mmcontain d-flex mb-4 w-100">
-        <div className="sidecontent w-25  d-flex flex-column d-flex justify-content-center align-items-center mb-5">
-          <h3>Requsition</h3>
+      <div className="sidecontent w-25 d-flex flex-column d-flex justify-content-center align-items-center mb-5">
+          <h3>Current Storage</h3>
           <div className="badge bg-secondary w-75 p-4 m-2 fs-5">
             Type 1
             <span className="badge bg-light text-dark ps-3 pe-3 ms-1">
-              {type1ReQuantity}
+              {type1Quantity}
             </span>
           </div>
           <div className="badge bg-secondary w-75 p-4 m-2 fs-5">
             Type 2{" "}
             <span className="badge bg-light text-dark ps-3 pe-3 ms-1">
-              {type2ReQuantity}
+              {type2Quantity}
             </span>
           </div>
           <div className="badge bg-secondary w-75 p-4 m-2 fs-5">
             Type 3{" "}
             <span className="badge bg-light text-dark ps-3 pe-3 ms-1">
-              {type3ReQuantity}
+              {type3Quantity}
             </span>
           </div>
         </div>
         <div className="mcontain w-75 mb-5">
           <div class="container bg-light m-2 rounded ">
             <div className="bg-secondary text-center p-1 mb-2 rounded ">
-              <h3 className="text-white">Add package Details</h3>
+              <h3 className="text-white">Issue Packages</h3>
             </div>
             <div className="content d-flex">
               <form class="row g-4 m-2" onSubmit={handleSubmit}>

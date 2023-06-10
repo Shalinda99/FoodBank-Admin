@@ -122,11 +122,41 @@ if (Object.keys(errors).length === 0) {
     toast.warning("An error occurred while submitting. Please try again later.");
     console.error(error);
   }
+
+  try {
+    const type1ID = 101; 
+    const type1NewQuantity = type1Quantity; 
+  
+    const type2ID = 102; 
+    const type2NewQuantity = type2Quantity; 
+  
+    const type3ID = 103; 
+    const type3NewQuantity = type3Quantity; 
+  
+    // Update the first package type
+    await axios.put(`http://localhost:8080/packageTypes/${type1ID}/quantity`, {
+      newQuantity: type1NewQuantity,
+    });
+  
+    // Update the second package type
+    await axios.put(`http://localhost:8080/packageTypes/${type2ID}/quantity`, {
+      newQuantity: type2NewQuantity,
+    });
+  
+    // Update the third package type
+    await axios.put(`http://localhost:8080/packageTypes/${type3ID}/quantity`, {
+      newQuantity: type3NewQuantity,
+    });
+  
+    toast.success("Quantities updated successfully!");
   
 
-
-
-
+  } catch (error) {
+    // toast.error("An error occurred while updating the quantities. Please try again later.");
+    console.error(error);
+  }
+  
+  
 
       // Reset input fields
       setType1Addquantity(0);
