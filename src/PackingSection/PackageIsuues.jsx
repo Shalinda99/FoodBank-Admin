@@ -22,7 +22,7 @@ const PackageIsues = () => {
     //   .catch((error) => {
     //     console.error(error);
     //   });
-    axios.get("http://localhost:8080/packedPackages/viewPackedPackages")            // for the summary table
+    axios.get("http://localhost:8080/issuedPackages/viewIssuedPackages")            // for the summary table
     .then((response) => setTableData(response.data))
     .catch((error) => console.log(error));
   }, []);
@@ -311,21 +311,27 @@ const PackageIsues = () => {
               <th scope="row" className="align-middle;">
                 1
               </th>
-              <td>Type A</td>
+              <td>Type 1</td>
               <td>12</td>
               <td className="align-middle;">
                 2023-03-12
               </td>
             </tr>
             <tr>
-              <td>Type B</td>
+            <th scope="row" className="align-middle;">
+                2
+              </th>
+              <td>Type 2</td>
               <td>13</td>
               <td className="align-middle;">
                 2023-03-12
               </td>
             </tr>
             <tr>
-              <td>Type C</td>
+            <th scope="row" className="align-middle;">
+                3
+              </th>
+              <td>Type 3</td>
               <td>32</td>
               <td className="align-middle;">
                 2023-03-12

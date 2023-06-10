@@ -19,28 +19,28 @@ const AddPackages = () => {
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/packedPackages/viewPackedPackages")            // for the summary table
-      .then((response) => setTableData(response.data))
-      .catch((error) => console.log(error));
+    axios
+      .get("http://localhost:8080/packedPackages/viewPackedPackages")
+      .then((response) => {
+        setTableData(response.data);
 
-      // fetch("http://localhost:8080/packageTypes")
-      // .then((response) => response.json())
-      // .then((data) => {
-      //   setTableData(data);
-      //   setType1quantity(data.find(pt => pt.typeID === 101)?.quantity || 0);
-      //   setType2quantity(data.find(pt => pt.typeID === 102)?.quantity || 0);
-      //   setType3quantity(data.find(pt => pt.typeID === 103)?.quantity || 0);
-      // })
-      // .catch((error) => console.error(error));
+        // Retrieve quantities for typeIDs 1, 2, and 3
+        axios
+          .get("http://localhost:8080/packageTypes/101/quantity")
+          .then((quantityResponse) => setType1quantity(quantityResponse.data))
+          .catch((error) => console.log(error));
 
-      fetch(`http://localhost:8080/packageTypes/${101}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setType1quantity(data);
+        axios
+          .get("http://localhost:8080/packageTypes/102/quantity")
+          .then((quantityResponse) => setType2quantity(quantityResponse.data))
+          .catch((error) => console.log(error));
+
+        axios
+          .get("http://localhost:8080/packageTypes/103/quantity")
+          .then((quantityResponse) => setType3quantity(quantityResponse.data))
+          .catch((error) => console.log(error));
       })
-      .catch((error) => console.error(error));
-
-    
+      .catch((error) => console.log(error));
   }, []);
   
   const [error, setError] = useState({});
