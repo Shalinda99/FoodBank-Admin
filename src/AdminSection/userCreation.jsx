@@ -34,6 +34,7 @@ const UserCreation = () => {
                 message.error('An error occurred while creating the user.');
               }); 
     };
+    
     return (  
         <React.Fragment>
         <h3 >Create a User</h3>
