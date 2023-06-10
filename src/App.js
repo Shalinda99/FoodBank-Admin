@@ -7,6 +7,8 @@ import PRoutes from './PackingSection/PRoutes';
 import VictimInfo1 from './DeliverySection/VictimInfo1';
 import DRoutes from './DeliverySection/DRoutes';
 import ARoutes from './AdminSection/ARoutes';
+import WRoutes from './warehouse/WRoutes';
+
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
       <PRoutes/>
       <DRoutes/>
       <ARoutes/>
+      <WRoutes/>
 
 
 

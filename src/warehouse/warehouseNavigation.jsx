@@ -6,8 +6,11 @@ import { BsBagPlusFill } from "react-icons/bs";
 import { RiFileList3Fill } from "react-icons/ri";
 import { BsBoxArrowRight } from "react-icons/bs";
 import AddItems from "./AddItems";
-import ItemDetails from "./ItemDetails";
-import IssueItems from "./Issueitems";
+import ItemDetails from "./itemsDetails";
+import IssueItems from "./IssueItems";
+
+
+
 
 const WNavBar = ({}) => {
   const location1 = useLocation(); // conditionally render content based on the current route

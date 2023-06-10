@@ -2,65 +2,29 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const AddItems = () => {
-  const [values, setValues] = useState([]);
-  const [itemData, setItemData] = useState([]);
-  const [inputValues, setInputValues] = useState([]);
+  const [item1,setItem1]=useState(0);
+  const [item2,setItem2]=useState(0);
+  const [item3,setItem3]=useState(0);
+  const [item4,setItem4]=useState(0);
+  const [item5,setItem5]=useState(0);
+  const [item6,setItem6]=useState(0);
+  const [item7,setItem7]=useState(0);
+  const [item8,setItem8]=useState(0);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const response = await fetch(
-  //       "http://localhost:8080/ItemDetails/viewAllItems"
-  //     );
-  //     const jsonData = await response.json();
-  //     setItemData(jsonData);
-  //     setValues(new Array(itemData.length).fill(''));
-  //   };
-  //   fetchData();
-  // }, []);
+  const [itemAdd1,setItemAdd1]=useState(0);
+  const [itemAdd2,setItemAdd2]=useState(0);
+  const [itemAdd3,setItemAdd3]=useState(0);
+  const [itemAdd4,setItemAdd4]=useState(0);
+  const [itemAdd5,setItemAdd5]=useState(0);
+  const [itemAdd6,setItemAdd6]=useState(0);
+  const [itemAdd7,setItemAdd7]=useState(0);
+  const [itemAdd8,setItemAdd8]=useState(0);
 
-  useEffect(() => {
-    // Fetch data from the backend when the component mounts
-    fetch("http://localhost:8080/ItemDetails/viewAllItems")
-      .then((response) => response.json())
-      .then((data) => {
-        setItemData(data);
-        const newValues = {};
-        itemData.forEach((item) => {
-          newValues[item.id] = "";
-        });
-        setValues(newValues);
-      })
-      .catch((error) => {
-        console.error("There was a problem with the fetch operation:", error);
-      });
-  }, []);
 
-  const handleInputChange = (event, index) => {
-    const { value } = event.target;
-    const newInputValues = [...inputValues];
-    newInputValues[index] = value;
-    setInputValues(newInputValues);
-  };
+ 
   
   const handleSaveButtonClick = () => {
-    const itemsWithInputValues = itemData.map((item, index) => ({
-      ...item,
-      inputValue: inputValues[index]
-    }));
     
-    console.log(itemsWithInputValues)
-    const transformedData = itemsWithInputValues.map(item => {
-      return { "id": item.id, "inputValue": parseInt(item.inputValue) };
-    });
-    console.log(transformedData);
-    fetch("http://localhost:8080/ItemDetails/saveIssued", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ transformedData }),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
   };
 
 
@@ -76,48 +40,82 @@ const AddItems = () => {
               <tr>
                 <th scope="col">Item Id</th>
                 <th scope="col">Item name</th>
-                {/* <th scope="col">Add Amount</th> */}
+                <th scope="col">Quantity</th>
+            
+              </tr>
+              <tr>
+                <td scope="col">1</td>
+                <td scope="col">Rice (Kg)</td>
+                <td scope="col"><input type="number" className="form-control" value={itemAdd1}
+                onChange={(e)=>setItemAdd1(parseInt(e.target.value))}
+                /> </td>
+            
+              </tr>
+              <tr>
+                <td scope="col">2</td>
+                <td scope="col">Dhal (Kg)</td>
+                <td scope="col"><input type="number" className="form-control" value={itemAdd2}
+                onChange={(e)=>setItemAdd2(parseInt(e.target.value))}
+                /> </td>
+            
+              </tr>
+              <tr>
+                <td scope="col">3</td>
+                <td scope="col">Cooking Oil (bottles)</td>
+                <td scope="col"><input type="number" className="form-control" value={itemAdd3}
+                onChange={(e)=>setItemAdd3(parseInt(e.target.value))}
+                /> </td>
+            
+              </tr>
+              <tr>
+                <td scope="col">4</td>
+                <td scope="col">Dry Foods (Packets)</td>
+                <td scope="col"><input type="number" className="form-control" value={itemAdd4}
+                onChange={(e)=>setItemAdd4(parseInt(e.target.value))}
+                /> </td>
+            
+              </tr>
+              <tr>
+                <td scope="col">5</td>
+                <td scope="col">Sugar (Kg)</td>
+                <td scope="col"><input type="number" className="form-control" value={itemAdd5}
+                onChange={(e)=>setItemAdd5(parseInt(e.target.value))}
+                /> </td>
+            
+              </tr>
+              <tr>
+                <td scope="col">6</td>
+                <td scope="col">Flour (Kg)</td>
+                <td scope="col"><input type="number" className="form-control" value={itemAdd6}
+                onChange={(e)=>setItemAdd6(parseInt(e.target.value))}
+                /> </td>
+            
+              </tr>
+              <tr>
+                <td scope="col">7</td>
+                <td scope="col">Milk Powder (Packets)</td>
+                <td scope="col"><input type="number" className="form-control" value={itemAdd7}
+                onChange={(e)=>setItemAdd7(parseInt(e.target.value))}
+                /> </td>
+            
+              </tr>
+              <tr>
+                <td scope="col">8</td>
+                <td scope="col">Biscuits (Packets)</td>
+                <td scope="col"><input type="number" className="form-control" value={itemAdd8}
+                onChange={(e)=>setItemAdd8(parseInt(e.target.value))}
+                /> </td>
+            
               </tr>
             </thead>
             <tbody>
-              {itemData.map((details) => (
-                <tr key={details.id}>
-                  <td> {details.id}</td>
-                  <td>{details.name}</td>
-                  {/* <td>
-                    <input
-                      type="number"
-                      value={values[details.id]}
-                      onChange={(event) => handleInputChange(details.id, event)}
-                    />
-                    
-                  </td> */}
-                </tr>
-                
-              ))}
+
                 </tbody>
           </table>
 
-              <table className="table table-striped mt-3 table-secondary">
-                  <thead>
-                  <th scope="col " className="bg-light"> Quantity</th>
-                  </thead>
-                  <tbody>
-                  {Array.from({ length: itemData.length }, (_, index) => (
-                <tr>
-                  <td>
-                  <input
-    type="number"
-    value={inputValues[index] || ""}
-    onChange={(event) => handleInputChange(event, index)}
-  />
-                  </td>
-                </tr>
- 
-))}
-                    
-                  </tbody>
-                </table>
+              
+                
+                  
               
 
           
