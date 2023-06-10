@@ -11,6 +11,41 @@ const AddItems = () => {
   const [item7,setItem7]=useState(0);
   const [item8,setItem8]=useState(0);
 
+
+  useEffect(() => {
+    async function fetchQuantities() {
+      try {
+        const responses = await Promise.all([
+          fetch('/ItemDetails/1/quantity'),
+          fetch('/ItemDetails/2/quantity'),
+          fetch('/ItemDetails/3/quantity'),
+          fetch('/ItemDetails/4/quantity'),
+          fetch('/ItemDetails/5/quantity'),
+          fetch('/ItemDetails/6/quantity'),
+          fetch('/ItemDetails/7/quantity'),
+          fetch('/ItemDetails8/quantity')
+        ]);
+
+        const quantities = await Promise.all(responses.map(response => response.json()));
+        setItem1(quantities[0]);
+      
+        setItem2(quantities[1]);
+        setItem3(quantities[2]);
+        setItem4(quantities[3]);
+        setItem5(quantities[4]);
+        setItem6(quantities[5]);
+        setItem7(quantities[6]);
+        setItem8(quantities[7]);
+      } catch (error) {
+        console.error('Error while fetching quantities:', error);
+      }
+    }
+
+    fetchQuantities();
+  }, []);
+
+  const [date,setDate]=useState("");
+
   const [itemAdd1,setItemAdd1]=useState(0);
   const [itemAdd2,setItemAdd2]=useState(0);
   const [itemAdd3,setItemAdd3]=useState(0);
@@ -23,7 +58,53 @@ const AddItems = () => {
 
  
   
-  const handleSaveButtonClick = () => {
+  const handleSaveButtonClick = async () => {
+    setItem1(item1 + itemAdd1);
+    setItem2(item2 + itemAdd1);
+    setItem3(item3 + itemAdd1);
+    setItem4(item4 + itemAdd1);
+    setItem5(item5 + itemAdd1);
+    setItem6(item6 + itemAdd1);
+    setItem7(item7 + itemAdd1);
+    setItem8(item8 + itemAdd1);
+
+    try {
+
+      await axios.put(`http://localhost:8080/ItemDetails/${1}/quantity`, {
+        newQuantity: item1,
+      });
+
+      await axios.put(`http://localhost:8080/ItemDetails/${2}/quantity`, {
+        newQuantity: item2,
+      });
+      await axios.put(`http://localhost:8080/ItemDetails/${3}/quantity`, {
+        newQuantity: item3,
+      });
+      await axios.put(`http://localhost:8080/ItemDetails/${4}/quantity`, {
+        newQuantity: item4,
+      });
+      await axios.put(`http://localhost:8080/ItemDetails/${5}/quantity`, {
+        newQuantity: item5,
+      });
+      await axios.put(`http://localhost:8080/ItemDetails/${6}/quantity`, {
+        newQuantity: item6,
+      });
+      await axios.put(`http://localhost:8080/ItemDetails/${7}/quantity`, {
+        newQuantity: item7,
+      });
+      await axios.put(`http://localhost:8080/ItemDetails/${8}/quantity`, {
+        newQuantity: item8,
+      });
+    
+
+    
+      //toast.success("Quantities updated successfully!");
+    
+  
+    } catch (error) {
+      // toast.error("An error occurred while updating the quantities. Please try again later.");
+      console.error(error);
+    }
     
   };
 
@@ -107,10 +188,20 @@ const AddItems = () => {
                 /> </td>
             
               </tr>
-            </thead>
-            <tbody>
 
-                </tbody>
+              <tr>
+                <td>Add Items</td>
+                <td scope="col"><input type="date" className="form-control" value={date}
+                onChange={(e)=>setDate(e.target.value)}
+                /></td>
+                
+                <td scope="col">  <button type="submit" class="btn btn-warning me-2 w-100"  onClick={handleSaveButtonClick}>
+                   save
+                  </button></td>
+            
+              </tr>
+            </thead>
+          
           </table>
 
               
@@ -121,20 +212,8 @@ const AddItems = () => {
           
         </div>
       </div>
-      <div className="position-fixed bottom-1 end-0 p-3"></div>
-      <div
-        className="position-fixed bottom-2 end-0 p-3 mb-5 mt-5"
-        style={{ zIndex: "11" }}
-      >
-        <input type="date" className="me-3 p-1" />
-        <button
-          className="btn btn-primary"
-          style={{ width: "150px" }}
-          onClick={handleSaveButtonClick}
-        >
-          Save
-        </button>
-      </div>
+   
+      
     </React.Fragment>
   );
 };
