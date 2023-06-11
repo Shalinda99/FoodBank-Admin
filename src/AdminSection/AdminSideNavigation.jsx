@@ -126,7 +126,7 @@ const ANavBar = ({ children }) => {
               {currentRoute === "/RejectedVictimsDetails" && (
                 <RejectedVictimsDetails />
               )}
-              {currentRoute === "/DataSupplierProfile" && (
+              {currentRoute === "/DataSupplierProfile/:id" && (
                 <DataSupplierProfile />
               )}
                {currentRoute === "/DeliverypersonDetails" && (

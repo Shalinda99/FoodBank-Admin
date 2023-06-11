@@ -19,7 +19,7 @@ const VictimDetails = () => {
   }, []);
 
   //putmapping
-  const handleAcceptSelect = async (id) => {
+  const handleAcceptSelect = async (id, donaterId) => {
     const response = await fetch(
       `http://localhost:8080/Victim/selectAccept/${id}`,
       {
@@ -30,10 +30,11 @@ const VictimDetails = () => {
         body: JSON.stringify({
           isVerified: true,
           isAccepted: true,
+          donaterId: donaterId,
         }),
       }
     );
-
+  
     if (response.ok) {
       // handle success response
       console.log("Victim updated successfully");
@@ -42,7 +43,8 @@ const VictimDetails = () => {
       console.error("Error updating victim");
     }
   };
-  const handleRejectSelect = async (id) => {
+  
+  const handleRejectSelect = async (id,donaterId) => {
     const response = await fetch(
       `http://localhost:8080/Victim/selectReject/${id}`,
       {
@@ -53,6 +55,7 @@ const VictimDetails = () => {
         body: JSON.stringify({
           isVerified: true,
           isAccepted: false,
+          donaterId: donaterId
         }),
       }
     );
@@ -103,12 +106,12 @@ const VictimDetails = () => {
 
       {victims.map(
         (victim) => (
-          console.log(victim.firstName),
+          console.log(victim.user.firstName),
           (
             <div key={victim.id}>
               <div class="card bg-light text-dark">
                 <div class="card-body">
-                  <h4>Data Supplier: D.K Perera</h4>
+                  <h4>{victim.user.firstName}</h4>
                   <br />
 
                   <p>
@@ -127,7 +130,7 @@ const VictimDetails = () => {
                       <button
                         type="button"
                         class="btn btn-outline-warning"
-                        onClick={() => handleAcceptSelect(victim.id)}
+                        onClick={() => handleAcceptSelect(victim.id,victim.donaterId)}
                       >
                         Accept
                       </button>
@@ -138,7 +141,7 @@ const VictimDetails = () => {
                       <button
                         type="button"
                         class="btn btn-outline-warning"
-                        onClick={() => handleRejectSelect(victim.id)}
+                        onClick={() => handleRejectSelect(victim.id,victim.donaterId)}
                       >
                         Decline
                       </button>

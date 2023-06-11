@@ -1,11 +1,27 @@
-import React from "react";
-import "./DataSupplierDetails.css";
-import Button1 from "./Button1";
+// DataSupplierDetails.js
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import Button1 from "./Button1";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 const DataSupplierDetails = () => {
   const [dsupplier, setDsupplier] = useState([]);
+  const [dataSupplierCount, setDataSupplierCount] = useState(0);
+
+
+  const navigate = useNavigate();
+
+  const handleButtonClick = (id) => {
+    navigate('/DataSupplierProfile/${id}');
+  };
+
+  const handleSuspend = (id) => {
+    setDsupplier((prevDsupplier) =>
+      prevDsupplier.filter((supplier) => supplier.id !== id)
+    );
+  };
 
   useEffect(() => {
     axios
@@ -13,71 +29,85 @@ const DataSupplierDetails = () => {
       .then((response) => setDsupplier(response.data))
       .catch((error) => console.log(error));
   }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/RegisteredUser/data-suppliers/count")
+      .then((response) => setDataSupplierCount(response.data))
+      .catch((error) => console.log(error));
+  }, []);
+  
+
+
 
   return (
     <React.Fragment>
       <div>
         <div>
-          <h3>Data Supplier Statistics</h3>
+          <div>
+            <div>
+              <h3>Data Supplier Statistics</h3>
 
-          <div className="cardcontainer d-flex  justify-content-around mt-4 text-white  ">
-            <div className="card1 mb-4 rounded  text-center card bg-dark ">
-              <div className="m-2">
-                <p>Above minimum point level</p>
-                <h2>84</h2>
+              <div className="cardcontainer d-flex  justify-content-around mt-4 text-white  ">
+                <div className="card1 mb-4 rounded  text-center card bg-dark ">
+                  <div className="m-2">
+                    <p>Total DataSuppliers</p>
+                    <h2>{dataSupplierCount}</h2>
+                  </div>
+                </div>
+
+                <div className="card2 mb-4 rounded  text-center card bg-secondary ">
+                  <div className="m-2">
+                    <p>Minimum Point Level</p>
+                    <h2>40</h2>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="card2 mb-4 rounded  text-center card bg-secondary ">
-              <div className="m-2">
-                <p>Below minimum point level</p>
-                <h2>12</h2>
-              </div>
-            </div>
-
-            <div className="card3 mb-4 rounded  text-center card bg-dark ">
-              <div className="m-2">
-                <p>Total</p>
-                <h2>96</h2>
-              </div>
-            </div>
+            <br />
+            <br />
           </div>
-        </div>
 
-        <br />
-        <br />
-
-        <div>
-          <h3>Data Supplier Details</h3>
+          <br />
 
           <div>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">Data_Supplier_ID</th>
-                  <th scope="col">Name</th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
+            <h3>Data Supplier Details</h3>
 
-              <tbody>
-                {dsupplier.map((details) => (
-                  <tr key={details.id}>
-                    <td> {details.id}</td>
-                    <td>
-                      {details.firstName} &nbsp; {details.lastName}
-                    </td>
-                    <td>
-                      <Button1
-                        text="See Profile"
-                        textColor="dark"
-                        page="/DataSupplierProfile"
-                      />
-                    </td>
+            <div>
+              <table className="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Data_Supplier_ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Points</th>
+                    <th scope="col">Suspend</th>
+                    <th scope="col"></th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+
+                <tbody>
+                  {dsupplier.map((details) => (
+                    <tr key={details.id}>
+                      <td>{details.id}</td>
+                      <td>
+                        {details.firstName} &nbsp; {details.lastName}
+                      </td>
+                      <td>{details.dataSupplierPoints}</td>
+                      <td>
+                        <button
+                          type="button"
+                          className="btn btn-primary"
+                          onClick={() => handleSuspend(details.id)}
+                        >
+                          Suspend
+                        </button>
+                      </td>
+                      <td>{/* See Profile button */}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

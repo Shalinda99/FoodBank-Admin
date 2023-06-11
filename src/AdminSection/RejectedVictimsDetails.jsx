@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Button1 from "./Button1";
+import { Dropdown } from "react-bootstrap";
 
 const RejectedVictimsDetails = () => {
   const [rejectedData,setRejectedData]=useState([])
@@ -15,40 +16,15 @@ const RejectedVictimsDetails = () => {
   return (
     <React.Fragment>
       <div>
-        <div class="dropdown d-flex justify-content-end">
-          <button
-            class="btn btn-dark dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            All dropdown
-          </button>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="#">
-                Action
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">
-                Another action
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">
-                Something else here
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="d-flex justify-content-start  mb-3 ">
-          <Button1
+      <div class="dropdown d-flex justify-content-end">
+      <div class="d-flex justify-content-start  mb-3 ">
+      <Button1
             text="View Accepted List"
             textColor="dark"
             page="/AcceptedVictimsDetails"
           />
+        </div>
+
         </div>
         <h2>Rejected Victims Details</h2>
         <br />

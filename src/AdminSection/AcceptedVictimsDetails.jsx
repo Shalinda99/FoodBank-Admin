@@ -36,24 +36,16 @@ const AcceptedVictimsDetails = () => {
     <React.Fragment>
       <div>
         <div class="dropdown d-flex justify-content-end">
-          <Dropdown>
-            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-              Dropdown Button
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item href="#action/1">Action 1</Dropdown.Item>
-              <Dropdown.Item href="#action/2">Action 2</Dropdown.Item>
-              <Dropdown.Item href="#action/3">Action 3</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </div>
         <div class="d-flex justify-content-start  mb-3 ">
-          <Button1
+        <Button1
             text="View Rejected List"
             textColor="dark"
             page="/RejectedVictimsDetails"
           />
         </div>
+
+        </div>
+        
 
         <h2>Accepted Victims Details</h2>
         <br />
