@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const AddItems = () => {
+const AddItems = (props) => {
   const [item1,setItem1]=useState(0);
   const [item2,setItem2]=useState(0);
   const [item3,setItem3]=useState(0);
@@ -20,42 +20,42 @@ const AddItems = () => {
 
         
         axios
-          .get("http://localhost:8080/ItemDetails/1/quantity")
+          .get("http://localhost:8080/ItemDetails/quantity/1")
           .then((quantityResponse) => setItem1(quantityResponse.data))
           .catch((error) => console.log(error));
 
           axios
-          .get("http://localhost:8080/ItemDetails/2/quantity")
+          .get("http://localhost:8080/ItemDetails/quantity/2")
           .then((quantityResponse) => setItem2(quantityResponse.data))
           .catch((error) => console.log(error));
 
           axios
-          .get("http://localhost:8080/ItemDetails/3/quantity")
+          .get("http://localhost:8080/ItemDetails/quantity/3")
           .then((quantityResponse) => setItem3(quantityResponse.data))
           .catch((error) => console.log(error));
 
           axios
-          .get("http://localhost:8080/ItemDetails/4/quantity")
+          .get("http://localhost:8080/ItemDetails/quantity/4")
           .then((quantityResponse) => setItem4(quantityResponse.data))
           .catch((error) => console.log(error));
 
           axios
-          .get("http://localhost:8080/ItemDetails/5/quantity")
+          .get("http://localhost:8080/ItemDetails/quantity/5")
           .then((quantityResponse) => setItem5(quantityResponse.data))
           .catch((error) => console.log(error));
 
           axios
-          .get("http://localhost:8080/ItemDetails/6/quantity")
+          .get("http://localhost:8080/ItemDetails/quantity/6")
           .then((quantityResponse) => setItem6(quantityResponse.data))
           .catch((error) => console.log(error));
 
           axios
-          .get("http://localhost:8080/ItemDetails/7/quantity")
+          .get("http://localhost:8080/ItemDetails/quantity/7")
           .then((quantityResponse) => setItem7(quantityResponse.data))
           .catch((error) => console.log(error));
 
           axios
-          .get("http://localhost:8080/ItemDetails/8/quantity")
+          .get("http://localhost:8080/ItemDetails/quantity/8")
           .then((quantityResponse) => setItem8(quantityResponse.data))
           .catch((error) => console.log(error));
 
@@ -116,8 +116,13 @@ const AddItems = () => {
     
     
       // Update the first package type
-      await axios.put(`http://localhost:8080/ItemDetails/${type1ID}/quantity`, {
+      const data = {
         newQuantity: type1NewQuantity,
+      };
+      console.log('Data sending to backend:', data);
+
+      await axios.put(`http://localhost:8080/ItemDetails/${type1ID}/quantity`, {
+       data,
       });
 
       await axios.put(`http://localhost:8080/ItemDetails/${type2ID}/quantity`, {
@@ -176,7 +181,7 @@ const AddItems = () => {
                 <th scope="col">Item Id</th>
                 <th scope="col">Item name</th>
                 <th scope="col">Quantity</th>
-            
+                <th>Total Quantity</th>            
               </tr>
               <tr>
                 <td scope="col">1</td>
@@ -184,6 +189,7 @@ const AddItems = () => {
                 <td scope="col"><input type="number" className="form-control" value={itemAdd1}
                 onChange={(e)=>setItemAdd1(parseInt(e.target.value))}
                 /> </td>
+                <td>{item1}</td>
             
               </tr>
               <tr>
@@ -192,6 +198,7 @@ const AddItems = () => {
                 <td scope="col"><input type="number" className="form-control" value={itemAdd2}
                 onChange={(e)=>setItemAdd2(parseInt(e.target.value))}
                 /> </td>
+                 <td>{item2}</td>
             
               </tr>
               <tr>
@@ -200,6 +207,7 @@ const AddItems = () => {
                 <td scope="col"><input type="number" className="form-control" value={itemAdd3}
                 onChange={(e)=>setItemAdd3(parseInt(e.target.value))}
                 /> </td>
+                 <td>{item3}</td>
             
               </tr>
               <tr>
@@ -208,6 +216,7 @@ const AddItems = () => {
                 <td scope="col"><input type="number" className="form-control" value={itemAdd4}
                 onChange={(e)=>setItemAdd4(parseInt(e.target.value))}
                 /> </td>
+                 <td>{item4}</td>
             
               </tr>
               <tr>
@@ -216,6 +225,7 @@ const AddItems = () => {
                 <td scope="col"><input type="number" className="form-control" value={itemAdd5}
                 onChange={(e)=>setItemAdd5(parseInt(e.target.value))}
                 /> </td>
+                 <td>{item5}</td>
             
               </tr>
               <tr>
@@ -224,6 +234,7 @@ const AddItems = () => {
                 <td scope="col"><input type="number" className="form-control" value={itemAdd6}
                 onChange={(e)=>setItemAdd6(parseInt(e.target.value))}
                 /> </td>
+                 <td>{item6}</td>
             
               </tr>
               <tr>
@@ -232,6 +243,7 @@ const AddItems = () => {
                 <td scope="col"><input type="number" className="form-control" value={itemAdd7}
                 onChange={(e)=>setItemAdd7(parseInt(e.target.value))}
                 /> </td>
+                 <td>{item7}</td>
             
               </tr>
               <tr>
@@ -240,17 +252,16 @@ const AddItems = () => {
                 <td scope="col"><input type="number" className="form-control" value={itemAdd8}
                 onChange={(e)=>setItemAdd8(parseInt(e.target.value))}
                 /> </td>
+                 <td>{item8}</td>
               
             
               </tr>
 
               <tr>
-                <td>Add Items</td>
-                <td scope="col"><input type="date" className="form-control" value={date}
-                onChange={(e)=>setDate(e.target.value)}
-                /></td>
+                <td></td>
+                <td ></td>
                
-                <td scope="col">  <button type="submit" class="btn btn-warning me-2 w-100"  onClick={handleSaveButtonClick}>
+                <td scope="col" colSpan={2}>  <button type="submit" class="btn btn-warning me-2 w-100"  onClick={handleSaveButtonClick}>
                    save
                   </button></td>
             
