@@ -13,35 +13,55 @@ const AddItems = () => {
 
 
   useEffect(() => {
-    async function fetchQuantities() {
-      try {
-        const responses = await Promise.all([
-          fetch('/ItemDetails/1/quantity'),
-          fetch('/ItemDetails/2/quantity'),
-          fetch('/ItemDetails/3/quantity'),
-          fetch('/ItemDetails/4/quantity'),
-          fetch('/ItemDetails/5/quantity'),
-          fetch('/ItemDetails/6/quantity'),
-          fetch('/ItemDetails/7/quantity'),
-          fetch('/ItemDetails8/quantity')
-        ]);
+    axios
+      .get("http://localhost:8080/packedPackages/viewPackedPackages")
+      .then((response) => {
+        
 
-        const quantities = await Promise.all(responses.map(response => response.json()));
-        setItem1(quantities[0]);
-      
-        setItem2(quantities[1]);
-        setItem3(quantities[2]);
-        setItem4(quantities[3]);
-        setItem5(quantities[4]);
-        setItem6(quantities[5]);
-        setItem7(quantities[6]);
-        setItem8(quantities[7]);
-      } catch (error) {
-        console.error('Error while fetching quantities:', error);
-      }
-    }
+        
+        axios
+          .get("http://localhost:8080/ItemDetails/1/quantity")
+          .then((quantityResponse) => setItem1(quantityResponse.data))
+          .catch((error) => console.log(error));
 
-    fetchQuantities();
+          axios
+          .get("http://localhost:8080/ItemDetails/2/quantity")
+          .then((quantityResponse) => setItem2(quantityResponse.data))
+          .catch((error) => console.log(error));
+
+          axios
+          .get("http://localhost:8080/ItemDetails/3/quantity")
+          .then((quantityResponse) => setItem3(quantityResponse.data))
+          .catch((error) => console.log(error));
+
+          axios
+          .get("http://localhost:8080/ItemDetails/4/quantity")
+          .then((quantityResponse) => setItem4(quantityResponse.data))
+          .catch((error) => console.log(error));
+
+          axios
+          .get("http://localhost:8080/ItemDetails/5/quantity")
+          .then((quantityResponse) => setItem5(quantityResponse.data))
+          .catch((error) => console.log(error));
+
+          axios
+          .get("http://localhost:8080/ItemDetails/6/quantity")
+          .then((quantityResponse) => setItem6(quantityResponse.data))
+          .catch((error) => console.log(error));
+
+          axios
+          .get("http://localhost:8080/ItemDetails/7/quantity")
+          .then((quantityResponse) => setItem7(quantityResponse.data))
+          .catch((error) => console.log(error));
+
+          axios
+          .get("http://localhost:8080/ItemDetails/8/quantity")
+          .then((quantityResponse) => setItem8(quantityResponse.data))
+          .catch((error) => console.log(error));
+
+        
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   const [date,setDate]=useState("");
@@ -58,43 +78,77 @@ const AddItems = () => {
 
  
   
-  const handleSaveButtonClick = async () => {
+  async function handleSaveButtonClick() {
+   
     setItem1(item1 + itemAdd1);
-    setItem2(item2 + itemAdd1);
-    setItem3(item3 + itemAdd1);
-    setItem4(item4 + itemAdd1);
-    setItem5(item5 + itemAdd1);
-    setItem6(item6 + itemAdd1);
-    setItem7(item7 + itemAdd1);
-    setItem8(item8 + itemAdd1);
+    setItem2(item2 + itemAdd2);
+    setItem3(item3 + itemAdd3);
+    setItem4(item4 + itemAdd4);
+    setItem5(item5 + itemAdd5);
+    setItem6(item6 + itemAdd6);
+    setItem7(item7 + itemAdd7);
+    setItem8(item8 + itemAdd8);
 
     try {
+      const type1ID = 1; 
+      const type1NewQuantity = item1; 
 
-      await axios.put(`http://localhost:8080/ItemDetails/${1}/quantity`, {
-        newQuantity: item1,
+      const type2ID = 2; 
+      const type2NewQuantity = item2;
+
+      const type3ID = 3; 
+      const type3NewQuantity = item3; 
+
+      const type4ID = 4; 
+      const type4NewQuantity = item4;
+
+      const type5ID = 5; 
+      const type5NewQuantity = item5; 
+
+      const type6ID = 6; 
+      const type6NewQuantity = item6;
+
+      const type7ID = 7; 
+      const type7NewQuantity = item7; 
+
+      const type8ID = 8; 
+      const type8NewQuantity = item8;
+    
+    
+      // Update the first package type
+      await axios.put(`http://localhost:8080/ItemDetails/${type1ID}/quantity`, {
+        newQuantity: type1NewQuantity,
       });
 
-      await axios.put(`http://localhost:8080/ItemDetails/${2}/quantity`, {
-        newQuantity: item2,
+      await axios.put(`http://localhost:8080/ItemDetails/${type2ID}/quantity`, {
+        newQuantity: type2NewQuantity,
       });
-      await axios.put(`http://localhost:8080/ItemDetails/${3}/quantity`, {
-        newQuantity: item3,
+
+      await axios.put(`http://localhost:8080/ItemDetails/${type3ID}/quantity`, {
+        newQuantity: type3NewQuantity,
       });
-      await axios.put(`http://localhost:8080/ItemDetails/${4}/quantity`, {
-        newQuantity: item4,
+
+      await axios.put(`http://localhost:8080/ItemDetails/${type4ID}/quantity`, {
+        newQuantity: type4NewQuantity,
       });
-      await axios.put(`http://localhost:8080/ItemDetails/${5}/quantity`, {
-        newQuantity: item5,
+
+      await axios.put(`http://localhost:8080/ItemDetails/${type5ID}/quantity`, {
+        newQuantity: type5NewQuantity,
       });
-      await axios.put(`http://localhost:8080/ItemDetails/${6}/quantity`, {
-        newQuantity: item6,
+
+      await axios.put(`http://localhost:8080/ItemDetails/${type6ID}/quantity`, {
+        newQuantity: type6NewQuantity,
       });
-      await axios.put(`http://localhost:8080/ItemDetails/${7}/quantity`, {
-        newQuantity: item7,
+
+      await axios.put(`http://localhost:8080/ItemDetails/${type7ID}/quantity`, {
+        newQuantity: type7NewQuantity,
       });
-      await axios.put(`http://localhost:8080/ItemDetails/${8}/quantity`, {
-        newQuantity: item8,
+
+      await axios.put(`http://localhost:8080/ItemDetails/${type8ID}/quantity`, {
+        newQuantity: type8NewQuantity,
       });
+
+
     
 
     
@@ -186,6 +240,7 @@ const AddItems = () => {
                 <td scope="col"><input type="number" className="form-control" value={itemAdd8}
                 onChange={(e)=>setItemAdd8(parseInt(e.target.value))}
                 /> </td>
+              
             
               </tr>
 
@@ -194,7 +249,7 @@ const AddItems = () => {
                 <td scope="col"><input type="date" className="form-control" value={date}
                 onChange={(e)=>setDate(e.target.value)}
                 /></td>
-                
+               
                 <td scope="col">  <button type="submit" class="btn btn-warning me-2 w-100"  onClick={handleSaveButtonClick}>
                    save
                   </button></td>

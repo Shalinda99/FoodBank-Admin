@@ -126,6 +126,7 @@ if (Object.keys(errors).length === 0) {
   try {
     const type1ID = 101; 
     const type1NewQuantity = type1Quantity; 
+    console.log(type1NewQuantity);
   
     const type2ID = 102; 
     const type2NewQuantity = type2Quantity; 

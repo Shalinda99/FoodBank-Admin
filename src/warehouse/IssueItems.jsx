@@ -1,5 +1,6 @@
 // import React, { useState } from 'react';
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const IssueItems = () => {
 
@@ -12,6 +13,8 @@ const IssueItems = () => {
   const [item7,setItem7]=useState(0);
   const [item8,setItem8]=useState(0);
 
+  const [date,setDate]=useState("");
+
   const [itemAdd1,setItemAdd1]=useState(0);
   const [itemAdd2,setItemAdd2]=useState(0);
   const [itemAdd3,setItemAdd3]=useState(0);
@@ -20,10 +23,148 @@ const IssueItems = () => {
   const [itemAdd6,setItemAdd6]=useState(0);
   const [itemAdd7,setItemAdd7]=useState(0);
   const [itemAdd8,setItemAdd8]=useState(0);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/packedPackages/viewPackedPackages")
+      .then((response) => {
+        
+
+        
+        axios
+          .get("http://localhost:8080/ItemDetails/1/quantity")
+          .then((quantityResponse) => setItem1(quantityResponse.data))
+          .catch((error) => console.log(error));
+
+          axios
+          .get("http://localhost:8080/ItemDetails/2/quantity")
+          .then((quantityResponse) => setItem2(quantityResponse.data))
+          .catch((error) => console.log(error));
+
+          axios
+          .get("http://localhost:8080/ItemDetails/3/quantity")
+          .then((quantityResponse) => setItem3(quantityResponse.data))
+          .catch((error) => console.log(error));
+
+          axios
+          .get("http://localhost:8080/ItemDetails/4/quantity")
+          .then((quantityResponse) => setItem4(quantityResponse.data))
+          .catch((error) => console.log(error));
+
+          axios
+          .get("http://localhost:8080/ItemDetails/5/quantity")
+          .then((quantityResponse) => setItem5(quantityResponse.data))
+          .catch((error) => console.log(error));
+
+          axios
+          .get("http://localhost:8080/ItemDetails/6/quantity")
+          .then((quantityResponse) => setItem6(quantityResponse.data))
+          .catch((error) => console.log(error));
+
+          axios
+          .get("http://localhost:8080/ItemDetails/7/quantity")
+          .then((quantityResponse) => setItem7(quantityResponse.data))
+          .catch((error) => console.log(error));
+
+          axios
+          .get("http://localhost:8080/ItemDetails/8/quantity")
+          .then((quantityResponse) => setItem8(quantityResponse.data))
+          .catch((error) => console.log(error));
+
+        
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  const handleSaveButtonClick = async () => {
+    setItem1(item1 - itemAdd1);
+    setItem2(item2 - itemAdd2);
+    setItem3(item3 - itemAdd3);
+    setItem4(item4 - itemAdd4);
+    setItem5(item5 - itemAdd5);
+    setItem6(item6 - itemAdd6);
+    setItem7(item7 - itemAdd7);
+    setItem8(item8 - itemAdd8);
+
+    try {
+      const type1ID = 1; 
+      const type1NewQuantity = item1; 
+      console.log(type1NewQuantity);
+
+      const type2ID = 2; 
+      const type2NewQuantity = item2;
+
+      const type3ID = 3; 
+      const type3NewQuantity = item3; 
+
+      const type4ID = 4; 
+      const type4NewQuantity = item4;
+
+      const type5ID = 5; 
+      const type5NewQuantity = item5; 
+
+      const type6ID = 6; 
+      const type6NewQuantity = item6;
+
+      const type7ID = 7; 
+      const type7NewQuantity = item7; 
+
+      const type8ID = 8; 
+      const type8NewQuantity = item8;
+    
+    
+      // Update the first  type
+      await axios.put(`http://localhost:8080/ItemDetails/${type1ID}/quantity`, {
+        newQuantity: type1NewQuantity,
+      });
+
+      await axios.put(`http://localhost:8080/ItemDetails/${type2ID}/quantity`, {
+        newQuantity: type2NewQuantity,
+      });
+
+      await axios.put(`http://localhost:8080/ItemDetails/${type3ID}/quantity`, {
+        newQuantity: type3NewQuantity,
+      });
+
+      await axios.put(`http://localhost:8080/ItemDetails/${type4ID}/quantity`, {
+        newQuantity: type4NewQuantity,
+      });
+
+      await axios.put(`http://localhost:8080/ItemDetails/${type5ID}/quantity`, {
+        newQuantity: type5NewQuantity,
+      });
+
+      await axios.put(`http://localhost:8080/ItemDetails/${type6ID}/quantity`, {
+        newQuantity: type6NewQuantity,
+      });
+
+      await axios.put(`http://localhost:8080/ItemDetails/${type7ID}/quantity`, {
+        newQuantity: type7NewQuantity,
+      });
+
+      await axios.put(`http://localhost:8080/ItemDetails/${type8ID}/quantity`, {
+        newQuantity: type8NewQuantity,
+      });
+
+
+    
+
+    
+      //toast.success("Quantities updated successfully!");
+    
+  
+    } catch (error) {
+      // toast.error("An error occurred while updating the quantities. Please try again later.");
+      console.error(error);
+    }
+    
+  };
+
   
 
   return (
     <React.Fragment>
+      <h1>{item1}</h1>
       <h1>Issue Items</h1>
       <div className=" d-flex justify-content-center ">
         <div className="w-75">
@@ -99,25 +240,26 @@ const IssueItems = () => {
                 /> </td>
             
               </tr>
-            </thead>
-            <tbody>
 
-                </tbody>
+              <tr>
+                <td>Issue Items</td>
+                <td scope="col"><input type="date" className="form-control" value={date}
+                onChange={(e)=>setDate(e.target.value)}
+                /></td>
+               
+                <td scope="col">  <button type="submit" class="btn btn-warning me-2 w-100"  onClick={handleSaveButtonClick}>
+                   save
+                  </button></td>
+            
+              </tr>
+            </thead>
+         
           </table>
           
         </div>
       </div>
 
-      <div className="position-fixed bottom-1 end-0 p-3"></div>
-      <div
-        className="position-fixed bottom-2 end-0 p-3 mb-5 mt-5"
-        style={{ zIndex: "11" }}
-      >
-        <input type="date" className="me-3 p-1" />
-        <button className="btn btn-primary" style={{ width: "150px" }}>
-          Save
-        </button>
-      </div>
+   
     </React.Fragment>
   );
 
