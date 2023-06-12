@@ -9,8 +9,6 @@ import {
   FaUserTimes,
   FaUserCog,
 } from "react-icons/fa";
-
-}from "react-icons/fa";
 import { NavLink, useLocation } from 'react-router-dom';
 import './AdminNavBar.css';
 import AdminHome from './AdminHome';
