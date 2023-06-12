@@ -15,6 +15,7 @@ import RejectedVictimsDetails from './RejectedVictimsDetails';
 import UserCreation from './userCreation';
 import jwt_decode from 'jwt-decode';
 import { Button } from 'react-bootstrap';
+import DeliveryPerson from './DeliverypersonDetails';
 
 const ANavBar = ({ children }) => {
   const location1 = useLocation();
@@ -29,6 +30,11 @@ const ANavBar = ({ children }) => {
       icon: <FaTh />,
     },
     {
+      path: '/userCreation',
+      name: 'Create Users',
+      icon: <FaAddressCard />,
+    },
+    {
       path: '/DataSupplierDetails',
       name: 'Data_Supplier_Details',
       icon: <FaAddressBook />,
@@ -40,10 +46,11 @@ const ANavBar = ({ children }) => {
       icon: <FaAddressCard />,
     },
     {
-      path: '/userCreation',
+      path: '/deliveryPerson',
       name: 'Create Users',
       icon: <FaAddressCard />,
     },
+  
   ];
   const decodedToken = jwt_decode(localStorage.getItem('token'));
   const userId = decodedToken.userName;
@@ -120,6 +127,7 @@ const ANavBar = ({ children }) => {
                 <RejectedVictimsDetails />
               )}
               {currentRoute === '/userCreation' && <UserCreation />}
+              {currentRoute === '/deliveryPerson' && <DeliveryPerson />}
             </div>
           </div>
         </div>

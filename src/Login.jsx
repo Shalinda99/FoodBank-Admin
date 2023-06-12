@@ -147,36 +147,44 @@ const AdminLogin = () => {
       {/* <span className='leftcontainer d-flex align-items-center w-75'>
                 <h2 className='d-flex justify-content-start ms-5'>Share Foods Save lives</h2>
             </span> */}
-            <div className='login d-flex align-items-center justify-content-center flex-column '>
-                <h1 class="text-center mb-5"><b>FOOD BANK</b></h1>
-                <div className='mb-5'>< GrUserAdmin size={'5rem'}/></div>
-                <h3 class="text-center">ADMIN PANEL</h3>
-                <h4 class="text-center mb-5">Login to your Account</h4>
-                
-                
-                <form className='needs-validation '>
-<<<<<<<<< Temporary merge branch 1
-                {/* {/* <div className='form-group was-validated mb-2'>
-                    {/* <label htmlFor='username' className='form-label'>User name</label> 
-=========
-                 <div className='form-group was-validated mb-2'>
-                    <label htmlFor='username' className='form-label'>User name</label> 
->>>>>>>>> Temporary merge branch 2
-                    <input type="text" className='form-control'  placeholder='User name' required></input>
+      <div className="login d-flex align-items-center justify-content-center flex-column ">
+        <h1 class="text-center mb-5">
+          <b>FOOD BANK</b>
+        </h1>
+        <div className="mb-5">
+          <GrUserAdmin size={"5rem"} />
+        </div>
+        <h3 class="text-center">ADMIN PANEL</h3>
+        <h4 class="text-center mb-5">Login to your Account</h4>
+        <form className="needs-validation "
+        onSubmit={handleSubmit}>
+          <div className="form-group was-validated mb-2">
+            <label htmlFor="username" className="form-label">
+              User name
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="User name"
+              required
+              value={userName} 
+              onChange={handleUserNameChange}
+            ></input>
 
-                    <div className='invalid-feedback'>
-                        Please enter your username
-                    </div>
-<<<<<<<<< Temporary merge branch 1
-                </div>  */}
-                {/* <div className='form-group was-validated mb-2'>
-                    {/* <label htmlFor='password'className='form-label'>Password</label> 
-=========
-                </div>
-                <div className='form-group was-validated mb-2'>
-                    <label htmlFor='password'className='form-label'>Password</label>
->>>>>>>>> Temporary merge branch 2
-                    <input type="text" className='form-control'  placeholder='Password' required></input>
+            <div className="invalid-feedback">Please enter your username</div>
+          </div>
+          <div className="form-group was-validated mb-2">
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Password"
+              required
+              value={password} 
+              onChange={handlePasswordChange}
+            ></input>
 
             <div className="invalid-feedback">Please enter your password</div>
             <ToastContainer />

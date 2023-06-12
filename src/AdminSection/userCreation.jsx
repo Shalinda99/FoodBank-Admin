@@ -7,15 +7,38 @@ import { message } from 'antd';
 import axios from 'axios';
 
 const UserCreation = () => {
-    const createUserSchema = yup.object().shape({
-        username: yup.string().required().min(5).max(15),
-        password: yup.string().required().min(5).max(15),
-        confirmPassword: yup
-          .string()
-          .required()
-          .oneOf([yup.ref('password'), null], 'Password not matched'),
-        selectRole: yup.string().required(),
-      });
+  
+  
+  const createUserSchema = yup.object().shape({
+    username: yup
+      .string()
+      .required()
+      .min(5)
+      .max(15)
+      .test(
+        'checkUsernameAvailability',
+        'Username is not available',
+        async (value) => {
+          try {
+            const response = await axios.get(
+              `http://localhost:8080/createUser/exists/${value}`
+            );
+            return !response.data; // Return true if username is available
+          } catch (error) {
+            console.error(error);
+            return true; // Return true to skip the validation on error
+          }
+        }
+      ),
+    password: yup.string().required().min(5).max(15),
+    confirmPassword: yup
+      .string()
+      .required()
+      .oneOf([yup.ref('password'), null], 'Password not matched'),
+    selectRole: yup.string().required(),
+  });
+  
+    
     
       const updateUserSchema = yup.object().shape({
         updateUsername: yup.string().required().min(5).max(15),
@@ -81,7 +104,7 @@ const UserCreation = () => {
         })
         .catch((error) => {
           console.error(error);
-          message.error('An error occurred while updating the user.');
+          message.error('An error occurred while updating the user:User not found.');
         });
     };
 
