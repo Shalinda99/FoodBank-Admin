@@ -9,6 +9,7 @@ import DRoutes from './DeliverySection/DRoutes';
 import ARoutes from './AdminSection/ARoutes';
 import WRoutes from './warehouse/WRoutes';
 
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -17,8 +18,6 @@ function App() {
       
       <Routes>
       <Route path='/' element={<AdminLogin/>}/>
-      
-      
       </Routes>
       <PRoutes/>
       <DRoutes/>

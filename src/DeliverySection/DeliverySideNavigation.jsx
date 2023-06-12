@@ -49,14 +49,9 @@ const PNavBar = ({children}) => {
             icon:<BsGraphUp/>
         },
         {
-            path:"/foodDonations",
-            name:"Food Donations",
-            icon:<FaPalfed/>
-        },
-        {
-            path:"/collectionSummary",
-            name:"Collection Summary",
-            icon:<FaPalfed/>
+            path:"/collectDonations",
+            name:"Collect Donations",
+            icon:<AiOutlineAppstoreAdd/>
         }
       
     ]
