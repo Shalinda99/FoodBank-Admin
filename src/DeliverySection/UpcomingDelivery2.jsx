@@ -1,97 +1,138 @@
-import React, { useState,useEffect } from "react";
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const UpcomingDelivery2 = () => {
   const [vdata, setVData] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('http://localhost:8080/Victim/viewToDelivery'); // replace this with the actual API endpoint
-      const jsonData = await response.json();
-      setVData(jsonData);
-    };
+  const [vid,setVid]=useState();
+  const [deliveryPerson, setDeliveryPerson] = useState("");
+  const [deliveryDate, setDeliveryDate] = useState("");
+  const [victimNic, setvictimNic] = useState("");
 
-    fetchData();
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/Victim/viewToDelivery")
+      .then((response) => setVData(response.data))
+      .then((vdata)=>setVid(vdata.id))
+      .catch((error) => console.error(error));
+      console.log(vdata);
   }, []);
-  const [date, setDate] = useState(null);
-  const[data,setData]=useState([]);
+  
+
+    
+  const [data, setData] = useState([]);
+
   useEffect(() => {
     fetch("http://localhost:8080/DeliveryPerson/viewDeliveryPerson")
       .then((response) => response.json())
       .then((jsondata) => setData(jsondata));
   }, []);
+
   const SelectMenu = () => (
-    <select class="custom-select custom-select-lg mb-3">
-    <option selected>Select </option>
-    {data.map((item, index) => (
-          <option key={index} value={item.deliveryPersonName}>{item.deliveryPersonName}</option>
-        ))}
-  </select>
+    <select
+      className="custom-select custom-select-lg mb-3"
+      onChange={(e) => setDeliveryPerson(e.target.value)}
+    >
+      <option selected>Select</option>
+      {data.map((item, index) => (
+        <option key={index} value={item.deliveryPersonName}>
+          {item.deliveryPersonName}
+        </option>
+      ))}
+    </select>
   );
-  
 
+  async function handleSubmit(details) {
+    const deliveryData = {
+      victimNic: details.nic,
 
+      deliveryPerson: deliveryPerson,
+      deliveryNo:details.no,
+      deliveryStreet: details.street,
+      deliveryCity: details.city,
+      deliveryDate: deliveryDate,
+      isCompleted:false
+      
+    };
+    console.log(vid);
 
+    try {
+      const response = await axios.post("http://localhost:8080/Delivery/saveDelivery", deliveryData);
+    
+      console.log(response.data);
+      console.log(vdata)
+      await axios.put(
+        `http://localhost:8080/Victim/updateIsDeliveryPersonSelect/${details.id}`,
+        { 
+          isVerified: true ,
+          isDeliveryPersonSelect:true
+         }
+      );
+      const updatedVData = vdata.map((v) =>
+        v.id === details.id ? { ...v, isDeliveryPersonSelect: true } : v
+      );
+      setVData(updatedVData);
+    
+      // Display a success message to the user
+     // toast.success("Form submitted successfully!");
+    } catch (error) {
+      console.error(error);
+      // Display an error message to the user
+      //toast.error("An error occurred while submitting the form. Please try again later.");
+    }
 
+    // Perform any action with the deliveryData, such as sending it to an API
+    console.log(deliveryData);
+  }
 
-  // const handleChange = (selectedDate) => {
-  //   setDate(selectedDate);
-  // };
-
-
- 
   return (
     <React.Fragment>
-    <div className="d-flex align-items-center justify-content-center">
-      <div className="d-flex flex-row">
-         <div className="p-1">
-         <h3 style={{ fontSize: '30px', fontWeight: 'bold' }}>Select Delivery Person</h3>
-         </div>
+      {/* Your other JSX code here */}
 
-         {/* <div className="p-1">
-         <DatePicker onChange={handleChange} />
-         </div> */}
-      </div>
-    </div>
+      <table className="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th scope="col">NIC</th>
+            <th scope="col">Name</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Address</th>
+            <th scope="col">Delivery Person</th>
+            <th scope="col">Delivery Date</th>
+            <th scope="col">Save</th>
+          </tr>
+        </thead>
 
-  
+        <tbody>
+          {vdata.map((details) => (
+            <tr key={details.id}>
+              <td>{details.nic}</td>
+              <td>{details.firstName} {details.lastName}</td>
+              <td>{details.phoneNumber}</td>
+              <td>{details.no} {details.street} {details.city}</td>
+              <td><SelectMenu /></td>
+              <td>
+                <input
+                  type="date"
+                  className="form-control"
+                  onChange={(e) => setDeliveryDate(e.target.value)}
+                />
+              </td>
+              <td>
+                <button
+                  type="button"
+                  className="btn btn-warning"
+                  onClick={() => handleSubmit(details)}
+                >
+                  Select
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-    <table class="table table-striped mt-3">
-      <thead>
-      <tr>
-        <th scope="col">NIC</th>
-        <th scope="col">Name</th>
-        <th scope="col">Contact</th>
-        <th scope="col">Address</th>
-        <th scope="col">Delivery Person</th>
-        <th scope="col">Delivery Date</th>
-        
-      </tr>
-      </thead>
-
-      <tbody>
-      {vdata.map((details)=>(
-          (
-      <tr key={details.id}>
-        <td> {details.nic}</td>
-        <td>{details.firstName} {details.lastName}</td>
-        <td>{details.phoneNumber}</td>
-        <td>{details.no} {details.street} {details.city}</td>
-        <td><SelectMenu/></td>
-        {/* <td> <DatePicker onChange={handleChange} /></td> */}
-        <td><input type="date" className="form-control"/></td>
-      </tr> )    )  )}
-    
-     </tbody>
-     </table>
-  
-     {/* <div class="d-flex justify-content-end align-items-end mb-3">
-    <Button1 style="margin-bottom: 100px;" variant="secondary" bg="grey" text="Select For Delivery" textColor="dark" page="/PackageRequsition1" />
-  </div> */}
-
-
-</React.Fragment>
-    
+      {/* Your other JSX code here */}
+    </React.Fragment>
   );
 };
 
-export default UpcomingDelivery2 ;
+export default UpcomingDelivery2;

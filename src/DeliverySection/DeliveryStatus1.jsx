@@ -1,74 +1,112 @@
-import React, { useState } from "react";
-import ToggleSwitch from "./ToggleButton";
-import Button from "./Button";
-
-
+import React, { useState, useEffect } from "react";
+// import ToggleSwitch from "./ToggleButton";
+import axios from "axios";
 
 const DeliveryStatus1 = () => {
-  const [isSwitchOn1, setIsSwitchOn1] = useState(false);
+  const [vdata, setVData] = useState([]);
 
-  const handleSwitchChange1 = () => {
-    setIsSwitchOn1(!isSwitchOn1);
-  };
-  /*const handleSwitchChange2 = () => {
-    setIsSwitchOn1(!isSwitchOn1);
-  };
-  const handleSwitchChange3 = () => {
-    setIsSwitchOn1(!isSwitchOn1);
-  };
-  const handleSwitchChange4 = () => {
-    setIsSwitchOn1(!isSwitchOn1);
-  };
-  const handleSwitchChange5 = () => {
-    setIsSwitchOn1(!isSwitchOn1);
-  };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get("http://localhost:8080/Delivery/getIncompleteDeliveries");
+  //       setVData(response.data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
 
-  const handleSwitchChange6 = () => {
-    setIsSwitchOn1(!isSwitchOn1);
-  };
-  */
+  //   fetchData();
+  // }, []);
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/Delivery/getIncompleteDeliveries")
+      .then((response) => setVData(response.data))
+      .catch((error) => console.error(error));
+      console.log(vdata);
+  }, []);
 
+  async function handleSwitchChange(details) {
+    console.log(details);
+  
+    try {
+      await axios.put(
+        `http://localhost:8080/Delivery/updateDeliveryStatus/${details.did}`,
+        {
+          isCompleted: true
+        }
+      );
+  
+      // Fetch updated data
+      // const response = await axios.get("http://localhost:8080/Delivery/getIncompleteDeliveries");
+      // setVData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
+  // const handleSwitchChange = async (id) => {
+  //   setIsSwitchOn(!isSwitchOn);
+  //   const response = await fetch(`http://localhost:8080/Delivery/updateDeliveryStatus/{deliveryId}`, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       isCompleted: true
+  //     })
+  //   });
+  
+  //   if (response.ok) {
+  //     // handle success response
+  //     console.log('Victim updated successfully');
+  //   } else {
+  //     // handle error response
+  //     console.error('Error updating victim');
+  //   }
+  // };
 
   return (
     <React.Fragment>
       <div className="d-flex align-items-center justify-content-center">
-      <div style={{ fontSize: '30px', fontWeight: 'bold' }}>Delivery Status</div>
+        <div style={{ fontSize: "30px", fontWeight: "bold" }}>Delivery Status</div>
       </div>
 
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">NIC</th>
+            <th scope="col">Delivery Person</th>
+            <th scope="col">Date</th>
+            <th scope="col">Address</th>
+            <th scope="col">Delivery Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {vdata.map((details) => (
+            <tr key={details.did}>
+              <td>{details.victimNic}</td>
+              <td>{details.deliveryPerson}</td>
+              <td>{details.deliveryDate}</td>
+              <td>{details.deliveryNo} {details.deliveryStreet} {details.deliveryCity}</td>
+              <td>
+                <button
+                  type="button"
+                  className="btn btn-warning"
+                  onClick={() => handleSwitchChange(details)}
+                >
+                  Select
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
       
-       <table class="table table-striped">
-      <thead>
-      <tr>
-        <th scope="col">NIC</th>
-        <th scope="col">Name</th>
-        <th scope="col">Contact</th>
-        <th scope="col">Address</th>
-        <th scope="col">Delivery Status</th>
-      </tr>
-      </thead>
-
-      <tbody>
-
-      <tr>
-        <td> 199556500987</td>
-        <td>Kamal Perera</td>
-        <td>072367542</td>
-        <td>79, School Lane, Galle</td>
-        <td > <div className="d-flex justify-content-center"><ToggleSwitch onChange={handleSwitchChange1} /></div> </td>
-      </tr>
-    
-     </tbody>
-     </table>
-      
-       <div class="d-flex justify-content-end align-items-end ">
-         <Button variant="secondary" bg="grey" text="Next" textColor="dark" page="/DeliveryStatus2" />
-       </div>
-
-</React.Fragment>
-    
+    </React.Fragment>
   );
 };
 
-export default DeliveryStatus1 ;
+export default DeliveryStatus1;

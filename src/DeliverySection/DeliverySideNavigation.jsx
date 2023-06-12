@@ -5,7 +5,10 @@ import {
     FaBars,
     FaUserAlt,
     FaPalfed,
+    FaGifts,
+    FaPoll,
 }from "react-icons/fa";
+
 import { NavLink, useLocation } from 'react-router-dom';
 import './DeliveryNavBar.css';
 import VictimInfo1 from './VictimInfo1';
@@ -36,11 +39,11 @@ const PNavBar = ({children}) => {
             name:"Upcoming Delivery",
             icon:<MdOutlineDeliveryDining/>
         },
-        {
-            path:"/PackageRequsition1",
-            name:"Packing Requisition",
-            icon:<FaPalfed/>
-        },
+        // {
+        //     path:"/PackageRequsition1",
+        //     name:"Packing Requisition",
+        //     icon:<FaPalfed/>
+        // },
         {
             path:"/DeliveryStatus1",
             name:"Delivery Status",
@@ -49,12 +52,12 @@ const PNavBar = ({children}) => {
         {
             path:"/foodDonations",
             name:"Food Donations",
-            icon:<FaPalfed/>
+            icon:< FaGifts/>
         },
         {
             path:"/collectionSummary",
             name:"Collection Summary",
-            icon:<FaPalfed/>
+            icon:<FaPoll/>
         }
       
     ]
@@ -94,8 +97,8 @@ const PNavBar = ({children}) => {
                 {currentRoute === '/deliverySection' && <VictimInfo1/>} 
                 {currentRoute === '/VictimInfo1' && <VictimInfo1/>} 
                 {currentRoute === '/UpcomingDelivery2' && <UpcomingDelivery2/>} 
-                {currentRoute === '/PackageRequsition1' && <PackageRequsition1/>} 
-                {currentRoute === '/PackageRequsition2' && <PackageRequsition2/>} 
+                {/* {currentRoute === '/PackageRequsition1' && <PackageRequsition1/>} 
+                {currentRoute === '/PackageRequsition2' && <PackageRequsition2/>}  */}
                 {currentRoute === '/DeliveryStatus1' && <DeliveryStatus1/>} 
                 {currentRoute === '/DeliveryStatus2' && <DeliveryStatus2/>} 
                 {currentRoute === '/foodDonations' && <FoodDonation/>} 
