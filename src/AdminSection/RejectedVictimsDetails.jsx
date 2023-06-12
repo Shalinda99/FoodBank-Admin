@@ -1,84 +1,66 @@
-import React from 'react';
-import Button1 from './Button1';
+import React, { useEffect, useState } from "react";
+import Button1 from "./Button1";
+import { Dropdown } from "react-bootstrap";
 
-const DataSupplierDetails = () => {
-    return ( 
-        <React.Fragment>
-           <div>
-           <div class="dropdown d-flex justify-content-end">
-                <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    All dropdown       
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
-            <h2>Rejected Victims Details</h2>
-            <br/>
+const RejectedVictimsDetails = () => {
+  const [rejectedData,setRejectedData]=useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('http://localhost:8080/Victim/viewRejectedVictims'); 
+      const jsonData = await response.json();
+      setRejectedData(jsonData);
+    };
 
-            <div>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                            <th scope="col">NIC</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Contact</th>
-                            <th scope="col">Location</th>
-                            </tr>
-                        </thead>
+    fetchData();
+  }, []);
+  return (
+    <React.Fragment>
+      <div>
+      <div class="dropdown d-flex justify-content-end">
+      <div class="d-flex justify-content-start  mb-3 ">
+      <Button1
+            text="View Accepted List"
+            textColor="dark"
+            page="/AcceptedVictimsDetails"
+          />
+        </div>
 
-                        <tbody>
-                            <tr>
-                            <td>204059X</td>
-                            <td>Tharushni Gamage</td>
-                            <td>0769442613</td>
-                            <td>Galle</td>
-                            </tr>
+        </div>
+        <h2>Rejected Victims Details</h2>
+        <br />
 
-                            <tr>
-                            <td>204215A</td>
-                            <td>Milanka Tharangana</td>
-                            <td>0769442613</td>
-                            <td>Galle</td>
-                            </tr>
+        <div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">NIC</th>
+                <th scope="col">Name</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Address</th>
+              </tr>
+            </thead>
 
-                            <tr>
-                            <td>204200A</td>
-                            <td>Amal Shalinda</td>
-                            <td>0769442613</td>
-                            <td>Galle</td>
-                            </tr>
+            <tbody>
+            {rejectedData.map((details)=>(
+          (
+      <tr key={details.id}>
+        <td> {details.nic}</td>
+        <td>{details.firstName} {details.lastName}</td>
+        <td>{details.phoneNumber}</td>
+        <td>{details.no} {details.street} {details.city}</td>
+      </tr> )    )  )}
+              {/* <tr>
+                <td>204059X</td>
+                <td>Kamal Perera</td>
+                <td>0769442613</td>
+                <td>Galle</td>
+              </tr> */}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </React.Fragment>
+  );
+};
 
-                            <tr>
-                            <td>204145H</td>
-                            <td>Fathima Nuska</td>
-                            <td>0769442613</td>
-                            <td>Galle</td>
-                            </tr>
-
-                            <tr>
-                            <td>204216X</td>
-                            <td>Thareejan</td>
-                            <td>0769442613</td>
-                            <td>Galle</td>
-                            </tr>
-
-                           
-                        </tbody>
-
-                    </table>
-                    </div>
-
-                    <div class="d-flex justify-content-end  mb-3 ">
-                <Button1 style="margin-top: 20px;" variant="secondary" bg="grey" text="View Accepted List" textColor="dark" page="/AcceptedVictimsDetails" />
-                </div>
-                    
-
-           </div>
-        </React.Fragment>
-     );
-}
- 
-export default DataSupplierDetails;
+export default RejectedVictimsDetails;
