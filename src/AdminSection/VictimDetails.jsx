@@ -3,7 +3,7 @@ import Button1 from "./Button1";
 import Button2 from "./Button2";
 import Button3 from "./Button3";
 // import axios from 'axios';
-
+import { Dropdown } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -19,7 +19,7 @@ const VictimDetails = () => {
   }, []);
 
   //putmapping
-  const handleAcceptSelect = async (id) => {
+  const handleAcceptSelect = async (id, donaterId) => {
     const response = await fetch(
       `http://localhost:8080/Victim/selectAccept/${id}`,
       {
@@ -30,10 +30,11 @@ const VictimDetails = () => {
         body: JSON.stringify({
           isVerified: true,
           isAccepted: true,
+          donaterId: donaterId,
         }),
       }
     );
-
+  
     if (response.ok) {
       // handle success response
       console.log("Victim updated successfully");
@@ -42,7 +43,8 @@ const VictimDetails = () => {
       console.error("Error updating victim");
     }
   };
-  const handleRejectSelect = async (id) => {
+  
+  const handleRejectSelect = async (id,donaterId) => {
     const response = await fetch(
       `http://localhost:8080/Victim/selectReject/${id}`,
       {
@@ -53,6 +55,7 @@ const VictimDetails = () => {
         body: JSON.stringify({
           isVerified: true,
           isAccepted: false,
+          donaterId: donaterId
         }),
       }
     );
@@ -68,32 +71,17 @@ const VictimDetails = () => {
   return (
     <React.Fragment>
       <div>
-        <div class="dropdown d-flex justify-content-end">
-          <button
-            class="btn btn-dark dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            All dropdown
-          </button>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="#">
-                Action
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">
-                Another action
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">
-                Something else here
-              </a>
-            </li>
-          </ul>
+      <div class="dropdown d-flex justify-content-end">
+          <Dropdown>
+            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+              Dropdown Button
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item href="#action/1">Action 1</Dropdown.Item>
+              <Dropdown.Item href="#action/2">Action 2</Dropdown.Item>
+              <Dropdown.Item href="#action/3">Action 3</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
       </div>
 
@@ -118,12 +106,12 @@ const VictimDetails = () => {
 
       {victims.map(
         (victim) => (
-          console.log(victim.firstName),
+          console.log(victim.user.firstName),
           (
             <div key={victim.id}>
               <div class="card bg-light text-dark">
                 <div class="card-body">
-                  <h4>Data Supplier: D.K Perera</h4>
+                  <h4>{victim.user.firstName}</h4>
                   <br />
 
                   <p>
@@ -141,24 +129,19 @@ const VictimDetails = () => {
                     <div className="ms-2">
                       <button
                         type="button"
-                        class="btn btn-warning"
-                        onClick={() => handleAcceptSelect(victim.id)}
+                        class="btn btn-outline-warning"
+                        onClick={() => handleAcceptSelect(victim.id,victim.donaterId)}
                       >
                         Accept
                       </button>
-
-                      {/* <Button2
-                    text="Acceptsss"
-                    textColor="dark"
-                  /> */}
                     </div>
 
                     <div className="ms-2">
                       {" "}
                       <button
                         type="button"
-                        class="btn btn-warning"
-                        onClick={() => handleRejectSelect(victim.id)}
+                        class="btn btn-outline-warning"
+                        onClick={() => handleRejectSelect(victim.id,victim.donaterId)}
                       >
                         Decline
                       </button>

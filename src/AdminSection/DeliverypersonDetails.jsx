@@ -96,7 +96,7 @@ const DeliveryPerson = () => {
                   <label htmlFor="floatingInput">Name</label>
                 </div>
                 <div className="ms-auto">
-                  <button type="submit" className="btn btn-primary">Add</button>
+                  <button type="submit" className="btn btn-warning">Add</button>
                 </div>
               </div>
             </div>
