@@ -1,16 +1,12 @@
-import React from 'react';
+import React from "react";
+import Dashboard from "./AdminDashBoard";
 
 const AdminHome = () => {
-    return ( 
-        <React.Fragment>
+  return (
+    <div>
+      <Dashboard />
+    </div>
+  );
+};
 
-         <h1>Dashboard</h1>
-            
-
-           
-            
-        </React.Fragment>
-     );
-}
- 
 export default AdminHome;

@@ -9,8 +9,6 @@ import {
 import { NavLink, useLocation } from 'react-router-dom';
 import './DeliveryNavBar.css';
 import VictimInfo1 from './VictimInfo1';
-import VictimInfo2 from './VictimInfo2';
-import UpcomingDelivery1 from './UpcomingDelivery1';
 import UpcomingDelivery2 from './UpcomingDelivery2';
 import PackageRequsition1 from './PackageRequsition1';
 import PackageRequsition2 from './PackageRequsition2';
@@ -18,6 +16,8 @@ import DeliveryStatus1 from './DeliveryStatus1';
 import DeliveryStatus2 from './DeliveryStatus2';
 import CollectDonations from './collectDonations';
 import {AiOutlineAppstoreAdd}from "react-icons/ai";
+import FoodDonation from './foodDonations';
+import CollectionSummary from './collectionSummary';
 
 const PNavBar = ({children}) => {
 
@@ -90,14 +90,14 @@ const PNavBar = ({children}) => {
                 {/* conditional render */}
                 {currentRoute === '/deliverySection' && <VictimInfo1/>} 
                 {currentRoute === '/VictimInfo1' && <VictimInfo1/>} 
-                {currentRoute === '/VictimInfo2' && <VictimInfo2/>} 
-                {/* {currentRoute === '/UpcomingDelivery1' && <UpcomingDelivery1/>}  */}
                 {currentRoute === '/UpcomingDelivery2' && <UpcomingDelivery2/>} 
                 {currentRoute === '/PackageRequsition1' && <PackageRequsition1/>} 
                 {currentRoute === '/PackageRequsition2' && <PackageRequsition2/>} 
                 {currentRoute === '/DeliveryStatus1' && <DeliveryStatus1/>} 
                 {currentRoute === '/DeliveryStatus2' && <DeliveryStatus2/>} 
                 {currentRoute==='/collectDonations' && <CollectDonations/>}
+                {currentRoute === '/foodDonations' && <FoodDonation/>} 
+                {currentRoute === '/collectionSummary' && <CollectionSummary/>} 
             </div>
         </div>
         </div>    

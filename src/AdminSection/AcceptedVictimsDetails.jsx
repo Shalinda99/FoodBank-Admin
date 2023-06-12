@@ -1,84 +1,94 @@
-import React from 'react';
-import Button1 from './Button1';
+import React from "react";
+import Button1 from "./Button1";
+import "./Button.css";
+import { Dropdown } from "react-bootstrap";
 
-const DataSupplierDetails = () => {
-    return ( 
-        <React.Fragment>
-           <div>
-           <div class="dropdown d-flex justify-content-end">
-                <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    All dropdown       
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
-            <h2>Accepted Victims Details</h2>
-            <br/>
+import { useState, useEffect } from "react";
 
-            <div>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                            <th scope="col">NIC</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Contact</th>
-                            <th scope="col">Location</th>
-                            </tr>
-                        </thead>
+const AcceptedVictimsDetails = () => {
+  const [isVerified, setIsVerified] = useState([]);
 
-                        <tbody>
-                            <tr>
-                            <td>204059X</td>
-                            <td>Tharushni Gamage</td>
-                            <td>0769442613</td>
-                            <td>Galle</td>
-                            </tr>
+  useEffect(() => {
+    fetch("http://localhost:8080/Victim/viewAcceptedVictims")
+      .then((response) => response.json())
+      .then((data) => setIsVerified(data));
+  }, []);
 
-                            <tr>
-                            <td>204215A</td>
-                            <td>Milanka Tharangana</td>
-                            <td>0769442613</td>
-                            <td>Galle</td>
-                            </tr>
+  const [date, setDate] = useState(null);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:8080/packageTypes/viewPackageType")
+      .then((response) => response.json())
+      .then((jsondata) => setData(jsondata));
+  }, []);
+  const SelectMenu = () => (
+    <select class="custom-select custom-select-lg mb-3">
+      <option selected>Select </option>
+      {data.map((details, index) => (
+        <option key={index} value={details.typeName}>
+          {details.typeName}
+        </option>
+      ))}
+    </select>
+  );
 
-                            <tr>
-                            <td>204200A</td>
-                            <td>Amal Shalinda</td>
-                            <td>0769442613</td>
-                            <td>Galle</td>
-                            </tr>
+  return (
+    <React.Fragment>
+      <div>
+        <div class="dropdown d-flex justify-content-end">
+        <div class="d-flex justify-content-start  mb-3 ">
+        <Button1
+            text="View Rejected List"
+            textColor="dark"
+            page="/RejectedVictimsDetails"
+          />
+        </div>
 
-                            <tr>
-                            <td>204145H</td>
-                            <td>Fathima Nuska</td>
-                            <td>0769442613</td>
-                            <td>Galle</td>
-                            </tr>
+        </div>
+        
 
-                            <tr>
-                            <td>204216X</td>
-                            <td>Thareejan</td>
-                            <td>0769442613</td>
-                            <td>Galle</td>
-                            </tr>
+        <h2>Accepted Victims Details</h2>
+        <br />
 
-                           
-                        </tbody>
+        <div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">NIC</th>
+                <th scope="col">Name</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Address</th>
+                <th scope="col">Package Type</th>
+                <th scope="col">Save</th>
+              </tr>
+            </thead>
 
-                    </table>
-                    </div>
+            <tbody>
+              {isVerified.map((details) => (
+                <tr key={details.id}>
+                  <td> {details.nic}</td>
+                  <td>
+                    {details.firstName} {details.lastName}
+                  </td>
+                  <td>{details.phoneNumber}</td>
+                  <td>
+                    {details.no} {details.street} {details.city}
+                  </td>
+                  <td>
+                    <SelectMenu />
+                  </td>
+                  <button type="button" class="btn btn-info">
+                    Save
+                  </button>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </React.Fragment>
+  );
+};
 
-                    <div class="d-flex justify-content-end  mb-3 ">
+export default AcceptedVictimsDetails;
 
-                    <Button1 style="margin-top: 20px;" variant="secondary" bg="grey" text="View Rejected List" textColor="dark" page="/RejectedVictimsDetails" />
-                    </div>
-
-           </div>
-        </React.Fragment>
-     );
-}
- 
-export default DataSupplierDetails;
